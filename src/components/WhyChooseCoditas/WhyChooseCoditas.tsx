@@ -4,6 +4,7 @@ import { WhyCooseCoditasType, cardDataType, cardType } from "./IWhyChooseCoditas
 import styles from "./WhyChooseCoditas.module.scss";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import { CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
+import { getImageUrl } from "@/utils/helper";
 
 const WhyChooseCoditasCard = ({ data }: cardType) => {
   return (
@@ -11,7 +12,7 @@ const WhyChooseCoditasCard = ({ data }: cardType) => {
       {data.icon && data.title && (
         <>
           <div className={styles.imageContainer}>
-            <CustomImage src={data.icon} className={styles.icon} alt="Why Choose Coditas" />
+            <CustomImage src={getImageUrl(data.icon)} className={styles.icon} alt="Why Choose Coditas" />
           </div>
           <div className={styles.cardTitle}>{data.title}</div>
         </>
@@ -28,14 +29,14 @@ const WhyChooseCoditas = ({
   cardAlignment,
   buttonLabel,
 }: WhyCooseCoditasType) => {
-  const initialCardList = cardsArray.slice(0, 6);
-  const initialMobileCardList = cardsArray.slice(0, 4);
+  const initialCardList = cardsArray?.slice(0, 6);
+  const initialMobileCardList = cardsArray?.slice(0, 4);
   const [aarayListToBeShown, setAarayListToBeShown] = useState<cardDataType[]>(initialCardList);
   const [mobileCardsList, setMobileCardsList] = useState<cardDataType[]>(initialMobileCardList);
   const [isButtonClicked, setIsButtonClicked] = useState<boolean>(false);
   const { isMobileView } = useWindowWidth();
   const cardsToBeMapped = isMobileView ? mobileCardsList : aarayListToBeShown;
-  const checkCardsLength = isMobileView ? cardsArray.length > 4 : cardsArray.length > 6;
+  const checkCardsLength = isMobileView ? cardsArray?.length > 4 : cardsArray?.length > 6;
   const handleViewMore = () => {
     const headSectionElement = document.getElementById("headSectionWhyChooseCoditas");
     setIsButtonClicked(true);
@@ -67,7 +68,7 @@ const WhyChooseCoditas = ({
             checkCardsLength ? "" : styles.cardBoxBottomPadding
           }`}
         >
-          {cardsToBeMapped.map((data, index: number) => (
+          {cardsToBeMapped?.map((data, index: number) => (
             <WhyChooseCoditasCard data={data} key={index} />
           ))}
         </div>

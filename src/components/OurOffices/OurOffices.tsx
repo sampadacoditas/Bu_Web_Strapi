@@ -3,6 +3,7 @@ import { LocationMarker, Tooltip, LocationCard, CustomImage } from "@/components
 import { CUSTOM_ID, DARK_BG_NAV } from "@/constants/constants";
 import { IOurOfffices } from "./IOurOffices";
 import style from "./OurOffices.module.scss";
+import { getImageUrl } from "@/utils/helper";
 
 const OurOffices = (props: IOurOfffices) => {
   const { addressData = [], map = "", commonSvgs={}, mappedSvgs={} } = props;
@@ -31,7 +32,7 @@ const OurOffices = (props: IOurOfffices) => {
               return (
                 <div key={index} className={style.location}>
                   <div className={style.flagIconContainer}>
-                    <CustomImage src={location.flagIcon} className={style.flagIcon} alt="Flag" />
+                    <CustomImage src={getImageUrl(location.flagIcon)} className={style.flagIcon} alt="Flag" />
                   </div>
                   <div className={style.address}>
                     <span className={style.currentLocation}>{location.location}</span>
