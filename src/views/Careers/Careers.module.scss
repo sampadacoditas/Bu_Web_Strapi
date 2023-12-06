@@ -1,0 +1,50 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.homePage {
+  .heroSectionGradient {
+    background: $hero-section-gradient;
+
+    @include mobile() {
+      background: linear-gradient(72deg, rgba(0, 0, 0, 0.64) 0%, rgba(0, 0, 0, 0.48) 36.31%, rgba(0, 0, 0, 0.24) 100%);
+    }
+  }
+
+  .heroSectionContentContainer {
+    padding-top: 186px;
+    padding-bottom: 122px;
+
+    @include tablet() {
+      width: 100%;
+      margin: 0;
+      padding: 164px 24px;
+      display: grid;
+      column-gap: 16px;
+      grid-template-columns: repeat(8, 1fr);
+    }
+    @include mobile() {
+      padding: 143px 16px 87px 16px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .whyJoinCoditasContainer {
+    padding: 7rem 0;
+    @include tablet() {
+      padding: 4.5rem 1.5rem !important;
+    }
+    @include mobile() {
+      padding: 4rem 1rem !important;
+    }
+  }
+
+  .lifeAtCoditasSection {
+    padding: 7rem 0;
+    @include tablet() {
+      padding: 4.5rem 1.5rem !important;
+    }
+    @include mobile() {
+      padding: 4rem 1rem !important;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.cardContainer {
+  grid-column: span 6;
+  border-radius: 0.25rem;
+  width: 584px;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+  background-color: $white;
+  box-shadow: 0px 24px 34px 0px rgba(0, 0, 0, 0.08);
+  position: relative;
+  height: 100%;
+
+  :hover {
+    box-shadow: 0px 24px 34px 0px rgba(0, 0, 0, 0.16);
+  }
+  @include tablet() {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @include mobile() {
+    padding-top: 3rem;
+  }
+
+  .imageContainer {
+    @include tablet() {
+    }
+    .image {
+      border-top-right-radius: 0.25rem;
+      border-top-left-radius: 0.25rem;
+      grid-row: 1;
+
+      @include tablet() {
+        @include widthHeight(100%, 100%);
+      }
+    }
+  }
+
+  .title {
+    padding: 1.5rem;
+    padding-bottom: 2rem;
+    @include textStyling($title-font, normal, 400, 20px, 120%, $text-color, 0.5px);
+    grid-row: 2;
+    @include tablet() {
+      max-width: 400px;
+      word-break: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+      @include textStyling($title-font, normal, 400, 16px, 120%, $text-color, 0.5px);
+      padding-bottom: 0;
+    }
+
+    @include mobile() {
+      word-break: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  .tag {
+    padding: 6px 12px;
+    border-radius: 16px;
+    background-color: $primary-navy-blue;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    @include textStyling($text-font, normal, 500, 14px, 140%, $white, 0.25px);
+    @include tablet() {
+      right: 1.5rem;
+      top: 1.5rem;
+      @include textStyling($text-font, normal, 500, 12px, 140%, $white, 0.25px);
+    }
+    @include mobile() {
+      @include textStyling($text-font, normal, 500, 12px, 140%, $white, 0.25px);
+      right: 0.5rem;
+      top: 3.5rem;
+    }
+  }
+  .read {
+    grid-row: 3;
+    padding: 0 0 1.5rem 1.5rem;
+    @include textStyling($text-font, normal, 700, 14px, 21px, $primary-blue, 0.5px);
+    @include tablet() {
+      padding-top: 2rem;
+    }
+    @include mobile() {
+      padding-top: 2rem;
+    }
+  }
+}

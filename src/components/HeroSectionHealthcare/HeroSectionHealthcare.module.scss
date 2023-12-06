@@ -1,0 +1,92 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.healthCareHeroSection {
+  background-color: $theme-bg-navy-blue;
+  padding: 9.625rem 0 5.625rem 0;
+  position: relative;
+  margin-right: 0;
+  position: relative;
+  @include mobile() {
+    padding: 3.125rem 0 0 0;
+  }
+  .circleContainer {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .innerEllipse,
+    .outerEllipse,
+    .outerMostEllipse {
+      height: 100%;
+      position: absolute;
+      right: 0;
+
+      @include mobile() {
+        display: none;
+      }
+    }
+    .innerEllipse {
+      z-index: 3;
+    }
+    .outerEllipse {
+      z-index: 2;
+    }
+    .outerMostEllipse {
+      z-index: 1;
+    }
+  }
+  .title {
+    z-index: 4;
+    grid-row: 1;
+    grid-column: 1/7;
+    align-self: center;
+    @include textStyling($title-font, normal, 600, 3rem, 57.6px, $white, 0.5px);
+    @include tablet {
+      @include textStyling($title-font, normal, 600, 2.5rem, 120%, $white, 0.5px);
+      grid-column: 1/5;
+    }
+    @include mobile() {
+      padding-top: 4rem;
+      grid-column: 1/5 !important;
+      @include textStyling($title-font, normal, 600, 2rem, 120%, $white, 0.5px);
+    }
+  }
+
+  .bannerImage {
+    grid-row: 1;
+    grid-column: 7/13;
+    z-index: 9;
+    border-radius: 0.5rem;
+
+    .bannerImg {
+      border-radius: 1rem;
+    }
+    @include tablet() {
+      margin-right: -1.5rem;
+      overflow: hidden;
+      transform: none;
+      grid-column: 6/9;
+    }
+    @include mobile() {
+      padding-top: 3rem;
+      width: 100%;
+      grid-column: 1/5 !important;
+      grid-row: 2;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 0;
+      .bannerContainer {
+        border-radius: 0.5rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        overflow: hidden;
+        height: auto;
+        .bannerImg {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

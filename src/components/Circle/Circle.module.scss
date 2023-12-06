@@ -1,0 +1,29 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.circleContainer {
+  @include flexProps(flex, center, center, row, null);
+  border: 2px solid $dark-charcoal;
+  border-radius: 50%;
+  @include widthHeight(84px, 84px);
+
+  @include tablet() {
+    @include widthHeight(73px, 73px);
+  }
+
+  @include mobile() {
+    @include widthHeight(70px, 70px);
+  }
+
+  .iconContainer {
+    @include widthHeight(40px, 40px);
+
+    @include tablet() {
+      @include widthHeight(34.761px, 34.761px);
+    }
+
+    @include mobile() {
+      @include widthHeight(31.111px, 31.111px);
+    }
+  }
+}

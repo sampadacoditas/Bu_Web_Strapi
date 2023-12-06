@@ -1,0 +1,105 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.custom-datepicker-wrapper {
+  @include widthHeight(100%, null);
+}
+
+.custom-popper-container {
+  .react-datepicker {
+    @include textStyling(
+      $text-font,
+      normal,
+      $normal-font,
+      14px,
+      150%,
+      null,
+      0.031rem
+    );
+    @include widthHeight(20.5rem, 24.375rem);
+    box-sizing: border-box;
+  }
+  .react-datepicker__header {
+    background-color: $white;
+    border-bottom: none;
+    padding: 0;
+    width: 99%;
+  }
+  .react-datepicker__day-names {
+    @include flexProps(flex, null, space-between, row, null);
+    @include widthHeight(20.5rem);
+    column-gap: 1rem;
+    margin-bottom: 0.25rem;
+    padding: 0 1.5rem;
+  }
+  .react-datepicker__month {
+    display: grid;
+    row-gap: 0.25rem;
+    margin: 0;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+  .react-datepicker__day-name {
+    @include textStyling(
+      $text-font,
+      normal,
+      $medium-font,
+      $font-size-sm,
+      140%,
+      null,
+      0.031rem
+    );
+    @include widthHeight(2.5rem, 2.5rem);
+    @include flexProps(flex, center, center, null, null);
+  }
+  .react-datepicker__week {
+    @include flexProps(flex, null, space-between, row, null);
+  }
+  .react-datepicker__day--outside-month {
+    color: $disabled-gray;
+  }
+  .react-datepicker__day--today {
+    background-color: $secondary-blue-grey;
+    font-weight: $medium-font;
+    border-radius: 50%;
+  }
+  .react-datepicker__day--today:hover {
+    background-color: $secondary-blue-grey;
+    font-weight: $medium-font;
+    border-radius: 50%;
+  }
+  .react-datepicker__day--selected {
+    font-weight: $medium-font;
+    border-radius: 50%;
+    background-color: $primary-blue;
+    color: $white;
+  }
+  .react-datepicker__day--selected:hover {
+    font-weight: $medium-font;
+    border-radius: 50%;
+    background-color: $primary-blue !important;
+    color: $white;
+  }
+  .react-datepicker__day {
+    @include widthHeight(2.5rem, 2.5rem);
+    @include flexProps(flex, center, center, null, null);
+    margin: 0;
+  }
+  .react-datepicker__day:hover {
+    border-radius: 50%;
+  }
+  .react-datepicker__day--keyboard-selected {
+    font-weight: $medium-font;
+    border-radius: 50%;
+    background-color: $secondary-blue-grey;
+    color: $dark-black;
+  }
+  .react-datepicker__day--keyboard-selected:hover {
+    font-weight: $medium-font;
+    border-radius: 50%;
+    background-color: $secondary-blue-grey;
+    color: $dark-black;
+  }
+  .react-datepicker-wrapper {
+    @include widthHeight(100%, null);
+  }
+}

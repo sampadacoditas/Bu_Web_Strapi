@@ -1,0 +1,45 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.outer {
+  padding: 7rem 0;
+
+  @include tablet() {
+    padding: 4.5rem 0;
+  }
+
+  @include mobile() {
+    padding: 4rem 0;
+  }
+
+  .main {
+    .heading {
+      @include textStyling($title-font, normal, 300, 64px, 120%, $text-color, 0.5px);
+      @include gridRowCol(1, #{"1/ span 4"});
+
+      @include tablet() {
+        @include textStyling($title-font, normal, 300, 48px, 120%, $text-color, 0.5px);
+      }
+
+      @include mobile() {
+        @include textStyling($title-font, normal, 300, 48px, 120%, $text-color, 0.5px);
+      }
+    }
+    .carousel {
+      padding: 3rem 0;
+      @include gridProps(repeat(2, 1fr), null, 1rem);
+      @include gridRowCol(2, #{"1/-1"});
+      @include mobile() {
+        @include gridProps(1fr !important);
+      }
+    }
+  }
+
+  .buttons {
+    @include flexProps(flex, center, center, null, 1rem);
+    @include gridRowCol(3);
+    .btnImg {
+      cursor: pointer;
+    }
+  }
+}

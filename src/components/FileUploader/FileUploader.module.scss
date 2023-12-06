@@ -1,0 +1,72 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.container {
+  @include widthHeight(100%, null);
+  @include flexProps(flex, null, null, column, 0.25rem);
+  .labelSection {
+    @include flexProps(flex, null, space-between, null, null);
+    .label {
+      @include textStyling($text-font, normal, $medium-font, $font-size-sm, 145%, $label-black, 0.03rem);
+      span {
+        color: $error-text;
+      }
+    }
+    .limit {
+      @include textStyling($text-font, normal, $normal-font, $font-size-s, 1.12rem, $placeholder-text, 0.03rem);
+    }
+    .limitErr {
+      @include textStyling($text-font, normal, $normal-font, $font-size-s, 1.12rem, $error-text, 0.03rem);
+    }
+  }
+  .errorContainer {
+    border: 0.03rem solid $red-error !important;
+  }
+  .uploadFile {
+    box-shadow: 0 0 0 1px $light-gray;
+    border: 2px solid transparent;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    justify-content: center;
+    background-color: $white;
+    height: 3.25rem;
+    .resumeDetails {
+      @include flexProps(flex, null, space-between, null, null);
+      @include widthHeight(18.75rem, null);
+      .resumeName {
+        @include flexProps(flex, center, null, null, null);
+        @include widthHeight(calc(100% - 2rem), null);
+        column-gap: 0.5rem;
+        .name {
+          @include textStyling($text-font, normal, $normal-font, $font-size-md, null, $label-black, 0.03rem);
+          @include flexProps(block, null, null, null, null);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          @include widthHeight(80%, null);
+        }
+      }
+      .delete {
+        cursor: pointer;
+      }
+    }
+    .inputfile {
+      @include widthHeight(null, 1.25rem);
+      @include position(absolute, null, null, null, null);
+      opacity: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .uploadFileSection {
+      @include flexProps(flex, center, null, null, null);
+      column-gap: 0.5rem;
+      .placeholder {
+        @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $placeholder-text, 0.03rem);
+      }
+    }
+  }
+  .error {
+    @include widthHeight(null, 0.75rem);
+    @include textStyling($text-font, normal, $medium-font, $font-size-s, 1.12rem, $error-text-dark, 0.03rem);
+  }
+}

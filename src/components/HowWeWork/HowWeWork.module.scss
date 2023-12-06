@@ -1,0 +1,109 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.howWeWorkSection {
+  grid-column: span 12;
+
+  @include mobile() {
+    grid-column: span 5;
+  }
+
+  @include tablet() {
+    grid-column: span 8;
+  }
+
+  .howWeWorkLayout {
+    @include flexProps(flex, flex-start, flex-start, column, 3rem);
+    grid-column: span 12;
+
+    .content {
+      @include flexProps(flex, flex-start, flex-start, column, 1.5rem);
+      width: 50%;
+
+      @include tablet() {
+        width: 100%;
+        gap: 0.5rem;
+      }
+
+      @include mobile() {
+        width: 100%;
+      }
+
+      .title {
+        align-self: stretch;
+        @include textStyling($title-font, normal, $light-font, $font-size-4xl, 120%, $text-color, 0.03125rem);
+
+        @include mobile() {
+          @include textStyling($title-font, normal, $light-font, $font-size-3xl-48, 120%, $text-color, 0.03125rem);
+        }
+      }
+
+      .description {
+        align-self: stretch;
+        @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $gray-500, 0.01563rem);
+      }
+    }
+
+    .cardLayout {
+      @include gridProps(repeat(2, 1fr), null, 1rem, 1rem);
+
+      @include mobile() {
+        grid-template-columns: repeat(1, 1fr) !important;
+      }
+
+      .cardStyle {
+        @include flexProps(flex, flex-start, flex-start, column, 2rem);
+        padding: 1.5rem;
+        border-radius: 0.25rem;
+        background: var(--colors-ada-theme-background-white, $white);
+        box-shadow: 0px 23px 34px 0px rgba(0, 0, 0, 0.08);
+        flex-basis: calc(50% - 0.5rem);
+
+        @include mobile() {
+        }
+
+        @include tablet() {
+        }
+
+        .howWeWorkLogo {
+          @include flexProps(flex, center, center);
+          width: 2.25rem;
+          height: 2.25rem;
+        }
+
+        .cardContent {
+          @include flexProps(flex, flex-start, flex-start, column, 1rem);
+
+          .cardTitle {
+            align-self: stretch;
+            @include textStyling($title-font, normal, $bold-font, $font-size-xl, 120%, $text-color, 0.03125rem);
+
+            @include mobile() {
+              @include textStyling($title-font, normal, $bold-font, $font-size-md, 120%, $text-color, 0.03125rem);
+            }
+          }
+
+          .cardDesc {
+            align-self: stretch;
+            @include textStyling($text-font, normal, $normal-font, $font-size-sm, 140%, $gray-500, 0.01563rem);
+          }
+        }
+      }
+    }
+  }
+}
+.mobileDevHowWeWorkCard {
+  height: 18rem !important;
+  @include tablet() {
+    height: 375.53px !important;
+  }
+  @include mobile() {
+    height: fit-content !important;
+  }
+}
+
+.webDevelopmentHowWeWorkCard {
+  @include tablet() {
+    height: 336.34px !important;
+  }
+}

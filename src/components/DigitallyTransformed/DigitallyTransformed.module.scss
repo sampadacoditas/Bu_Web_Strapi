@@ -1,0 +1,124 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.container {
+  padding: 7rem 0 7rem 0;
+  @include tablet() {
+    padding: 4.5rem 0;
+  }
+
+  @include mobile() {
+    padding: 4rem 0;
+  }
+
+  .heading {
+    grid-row: 1;
+    grid-column: 1/5;
+    @include textStyling($title-font, normal, 300, 64px, 76.8px, $text-color, 0.5px);
+
+    @include tablet() {
+      grid-row: 1;
+      grid-column: 1/7;
+      @include textStyling($title-font, normal, 300, 48px, 120%, $text-color, 0.5px);
+    }
+
+    @include mobile() {
+      grid-row: 1;
+      grid-column: 1/5;
+      @include textStyling($title-font, normal, 300, 48px, 120%, $text-color, 0.5px);
+    }
+  }
+
+  .subtext {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+    grid-column: 1/7;
+    grid-row: 2;
+    @include textStyling($text-font, normal, 400, 16px, 24px, $grey-500, 0.25px);
+
+    @include tablet() {
+      grid-row: 2;
+      grid-column: 1/9;
+      padding-top: 0.5rem;
+    }
+
+    @include mobile() {
+      grid-row: 2;
+      grid-column: 1/5;
+      @include textStyling($text-font, normal, 400, 16px, 150%, $grey-500, 0.25px);
+    }
+  }
+
+  .clientLogo {
+    grid-column: 1/13;
+    @include flexProps(flex, center, flex-start, row, 3rem);
+    flex-wrap: wrap;
+
+    @include tablet() {
+      grid-column: 1/9;
+      row-gap: 24px;
+    }
+
+    @include mobile() {
+      grid-column: 1/5;
+      @include flexProps(flex, center, center, row, 2rem, wrap);
+    }
+
+    .logo {
+      @include mobile() {
+        @include widthHeight(8.125rem, 2rem);
+      }
+    }
+    .hdfcLogoStyle {
+      @include mobile() {
+        @include widthHeight(4.875rem, 2.1875rem);
+      }
+    }
+    .gojekLogoStyle {
+      @include mobile() {
+        @include widthHeight(7.313rem, 1.4rem);
+      }
+    }
+  }
+
+  .proClinicLogo {
+    @include mobile() {
+      @include widthHeight(6.84344rem !important, 1.87056rem !important);
+      margin: 1rem;
+    }
+  }
+
+  .loopLogo {
+    @include mobile() {
+      @include widthHeight(3.69563rem !important, 1.76188rem !important);
+      margin: 1rem;
+    }
+  }
+
+  .ambryLogo {
+    @include mobile() {
+      @include widthHeight(9.2rem !important, 1.65rem !important);
+      margin: 1rem;
+    }
+  }
+
+  .ekoLogo {
+    @include mobile() {
+      @include widthHeight(4.14738rem !important, 1.82844rem !important);
+      margin: 1rem;
+    }
+  }
+
+  .jpmorganLogo {
+    margin: 0.5625rem 0rem;
+    @include mobile() {
+      margin: 0.3rem 0rem;
+    }
+  }
+}
+.careIcon,
+.symantecIcon {
+  @include mobile() {
+    transform: scale(1.1);
+  }
+}

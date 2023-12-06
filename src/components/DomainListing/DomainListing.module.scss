@@ -1,0 +1,14 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.domainListingSection {
+  .domainListLayout {
+    @include gridProps();
+    @include gridRowCol(null, span 12);
+
+    .title {
+      @include textStyling($text-font, normal, $medium-font, $font-size-md, 150%, $text-color, 0.01563rem);
+      padding-bottom: 1.5rem;
+    }
+  }
+}

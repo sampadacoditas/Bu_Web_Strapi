@@ -1,0 +1,84 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.buttonRoot {
+  @include flexProps(inline-flex, center, center, null, 2rem);
+  min-width: 76px;
+  user-select: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  @include textStyling($bold-text-font, normal, null, 0.875rem, 1.269rem, $white, 0.004rem);
+  transition: 0.2s;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.primaryButton {
+  @include buttonAppearance($primary-blue, $white);
+
+  &:hover {
+    background-color: $primary-blue-600;
+  }
+
+  &:active {
+    background-color: $primary-blue-700;
+  }
+
+  &:disabled {
+    @include buttonAppearance($grey-200, $grey-700);
+  }
+}
+
+.secondaryButton {
+  @include buttonAppearance($primary-blue-100, $primary-blue);
+
+  &:hover {
+    background-color: $secondary-blue-grey;
+  }
+
+  &:active {
+    background-color: $primary-blue-200;
+  }
+
+  &:disabled {
+    @include buttonAppearance($grey-200, $grey-700);
+  }
+}
+
+.tertiaryButton {
+  @include buttonAppearance(transparent, $primary-blue);
+
+  &:hover {
+    background-color: $secondary-blue-grey;
+  }
+
+  &:active {
+    background-color: $primary-blue-200;
+  }
+
+  &:disabled {
+    @include buttonAppearance(transparent, $grey-700);
+  }
+}
+
+.outlinedButton {
+  @include buttonAppearance(transparent, $primary-blue);
+  border: 1px solid $primary-blue;
+
+  &:hover {
+    background-color: $secondary-blue-grey;
+  }
+
+  &:active {
+    background-color: $primary-blue-200;
+  }
+
+  &:disabled {
+    border: 1px solid $grey-400;
+    @include buttonAppearance(transparent, $grey-700);
+  }
+}

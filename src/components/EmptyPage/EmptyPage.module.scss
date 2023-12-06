@@ -1,0 +1,21 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+.emptyPage {
+  grid-column: 4/10;
+  @include tablet() {
+    grid-column: 3/7;
+  }
+  @include mobile() {
+    grid-column: span 4;
+  }
+}
+.container {
+  @include flexProps(flex, center, null, column, 1rem);
+  text-align: center;
+  .title {
+    @include textStyling($title-font, normal, $bold-font, $font-size-xl, 120%, $text-color, 0.03125rem);
+  }
+  .description {
+    @include textStyling($text-font, normal, $normal-font, $font-size-sm, 120%, $grey-500, 0.015625rem);
+  }
+}

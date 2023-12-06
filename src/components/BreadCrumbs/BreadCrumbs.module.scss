@@ -1,0 +1,34 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.breadCrumbsLayout {
+  @include flexProps(flex, null, null, row, null);
+  list-style-type: none;
+  @include widthHeight(null, 2.5rem);
+
+  .breadCrumbsItems {
+    @include flexProps(flex, center, center, row, 0.25rem);
+    &:last-child {
+      overflow: hidden;
+    }
+  }
+
+  .crumbInactive a,
+  .crumbInactive span {
+    white-space: nowrap;
+    text-decoration: none;
+    @include textStyling($text-font, normal, $normal-font, $font-size-s, 150%, $grey-200, 0.01563rem);
+    @include mobile() {
+      white-space: nowrap;
+    }
+  }
+
+  .crumbActive a,
+  .crumbActive span {
+    white-space: nowrap;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @include textStyling($text-font, normal, $medium-font, 0.875rem, 140%, $white, 0.01563rem);
+  }
+}

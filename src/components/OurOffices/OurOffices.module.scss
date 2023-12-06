@@ -1,0 +1,135 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.ourOfficesSection {
+  background-color: $navy-blue;
+
+  .ourOfficesContainer {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+
+    @include tablet() {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+
+    @include mobile() {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .leftSection {
+      grid-column: 1/5;
+
+      @include tablet() {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+
+      .ourOfficesTitle {
+        @include tablet() {
+          display: none;
+        }
+        @include mobile() {
+          display: inline-block;
+        }
+      }
+
+      .addresses {
+        margin-top: 3rem;
+        @include flexProps(flex, null, null, column, 1rem);
+
+        .location {
+          @include flexProps(flex, null, null, row, 0.5rem);
+
+          .flagIconContainer {
+            @include flexProps(flex, center, center);
+            @include widthHeight(1.5rem, 1.5rem);
+
+            .flagIcon {
+              @include widthHeight(1.25rem, 0.75rem);
+              border-radius: 4px;
+            }
+          }
+
+          .address {
+            @include flexProps(flex, null, null, column, 0.5rem);
+
+            .currentLocation {
+              @include textStyling($text-font, normal, 700, 0.875rem, 150%, $white, 0.01563rem);
+              opacity: 0.87;
+            }
+
+            .currentAddress {
+              @include textStyling($text-font, normal, 400, 0.875rem, 150%, $medium-gray, 0.01563rem);
+            }
+
+            .horizontalLine {
+              height: 0.0625rem;
+              background-color: $dark-charcoal;
+              align-self: stretch;
+            }
+          }
+        }
+      }
+    }
+
+    .rightSection {
+      grid-column: 5/13;
+      @include flexProps(flex);
+
+      @include tablet() {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        @include flexProps(flex, null, null, column, 3rem);
+      }
+
+      .ourOfficesTitle {
+        display: none;
+        @include tablet() {
+          display: inline-block;
+        }
+      }
+
+      .locationsContainer {
+        width: 100%;
+        @include position(relative);
+        @include flexProps(flex);
+        align-self: flex-end;
+
+        .mapImage {
+          width: 100%;
+        }
+
+        .puneLocation {
+          @include widthHeight(40px, 40px);
+          @include position(absolute, 48%, null, null, 66.5%);
+          cursor: pointer;
+        }
+
+        .usLocation {
+          @include widthHeight(40px, 40px);
+          @include position(absolute, 35.1%, null, null, 24.1%);
+          cursor: pointer;
+        }
+
+        .uaeLocation {
+          @include widthHeight(40px, 40px);
+          @include position(absolute, 45%, null, null, 60%);
+          cursor: pointer;
+        }
+      }
+
+      @include mobile() {
+        display: none;
+      }
+    }
+  }
+}
+
+.ourOfficesTitle {
+  @include textStyling($title-font, normal, 300, 4rem, 120%, $white, 0.03125rem);
+  @include tablet() {
+    font-size: 3rem;
+  }
+}

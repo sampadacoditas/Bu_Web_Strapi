@@ -1,0 +1,102 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+.OurExperties {
+  background: $primary-navy-blue;
+  padding: 7rem 0;
+  @include tablet() {
+    padding: 4.5rem 0;
+  }
+  @include mobile() {
+    padding: 4rem 0;
+  }
+
+  .layout {
+    align-self: center;
+    grid-column: span 6;
+    @include tablet() {
+      grid-column: span 4;
+    }
+    @include mobile() {
+      grid-column: span 4;
+    }
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+    @include textStyling($title-font, normal, $light-font, $font-size-4xl, 120%, $white, 0.031rem);
+
+    @include tablet() {
+      margin-bottom: 0.5rem;
+      @include textStyling($title-font, normal, $light-font, $font-size-3xl-48, 120%, $white, 0.031rem);
+    }
+
+    @include mobile() {
+      @include textStyling($title-font, normal, $normal-font, $font-size-3xl-40, 120%, $white, 0.031rem);
+    }
+  }
+  .description {
+    @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $text-grey-200, 0.016rem);
+    @include mobile() {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .cards {
+    aspect-ratio: 1.36;
+    color: $white;
+    @include gridProps(repeat(6, 1fr), repeat(6, 1fr), 1rem, 1rem);
+
+    div {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .wViewLayout {
+      grid-row: span 3;
+    }
+
+    @include mobile() {
+      aspect-ratio: 0.75;
+      color: $white;
+      @include gridProps(repeat(12, 1fr), none, 0.5rem, 0.5rem);
+      .wViewLayout {
+        grid-row: initial;
+      }
+      .mViewMT {
+        grid-row: 1 / span 6;
+        grid-column: 1/7;
+      }
+      .mViewDP {
+        grid-row: 1/5;
+        grid-column: 7/13;
+      }
+      .mViewSC {
+        grid-row: 7/12;
+        grid-column: 1/7;
+      }
+      .mViewSB {
+        grid-row: 5/11;
+        grid-column: 7/13;
+      }
+      .mViewBFSI {
+        grid-row: 15/18;
+        grid-column: 7/13;
+      }
+      .mViewHC {
+        grid-row: 12/18;
+        grid-column: 1/7;
+      }
+      .mViewECom {
+        grid-row: 11/15;
+        grid-column: 7/13;
+      }
+    }
+
+    .expertiseImage {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 0 0 0.25rem 0.25rem;
+      background: linear-gradient(180deg, $black-gradient-6 0%, $primary-navy-blue 100%);
+      object-fit: contain;
+    }
+  }
+}

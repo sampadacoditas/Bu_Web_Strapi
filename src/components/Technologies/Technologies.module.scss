@@ -1,0 +1,110 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.mainContainer {
+  background-color: $primary-navy-blue;
+  .contentContainer {
+    padding: 7rem 0 7rem 0;
+
+    @include tablet() {
+      padding: 4.5rem 1.5rem 4.5rem 1.5rem;
+    }
+
+    @include mobile() {
+      padding: 4rem 1rem 4rem 1rem;
+    }
+
+    .heading {
+      @include textStyling($title-font, normal, 300, 64px, 120%, $white, 0.5px);
+      grid-row: 1;
+      grid-column: 1/5;
+
+      @include tablet() {
+        @include textStyling($title-font, normal, 300, 48px, 120%, $white, 0.5px);
+      }
+
+      @include mobile() {
+        @include textStyling($title-font, normal, 300, 48px, 120%, $white, 0.5px);
+      }
+    }
+    .subtext {
+      @include textStyling($text-font, normal, 400, 16px, 150%, $white, 0.25px);
+      grid-column: 1/7;
+      padding: 1.5rem 0 3rem 0;
+
+      @include tablet() {
+        grid-column: 1/9;
+        padding: 0.5rem 0 3rem 0;
+      }
+
+      @include mobile() {
+        grid-column: 1/5;
+        padding: 0.5rem 0 3rem 0;
+      }
+    }
+    .logos {
+      grid-row: 3;
+      grid-column: 1/12;
+      @include flexProps(flex, null, null, null, 1rem);
+      flex-wrap: wrap;
+      max-width: 55.25rem;
+      width: 100%;
+      .toolTipOuterContainer {
+        position: relative;
+        .toolTipInnerContainer {
+          @include position(absolute, -34px, null, null, -18px);
+
+          @include tablet() {
+            left: -22px;
+          }
+
+          @include mobile() {
+            left: -25px;
+          }
+
+          .tip {
+            bottom: 100%;
+            padding-bottom: 6px;
+          }
+
+          .official {
+            @include flexProps(flex, center, center, null, null);
+            width: 126px;
+            height: 24px;
+            border-radius: 2rem;
+            background-color: $primary-yellow-100;
+            @include textStyling($title-font, normal, 500, 12px, 100%, $text-color, 0.25px);
+          }
+
+          .arrow {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            margin-left: 50px;
+            border-top: 10px solid $primary-yellow-100;
+          }
+        }
+
+        .aws {
+          background: linear-gradient($primary-navy-blue, $primary-navy-blue) padding-box,
+            linear-gradient(to bottom, $yellow-gradient-1, $yellow-gradient-2) border-box;
+          border-radius: 50em;
+          border: 2px solid transparent;
+        }
+      }
+      @include tablet() {
+        grid-row: 3;
+        width: 100%;
+        grid-column: 1/9;
+      }
+
+      @include mobile() {
+        grid-row: 3;
+        grid-column: 1/5;
+        width: 100%;
+        @include gridProps(repeat(4, 1fr), null, 1rem, 1rem);
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@import "@/styles/mixins.scss";
+
+.splashPage {
+  height: 100vh;
+  @include flexProps(flex, center, center, row, null, null);
+}

@@ -1,0 +1,142 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.devopsCertifiedWrapper {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+
+  @include mobile() {
+    padding: 4rem 1rem !important;
+  }
+
+  @include tablet() {
+    padding: 4.5rem 1.5rem !important;
+  }
+
+  .container {
+    grid-row: 1;
+    grid-column: 1/7;
+    margin-bottom: 3rem;
+
+    @include mobile() {
+      grid-column: 1 / -1;
+    }
+
+    .title {
+      @include textStyling($title-font, normal, 300, 4rem, 120%, $text-color, 0.03125rem);
+      margin-bottom: 1.5rem;
+      @include tablet() {
+        margin-bottom: 0.5rem;
+      }
+      @include mobile {
+        font-size: 3rem;
+      }
+    }
+
+    .description {
+      @include textStyling($text-font, normal, 400, 1rem, 150%, $grey-500, 0.01563rem);
+    }
+  }
+
+  .badgeContainer {
+    grid-row: 2;
+    grid-column: 1/-1;
+
+    display: grid;
+    grid-template-columns: repeat(9, auto);
+    column-gap: 2rem;
+
+    .badgeImg {
+      width: 6.5rem;
+      height: 6.5rem;
+    }
+
+    @include tablet() {
+      display: none;
+    }
+  }
+
+  .badgeFlexContainer {
+    grid-row: 2;
+    grid-column: 1/-1;
+    display: none;
+
+    @include tablet() {
+      @include flexProps(flex, null, null, column);
+    }
+
+    .rowContainer {
+      @include flexProps(flex);
+      border-bottom: 0.0625rem solid;
+      border-image: linear-gradient(90deg, $grey-gradient-1 0%, $grey-gradient-2 50%, $grey-gradient-1 100%) 1;
+      border-image-slice: 1;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:nth-child(3) {
+        .badge {
+          border-image: linear-gradient(180deg, $grey-gradient-2 67%, $grey-gradient-1 100%) 1;
+          border-right: 0.0625rem solid;
+          padding: 1rem 1.5rem;
+        }
+      }
+
+      &:nth-child(2) {
+        .badge {
+          border-image: linear-gradient(180deg, $grey-gradient-2 34%, $grey-gradient-2 67%) 1;
+          border-right: 0.0625rem solid;
+          padding: 1.25rem 1.5rem;
+        }
+      }
+
+      &:nth-child(1) {
+        .badge {
+          border-image: linear-gradient(180deg, $grey-gradient-1 0%, $grey-gradient-2 34%) 1;
+          border-right: 0.0625rem solid;
+          padding: 1rem 1.5rem;
+        }
+      }
+
+      .badge {
+        padding: 1.5rem;
+        border-right: 1px solid;
+        border-image: linear-gradient(180deg, $grey-gradient-1 0%, $grey-gradient-2 50%, $grey-gradient-1 100%) 1;
+        border-image-slice: 1;
+        @include flexProps(flex, null, center);
+        flex: 1;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &:only-child {
+          flex: 0 0 25%;
+          border-right: 1px solid;
+        }
+
+        img {
+          @include widthHeight(6.5rem, 6.5rem);
+          flex-shrink: 0;
+          @include tablet() {
+            @include widthHeight(4.3rem, 4.3rem);
+          }
+          @include mobile() {
+            @include widthHeight(3.75rem, 3.75rem);
+          }
+        }
+      }
+    }
+  }
+}
+.devOpsCertifiedContainer {
+  padding: 7rem 0 !important;
+
+  @include tablet() {
+    padding: 4.5rem 1.5rem !important;
+  }
+  @include mobile() {
+    padding: 4rem 1rem !important;
+  }
+}

@@ -1,0 +1,100 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.caseStudyContainer {
+  position: relative;
+  padding: 7rem 0rem;
+  @include tablet() {
+    padding: 4.5rem 0rem;
+  }
+  @include mobile() {
+    padding: 4rem 0rem;
+  }
+
+  .title {
+    grid-row: 1;
+    grid-column: 1/7;
+    padding-bottom: 1.5rem;
+    @include tablet() {
+      padding-bottom: 0.5rem;
+      grid-column: 1/5;
+    }
+    @include mobile() {
+      grid-column: 1/5;
+      @include textStyling($title-font, normal, $light-font, $font-size-3xl-48, 120%, null, 0.03125rem);
+    }
+    @include textStyling($title-font, normal, $light-font, $font-size-4xl, 120%, null, 0.03125rem);
+  }
+
+  .description {
+    grid-row: 2;
+    grid-column: 1/7;
+    @include tablet() {
+      grid-column: 1/9;
+    }
+    @include mobile() {
+      grid-column: 1/5;
+    }
+    @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, null, 0.015625rem);
+  }
+
+  .cardContainer {
+    margin-top: 3rem;
+    grid-row: 3;
+    grid-column: 1/13;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    @include tablet() {
+      grid-column: 1/9;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mobile() {
+      grid-column: 1/5;
+      grid-template-columns: 1fr;
+    }
+  }
+  .viewAllBtnContainer {
+    grid-row: 4;
+    margin: 0 auto;
+    margin-top: 3rem;
+    grid-column: 1/13;
+    @include tablet() {
+      grid-column: 1/9;
+    }
+    @include mobile() {
+      grid-column: 1/5;
+    }
+
+    .viewAllBtn {
+      @include widthHeight(6.25rem, 3rem);
+    }
+  }
+}
+
+//theme specific classes
+.lightCaseStudyContainer {
+  background-color: $white;
+  .themeBasedTitle {
+    color: $text-color;
+  }
+  .themeBasedDescription {
+    color: $grey-500;
+  }
+}
+.darkCaseStudyContainer {
+  background-color: $primary-navy-blue;
+  .themeBasedTitle {
+    color: $white;
+  }
+  .themeBasedDescription {
+    color: $white;
+  }
+  .themeBasedViewAllBtn {
+    color: $white !important;
+    border-color: $white !important;
+  }
+  .themeBasedViewAllBtn:hover {
+    color: $primary-blue !important;
+  }
+}

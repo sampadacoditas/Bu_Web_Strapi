@@ -1,0 +1,57 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.domainListingCardLayout {
+  @include flexProps(flex, flex-start, flex-start, column, 1rem, wrap);
+  cursor: pointer;
+
+  .domainListingCard {
+    @include flexProps(flex, center, flex-start, row, 1rem);
+    padding: 1.5rem;
+    width: 100%;
+    border-radius: 0.25rem;
+    background: var(--colors-ada-theme-background-white, $white);
+    box-shadow: 0rem 0.6875rem 1.375rem 0rem rgba(0, 0, 0, 0.04);
+
+    @include mobile() {
+      @include flexProps(flex, flex-start, flex-start, column, 1rem);
+    }
+
+    .domainTitle {
+      @include textStyling($title-font, normal, $bold-font, $font-size-xl, 120%, $text-color, 0.03125rem);
+
+      @include mobile() {
+        @include textStyling($title-font, normal, $bold-font, $font-size-md, 120%, $text-color, 0.03125rem);
+      }
+    }
+
+    .domainOpeningsLayout {
+      @include flexProps(flex, center, center, row, 0.5rem);
+      padding: 0.25rem 0.5rem;
+      border-radius: 1.25rem;
+      border: 1px solid $secondary-blue-grey-500;
+
+      .domainOpenings {
+        @include textStyling(
+          $text-font,
+          normal,
+          $medium-font,
+          $font-size-sm,
+          145%,
+          $secondary-blue-grey-800,
+          0.03125rem
+        );
+      }
+    }
+
+    .viewOpenings {
+      margin-left: auto;
+      @include textStyling($text-font, normal, $bold-font, $font-size-sm, 140%, $primary-blue, 0.01563rem);
+
+      @include mobile() {
+        padding-top: 2rem;
+        margin: 0;
+      }
+    }
+  }
+}

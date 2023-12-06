@@ -1,0 +1,60 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+.certificationContainer {
+  padding: 7rem 0;
+  row-gap: 3rem;
+  @include mobile() {
+    padding: 4rem 0;
+  }
+
+  .contentContainer {
+    grid-column: span 6;
+    grid-gap: 2.5rem;
+    word-wrap: break-word;
+    @include tablet() {
+      grid-column: span 4;
+    }
+    @include mobile() {
+      grid-column: span 4;
+      grid-gap: 1rem;
+    }
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+    @include textStyling($title-font, normal, $light-font, $font-size-4xl, 120%, $primary-navy-blue, 0.03125rem);
+    @include tablet() {
+      margin-bottom: 0.5rem;
+    }
+    @include mobile() {
+      @include textStyling($title-font, normal, $light-font, $font-size-3xl-48, 120%, $text-color, 0.03125rem);
+    }
+  }
+  .description {
+    @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $grey-500, 0.01563rem);
+  }
+  .badgeContainer {
+    @include flexProps(flex, center, center);
+    .badge {
+      object-fit: contain;
+      img {
+        width: 10rem;
+      }
+      @include mobile() {
+        img {
+          width: 5.5rem;
+          height: 5.5rem;
+        }
+      }
+    }
+  }
+}
+.dataScienceCertification {
+  padding: 7rem 0 !important;
+  @include tablet() {
+    padding: 4.5rem 1.5rem !important;
+  }
+  @include mobile() {
+    padding: 4rem 1rem !important;
+  }
+}

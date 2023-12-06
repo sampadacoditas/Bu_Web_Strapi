@@ -1,0 +1,45 @@
+{
+  "name": "bu-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "env-cmd -f .env.dev next dev",
+    "build:dev": "env-cmd -f .env.dev next build",
+    "build:qa": "env-cmd -f .env.qa next build",
+    "build:prod": "env-cmd -f .env.prod next build",
+    "start": "env-cmd -f .env.dev next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
+    "@types/node": "20.4.6",
+    "@types/react": "18.2.18",
+    "@types/react-dom": "18.2.7",
+    "axios": "^1.4.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "8.46.0",
+    "eslint-config-next": "13.4.13",
+    "isomorphic-dompurify": "^1.9.0",
+    "next": "13.4.13",
+    "react": "18.2.0",
+    "react-datepicker": "^4.21.0",
+    "react-dom": "18.2.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.47.0",
+    "react-hot-toast": "^2.4.1",
+    "react-phone-input-2": "^2.15.1",
+    "react-select": "^5.7.4",
+    "react-typist-component": "^1.0.5",
+    "typescript": "5.1.6",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "@types/dompurify": "^3.0.2",
+    "@types/react-datepicker": "^4.15.0",
+    "@types/react-google-recaptcha": "^2.1.5",
+    "file-loader": "^6.2.0",
+    "sass": "^1.64.2",
+    "sass-loader": "^13.3.2"
+  }
+}

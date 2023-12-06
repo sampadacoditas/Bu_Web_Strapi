@@ -1,0 +1,245 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.footerLayout {
+  display: grid;
+  height: 18.25rem;
+  width: 100%;
+  background: linear-gradient(135deg, $celtic-blue 0%, $denim-blue 100%);
+
+  @include mobile() {
+    height: fit-content;
+    padding-bottom: 5.5rem;
+  }
+
+  .footerContainer {
+    padding-top: 4rem;
+
+    @include mobile() {
+      grid-column: span 4 !important;
+      padding: 1.5rem 1rem !important;
+    }
+
+    @include tablet() {
+      padding: 4rem 1.5rem;
+      grid-column: span 8;
+    }
+
+    .companySection {
+      grid-column: span 3;
+
+      @include tablet() {
+        grid-column: span 2;
+      }
+
+      @include mobile() {
+        grid-column: span 5;
+      }
+
+      .logoLayout {
+        width: 7.5rem;
+        height: 2.625rem;
+        margin-left: -0.5rem;
+        padding: 0.5rem 0.5rem 0.44rem 0.5rem;
+
+        @include mobile() {
+          padding: 0.49rem 0.47rem 0.46rem 0.47rem;
+        }
+
+        .coditasText {
+          height: 1.6875rem;
+          width: 6.5625rem;
+          flex-shrink: 0;
+          cursor: pointer;
+        }
+      }
+
+      .coditasLogo {
+        @include textStyling($title-font, normal, 500, 0.75rem, normal, $white, 0);
+        @include tablet() {
+          @include textStyling($title-font, normal, 500, 0.6rem, normal, $white, 0);
+        }
+        @include mobile() {
+          @include textStyling($title-font, normal, 500, 0.75rem, normal, $white, 0);
+        }
+      }
+
+      .rightsReservedSection {
+        @include flexProps(flex, null, null, column, null);
+        width: 14rem;
+        padding-top: 1.5rem;
+        @include textStyling($text-font, normal, 400, 0.875rem, 140%, $white, 0.01563rem);
+
+        @include tablet() {
+          width: 10.0625rem;
+          @include textStyling($text-font, normal, 400, 0.75rem, 140%, $white, 0.01563rem);
+        }
+
+        @include mobile() {
+          width: 20.5rem;
+          @include textStyling($text-font, normal, 500, 0.75rem, 130%, $white, 0.01563rem);
+        }
+      }
+    }
+
+    .mobileSectionLayout {
+      grid-column: 1/12;
+      padding-top: 2.25rem;
+      padding-bottom: 1.5rem;
+
+      @include mobile() {
+        grid-column: span 5;
+      }
+
+      .links {
+        width: 100%;
+        padding: 0;
+
+        &:nth-child(3) {
+          border-bottom: 0.063rem solid hsla(0, 0%, 100%, 0.4117647059);
+        }
+
+        .footerTitle {
+          @include textStyling($title-font, normal, 700, 1rem, 120%, $white, 0.03125rem);
+          @include flexProps(flex, center, space-between, row, 1rem);
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          border-top: 0.063rem solid hsla(0, 0%, 100%, 0.4117647059);
+        }
+
+        .mobileView {
+          height: 0;
+          overflow: hidden;
+          text-align: left;
+          transition: height 0.3s ease;
+          margin: 0;
+
+          a {
+            text-decoration: none;
+
+            li {
+              text-decoration: none;
+              @include textStyling($text-font, normal, 400, 0.875rem, 140%, $white, 0.01563rem);
+              padding: 0.313rem 0;
+            }
+          }
+        }
+
+        .expanded {
+          overflow: hidden;
+          height: 8rem;
+          transition: height 0.3s ease;
+        }
+      }
+    }
+
+    .pagesSection {
+      grid-column: span 2;
+
+      .pageText {
+        @include textStyling($title-font, normal, 700, 1rem, 120%, $white, 0.03125rem);
+        padding-bottom: 1.56rem;
+      }
+
+      .pageItems {
+        padding-bottom: 0.81rem;
+
+        .linkLayout {
+          text-decoration: none;
+          @include textStyling($text-font, normal, 400, 0.875rem, 140%, $white, 0.01563rem);
+        }
+      }
+    }
+  }
+
+  .greatPlaceLayout {
+    display: flex;
+    width: 23.75rem;
+    padding-top: 1.5rem;
+    padding-left: 0.5rem;
+    height: 5.3125rem;
+    float: right;
+    z-index: 999 !important;
+    border-radius: 1rem 0 0 0;
+    background: linear-gradient(270deg, $yellow-gradient-2, $yellow-gradient-1);
+    transition: transform 1s cubic-bezier(0.38, 0.01, 0.38, 0.01);
+    animation: top-to-bottom 1s cubic-bezier(0.38, 0.01, 0.38, 0.01);
+    @include position(fixed, null, 0, 0, null);
+
+    @include tablet() {
+      width: 18rem;
+      height: 3.84444rem;
+      flex-shrink: 0;
+      padding-top: 0.938rem;
+    }
+
+    @include mobile() {
+      height: 5.3125rem;
+      width: 100%;
+    }
+
+    @keyframes top-to-bottom {
+      0% {
+        transform: translateY(100%);
+      }
+    }
+
+    .imageStyle {
+      @include position(absolute, null, null, -0.25rem, 0.2rem);
+
+      @include tablet() {
+        @include position(absolute, null, null, -0.438rem, 0.2rem);
+        width: 4.688rem;
+        height: 6.25rem;
+      }
+
+      @include mobile() {
+        @include position(absolute, null, null, 0.063rem, 0.2rem);
+        width: 5.563rem;
+        height: 7.813rem;
+      }
+    }
+
+    .careerContentLayout {
+      padding-left: 4.25rem;
+      padding-bottom: 1rem;
+
+      @include tablet() {
+        padding-left: 3.5rem;
+      }
+
+      @include mobile() {
+        padding-left: 4.19rem;
+      }
+
+      .careerText {
+        padding-left: 0.85rem;
+        @include textStyling($title-font, normal, 400, 1.5rem, 120%, $maastricht-blue, 0);
+
+        @include tablet() {
+          @include textStyling($title-font, normal, 400, 1.0855rem, 120%, $maastricht-blue, 0);
+        }
+
+        @include mobile() {
+          @include textStyling($title-font, normal, 400, 1.5rem, 120%, $maastricht-blue, 0);
+        }
+      }
+
+      .careerPara {
+        padding-left: 0.85rem;
+        @include textStyling($text-font, normal, 400, 0.875rem, 140%, $maastricht-blue, 0);
+
+        @include tablet() {
+          @include textStyling($text-font, normal, 400, 0.63319rem, 140%, $maastricht-blue, 0);
+        }
+
+        @include mobile() {
+          @include textStyling($text-font, normal, 400, 0.875rem, 140%, $maastricht-blue, 0);
+        }
+      }
+    }
+  }
+}
+.expandedMin {
+  height: 6rem !important;
+}

@@ -1,0 +1,39 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.jobListingSection {
+  .jobListLayout {
+    @include gridProps();
+    @include gridRowCol(null, span 12);
+
+    .headerSection {
+      @include flexProps(flex, null, space-between, row, null);
+
+      @include mobile() {
+        flex-direction: column;
+      }
+
+      .title {
+        @include textStyling($text-font, normal, 500, 1rem, 150%, $text-color, 0.01563rem);
+        padding-bottom: 1.5rem;
+
+        @include mobile() {
+          @include textStyling($text-font, normal, 500, 1rem, 150%, $text-color, 0.01563rem);
+        }
+      }
+
+      .inputWrapper {
+        width: 20.5rem;
+
+        @include mobile() {
+          width: 100%;
+        }
+      }
+    }
+
+    .emptyPage {
+      @include flexProps(flex, flex-start, space-around, row, 1rem, wrap);
+      cursor: pointer;
+    }
+  }
+}

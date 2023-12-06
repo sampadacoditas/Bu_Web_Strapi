@@ -1,0 +1,74 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+.dataSciencePage {
+  .heroSectionGradient {
+    background: $hero-section-gradient;
+  }
+  .heroSectionContentContainer {
+    padding-top: 11.625rem;
+    padding-bottom: 7.625rem;
+
+    @include tablet() {
+      width: 100%;
+      margin: 0;
+      padding: 10.25rem 1.5rem;
+      @include gridProps(repeat(8, 1fr), null, 1rem, null);
+    }
+
+    @include mobile() {
+      padding: 8.938rem 1rem 5.438rem 1rem;
+      @include gridProps(repeat(4, 1fr), null, 1rem, null);
+    }
+  }
+  .certificationContainer {
+    padding: 7rem 0;
+    row-gap: 3rem;
+    @include mobile() {
+      margin: 4rem auto;
+    }
+
+    .contentContainer {
+      grid-column: span 6;
+      word-wrap: break-word;
+      @include tablet() {
+        grid-column: span 4;
+      }
+      @include mobile() {
+        grid-column: span 4;
+      }
+    }
+
+    .title {
+      margin-bottom: 0.5rem;
+      @include textStyling($title-font, normal, $light-font, $font-size-4xl, 120%, $primary-navy-blue, 0.03125rem);
+      @include mobile() {
+        @include textStyling($title-font, normal, $light-font, $font-size-3xl-48, 120%, $text-color, 0.03125rem);
+      }
+    }
+    .description {
+      @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $grey-500, 0.01563rem);
+    }
+    .badgeContainer {
+      @include flexProps(flex, center, center);
+      .badge {
+        object-fit: contain;
+        width: 10rem;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .howWeWorkContainer {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    @include tablet() {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+    @include mobile() {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+}

@@ -1,0 +1,142 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.container {
+  background-color: $alice-blue-background-color;
+  @include position(relative, null, null, null, null);
+  display: grid;
+  padding: 2rem 0;
+}
+
+.cardContainer {
+  grid-column: 9/13;
+  @include flexProps(flex, null, null, column, 1rem);
+  padding: 1.5rem;
+  background-color: $white;
+  border-radius: 0.25rem;
+  height: max-content;
+
+  @include tablet() {
+    grid-column: 1/9 !important;
+    box-shadow: 0 0.688rem 1.375rem 0 rgba(0, 0, 0, 0.04);
+  }
+
+  @include mobile() {
+    grid-column: 1/5 !important;
+    padding: 2rem 1rem 1.5rem 1rem;
+    margin: 1rem 0.5rem 2rem 0.5rem;
+    box-shadow: 0 0.688rem 1.375rem 0 rgba(0, 0, 0, 0.04);
+  }
+  .jobDetail {
+    padding-bottom: 1rem;
+    border-bottom: 0.0625rem solid $grey-100;
+    @include flexProps(flex, center, null, row, 0.5rem);
+
+    &.lastJobDetail {
+      border-bottom: none;
+    }
+
+    .detail {
+      @include flexProps(flex, null, null, column, null);
+    }
+  }
+}
+.buttonContainer {
+  width: 100%;
+
+  @include mobile() {
+    padding: 0 1.5rem;
+    padding-bottom: 4rem;
+    grid-column: 1/5 !important;
+  }
+  @include tablet() {
+    padding: 0 1rem;
+    padding-bottom: 4rem;
+    grid-column: 1/9;
+  }
+  .applyButton {
+    width: 100%;
+    height: 3rem;
+  }
+}
+.jobDetailsContainer {
+  grid-column: 1/9;
+  padding: 3rem;
+  background-color: $white;
+  border-radius: 0.25rem;
+  @include flexProps(flex, null, null, column, 3rem);
+
+  @include tablet() {
+    grid-column: 1/9;
+    background-color: transparent;
+    padding: 3rem 1rem;
+  }
+  @include mobile() {
+    grid-column: 1 / 5 !important;
+    padding: 1rem;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+    background-color: transparent;
+  }
+  .jobDescription {
+    @include flexProps(flex, null, null, column, 1rem);
+
+    .jobDescriptionTitle {
+      color: $theme-bg-navy-blue;
+      @include cardTitle;
+
+      @include mobile() {
+        @include cardTitleMobile;
+      }
+    }
+
+    .jobDescriptionData {
+      color: $theme-bg-navy-blue;
+      @include paragraphMedium;
+
+      .listView {
+        @include flexProps(flex, flex-start, null, row, 0.5rem);
+        padding-bottom: 0.5rem;
+
+        .jdStar {
+          padding-top: 0.25rem;
+        }
+      }
+    }
+  }
+}
+.detailParameter {
+  color: $gray-500;
+  @include paragraphMedium;
+}
+
+.detailParameterValue {
+  color: $text-color;
+  @include jdCardParameterValue;
+}
+
+.jdCardRows {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 1.5rem;
+  .jdCardRowContainer {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+
+    .jdCardColumnData {
+      @include flexProps(flex, flex-start, null, column, 0.5rem);
+
+      .detailParameter {
+        color: $gray-300;
+        @include jdCardParameterMobile;
+      }
+
+      .detailParameterValue {
+        color: $text-color;
+        @include jdCardParameterValueMobile;
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.studyDescriptionSection {
+  .studyDescriptionLayout {
+    @include flexProps(flex, null, flex-start, column, 4rem);
+    grid-column: span 12;
+
+    @include tablet() {
+      grid-column: span 8;
+    }
+
+    @include mobile() {
+      grid-column: span 4;
+    }
+
+    .overviewLayout {
+      @include flexProps(flex, null, flex-start, column, 2rem);
+
+      .overviewSection {
+        @include flexProps(flex, flex-start, flex-start, column, 0.5rem);
+
+        .title {
+          text-transform: capitalize;
+          @include textStyling($title-font, normal, 700, 2rem, 120%, $text-color, 0.03125rem);
+
+          @include mobile() {
+            @include textStyling($title-font, normal, 700, 1.25rem, 120%, $text-color, 0.03125rem);
+          }
+        }
+      }
+
+      .subTitle {
+        @include textStyling($text-font, normal, 400, 1rem, 150%, $grey-500, 0.01563rem);
+      }
+
+      .descriptionLayout {
+        @include flexProps(flex, flex-start, flex-start, column, 1rem);
+
+        .description {
+          @include textStyling($text-font, normal, 400, 1rem, 150%, $grey-500, 0.01563rem);
+        }
+
+        .highlightedDescription {
+          background: $case-study-desc;
+          padding: 0.5rem 1rem;
+          @include textStyling($text-font, normal, 500, 1rem, 150%, $text-color, 0.01563rem);
+        }
+
+        .descriptionList {
+          @include flexProps(flex, flex-start, flex-start, column, null);
+          padding-left: 1.5rem;
+
+          .list {
+            list-style-position: outside;
+            @include textStyling($text-font, normal, 400, 1rem, 150%, $grey-500, 0.01563rem);
+          }
+        }
+      }
+
+      .solutionDescriptionLayout {
+        @include flexProps(flex, flex-start, flex-start, column, 1.5rem);
+
+        .highlightedText {
+          background: rgba(44, 116, 214, 0.08);
+          padding: 0.5rem 1rem;
+          @include textStyling($text-font, normal, 600, 1rem, 150%, $text-color, 0.01563rem);
+        }
+
+        .solutionList {
+          @include flexProps(flex, flex-start, flex-start, column, null);
+          padding-left: 1.5rem;
+
+          .list {
+            list-style-position: outside;
+            @include textStyling($text-font, normal, 400, 1rem, 150%, $grey-500, 0.01563rem);
+          }
+        }
+      }
+
+      .technologyIconLayout {
+        @include flexProps(flex, flex-start, flex-start, column, 1rem);
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--colors-grey-100, #ddd);
+        width: fit-content;
+
+        .title {
+          text-transform: capitalize;
+          @include textStyling($title-font, normal, 700, 1rem, 120%, $gray-300, 0.03125rem);
+        }
+
+        .iconsLayout {
+          @include flexProps(flex, flex-start, flex-start, row, null);
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          .techIcon {
+            display: inline-block;
+            padding-right: 0.75rem;
+            @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $grey-500, 0.015625rem);
+          }
+          .techIcon:not(:last-child) {
+            border-right: 1px solid $grey-500;
+          }
+        }
+      }
+    }
+  }
+}

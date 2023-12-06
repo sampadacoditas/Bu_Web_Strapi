@@ -1,0 +1,35 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.heroSection {
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  .contentLayout {
+    @include flexProps(flex, flex-start, space-between, column, 1rem);
+    grid-column: span 6;
+
+    @include mobile() {
+      @include flexProps(flex, flex-start, space-between, column, 4rem);
+    }
+
+    .breadCrumbLayout {
+      @include mobile() {
+        padding-top: 1.5rem;
+        width: 100%;
+      }
+    }
+
+    .title {
+      @include textStyling($title-font, normal, 600, 2rem, 120%, $white, 0.03125rem);
+
+      @include mobile() {
+        @include textStyling($title-font, normal, 600, 1.25rem, 120%, $white, 0.03125rem);
+        text-transform: capitalize;
+      }
+    }
+  }
+}

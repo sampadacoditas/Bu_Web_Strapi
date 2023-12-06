@@ -1,0 +1,55 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.container {
+  padding-top: 17.56rem;
+  padding-bottom: 21.56rem;
+
+  @include tablet() {
+    padding-top: 9rem !important;
+    padding-bottom: 16.56rem !important;
+  }
+
+  @include mobile() {
+    padding-top: 9rem !important;
+    padding-bottom: 16.56rem !important;
+  }
+
+  .notFoundSection {
+    @include flexProps(flex, center, center, column, 3rem, null);
+    grid-column: 5 / span 4;
+
+    @include mobile() {
+      grid-column: span 4 !important;
+      gap: 2.5rem;
+    }
+
+    @include tablet() {
+      grid-column: 3 / span 4;
+    }
+
+    .imageContentSection {
+      @include flexProps(flex, center, center, column, 1rem);
+
+      .notFoundContent {
+        @include flexProps(flex, center, center, column, 0.5rem);
+
+        .title {
+          text-align: center;
+          @include textStyling($title-font, normal, 700, 1.25rem, 120%, $text-color, 0.03125rem);
+
+          @include mobile() {
+            @include textStyling($title-font, normal, 700, 1rem, 120%, $text-color, 0.03125rem);
+          }
+        }
+
+        .subTitle {
+          overflow: hidden;
+          text-align: center;
+          text-overflow: ellipsis;
+          @include textStyling($text-font, normal, 400, 0.875rem, 140%, $grey-500, 0.01563rem);
+        }
+      }
+    }
+  }
+}

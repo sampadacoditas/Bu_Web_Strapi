@@ -1,0 +1,76 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.privacyPolicyPage {
+  background-color: $alice-blue-background-color;
+  overflow-x: hidden;
+  .heroSectionGradient {
+    background: $hero-section-gradient;
+  }
+  .title {
+    font-size: 2rem !important;
+    margin-bottom: 0 !important;
+    line-height: 120%;
+  }
+  .heroSectionContentContainer {
+    padding-top: 7.25rem;
+    padding-bottom: 4.25rem;
+  }
+
+  .cardContainer {
+    grid-row: 1;
+    grid-column: 3/11;
+    border-radius: 0.25rem;
+    background: $white;
+    margin: 2rem 0;
+    box-sizing: border-box;
+
+    @include mobile() {
+      grid-column: 1/5;
+    }
+    @include tablet() {
+      grid-column: 1/9;
+    }
+
+    .content {
+      padding: 3rem;
+      @include flexProps(flex, null, null, column, 3rem);
+
+      @include mobile() {
+        padding: 1.5rem;
+      }
+    }
+  }
+
+  .section {
+    @include flexProps(flex, null, null, column, 1rem);
+
+    .sectionList {
+      @include flexProps(flex, null, null, column, 0.5rem);
+      font-size: 0.875rem;
+
+      .listItem {
+        @include flexProps(flex, center, null, row, 0.5rem);
+
+        img {
+          height: 0.5rem;
+          width: 0.5rem;
+        }
+      }
+    }
+
+    .sectionTitle {
+      font-family: $title-font;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+      color: $theme-bg-navy-blue;
+    }
+    .description {
+      font-size: 0.875rem;
+      color: $theme-bg-navy-blue;
+      letter-spacing: 0.5px;
+      line-height: 140%;
+    }
+  }
+}

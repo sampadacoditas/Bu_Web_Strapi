@@ -1,0 +1,41 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.homePage {
+  .heroSectionGradient {
+    background: $eCommerceLinearGradient;
+  }
+
+  .heroSectionContentContainer {
+    padding-top: 11.05rem;
+    padding-bottom: 7.05rem;
+
+    @include tablet() {
+      width: 100%;
+      margin: 0;
+      padding: 11.5rem 1.5rem 9rem;
+      display: grid;
+      column-gap: 16px;
+      grid-template-columns: repeat(8, 1fr);
+    }
+    @include mobile() {
+      padding: 8.95rem 1rem 5.45rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .ourServicesBtnContainer {
+    @include mobile() {
+      padding-top: 3rem;
+    }
+  }
+
+  .caseStudyContainer {
+    @include tablet() {
+      padding: 4.5rem 0 4.5rem 1.5rem;
+    }
+    @include mobile() {
+      padding: 0rem 0rem 4rem 1rem;
+    }
+  }
+}

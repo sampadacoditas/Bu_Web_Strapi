@@ -1,0 +1,71 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.lifeAtCoditasContainer {
+  .lifeAtCoditasLayout {
+    @include flexProps(flex, center, space-between, row, 1rem);
+
+    grid-column: span 12;
+
+    @include tablet() {
+      grid-column: span 8;
+    }
+
+    @include mobile() {
+      @include flexProps(flex, center, flex-start, column, 1rem);
+    }
+
+    .contentSectionLayout {
+      @include flexProps(flex, flex-start, flex-start, column, 1.5rem);
+      grid-column: span 6;
+      width: 100%;
+
+      @include mobile() {
+        grid-column: span 4;
+      }
+
+      @include tablet() {
+        width: 100%;
+        grid-column: span 4;
+        gap: 0.5rem;
+      }
+
+      .title {
+        align-self: stretch;
+        @include textStyling($title-font, normal, 300, 4rem, 120%, $theme-bg-navy-blue, 0.03125rem);
+
+        @include tablet() {
+          align-self: stretch;
+          @include textStyling($title-font, normal, 300, 3rem, 120%, $theme-bg-navy-blue, 0.03125rem);
+        }
+      }
+
+      .descriptionLayout {
+        @include flexProps(flex, flex-start, flex-start, column, 1rem);
+
+        .description {
+          @include textStyling($text-font, normal, 400, 1rem, 150%, $grey-500, 0.01563rem);
+        }
+      }
+    }
+
+    .imageLayout {
+      grid-column: span 6;
+      border-radius: 0.25rem;
+
+      @include tablet() {
+        grid-column: span 4;
+        .imgStyle {
+          width: 100%;
+        }
+      }
+
+      @include mobile() {
+        grid-column: span 4;
+        .imgStyle {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

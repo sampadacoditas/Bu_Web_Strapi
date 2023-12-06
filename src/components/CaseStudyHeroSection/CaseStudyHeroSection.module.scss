@@ -1,0 +1,134 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.heroSection {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include position(relative, null, null, null, null);
+
+  .breadCrumbsContainer {
+    grid-row: 1;
+    grid-column: 1/-1;
+    z-index: 9;
+  }
+
+  .title {
+    grid-row: 2;
+    grid-column: 1/9;
+    @include textStyling($title-font, normal, 600, 3rem, 3.6rem, $white, 0.031rem);
+    @include tablet {
+      @include textStyling($title-font, normal, 600, 2.5rem, 120%, $white, 0.031rem);
+      grid-column: 1/8;
+    }
+    @include mobile() {
+      grid-column: 1/-1;
+      @include textStyling($title-font, normal, 700, 2rem, 120%, $white, 0.031rem);
+    }
+  }
+}
+
+.circleContainer {
+  @include position(absolute, 0, 0, 0, null);
+  height: 100%;
+  .innerEllipse,
+  .outerEllipse,
+  .outerMostEllipse {
+    height: 100%;
+    @include position(absolute, null, 0, null, null);
+    @include mobile() {
+      display: none;
+    }
+  }
+  .innerEllipse {
+    z-index: 3;
+  }
+  .outerEllipse {
+    z-index: 2;
+  }
+  .outerMostEllipse {
+    z-index: 1;
+  }
+}
+
+.titleWithSideImg {
+  z-index: 4;
+  grid-row: 2;
+  grid-column: 1/7;
+  align-self: center;
+  @include textStyling($title-font, normal, 600, 3rem, 3.6rem, $white, 0.031rem);
+  @include tablet {
+    @include textStyling($title-font, normal, 600, 2.5rem, 120%, $white, 0.031rem);
+    grid-column: 1/5;
+  }
+  @include mobile() {
+    padding-top: 4rem;
+    grid-row: 1;
+    padding-top: 4.5rem;
+    grid-column: 1/5 !important;
+    @include textStyling($title-font, normal, 600, 2rem, 120%, $white, 0.031rem);
+  }
+}
+.bannerImage {
+  grid-row: 2;
+  grid-column: 7/13;
+  z-index: 9;
+  border-radius: 0.5rem;
+  padding-top: 2.5rem;
+
+  .bannerContainer {
+    overflow: hidden;
+    .bannerImg {
+      width: 100%;
+    }
+  }
+
+  .bannerImg {
+    border-radius: 1rem;
+  }
+  @include tablet() {
+    margin-right: -1.5rem;
+    padding-top: 2.5rem;
+    overflow: hidden;
+    transform: none;
+    grid-column: 6/9;
+
+    .bannerContainer {
+      .bannerImg {
+        width: unset;
+        height: auto;
+      }
+    }
+  }
+  @include mobile() {
+    width: 100%;
+    grid-column: 1/5 !important;
+    grid-row: 2;
+    height: 12.5rem;
+    overflow: hidden;
+    border-radius: 0;
+    .bannerContainer {
+      border-radius: 0.5rem;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      overflow: hidden;
+      height: auto;
+      .bannerImg {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.breadcrumbs {
+  grid-row: 1;
+  grid-column: 1/13;
+  z-index: 9;
+  @include tablet() {
+    grid-column: 1/9;
+  }
+  @include mobile() {
+    padding-top: 1.5rem;
+    grid-column: 1/5;
+  }
+}

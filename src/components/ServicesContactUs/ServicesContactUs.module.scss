@@ -1,0 +1,141 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.wrapper {
+  background: $grey-25;
+  .container {
+    height: 100%;
+    .leftSection {
+      grid-row: 1;
+      grid-column: 1/6;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      @include widthHeight(calc(100% + var(--contact-us-left-margin)), 100%);
+      background: linear-gradient(0deg, $contact-us-gradient 0%, $contact-us-gradient 100%);
+      background-size: cover;
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-left: var(--contact-us-left-margin);
+      margin-left: calc(var(--contact-us-left-margin) * -1);
+      @include flexProps(flex, flex-end);
+
+      @include tablet() {
+        margin-left: 0;
+        padding-left: 0;
+        width: 100%;
+        background-image: none;
+        grid-column: 1/5;
+        padding-top: 4.5rem;
+        padding-bottom: 3rem;
+      }
+      @include mobile() {
+        padding-top: 4rem;
+        @include gridRowCol(null, span 4);
+      }
+
+      .titleContainer {
+        @include mobile() {
+          display: grid;
+        }
+        .title {
+          @include textStyling($title-font, normal, 700, 2rem, 120%, $white, 0.03125rem);
+          margin-bottom: 0.5rem;
+
+          @include tablet() {
+            font-size: 1.25rem;
+            color: $text-color;
+          }
+          @include mobile() {
+            @include gridRowCol(null, span 4);
+          }
+        }
+        .description {
+          @include textStyling($text-font, normal, 400, 1rem, 150%, $white, 0.01563rem);
+          @include tablet() {
+            color: $dimgray;
+            font-size: 0.875rem;
+            line-height: 140%;
+          }
+          @include mobile() {
+            @include gridRowCol(null, span 4);
+          }
+        }
+      }
+    }
+    .rightSection {
+      grid-row: 1;
+      grid-column: 7/-1;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+
+      @include tablet() {
+        grid-column: 1/-1;
+        grid-row: 2;
+        padding-top: 0;
+        padding-bottom: 4.5rem;
+      }
+
+      @include mobile() {
+        padding-bottom: 4rem;
+      }
+
+      .formContainer {
+        display: grid;
+        column-gap: 1rem;
+        row-gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+
+        @include mobile() {
+          grid-template-columns: 1fr;
+        }
+
+        .msgContainer {
+          grid-column: 1/-1;
+        }
+
+        .btnContainer {
+          grid-column: 1/-1;
+          @include flexProps(flex, center, flex-end, row, 1.5rem);
+
+          @include mobile() {
+            flex-direction: column;
+          }
+          .recaptchaContainer {
+            @include widthHeight(9.99rem, 3rem);
+            @include tablet() {
+              @include flexProps(flex, null, flex-end, null, null);
+              align-self: flex-start;
+            }
+            @include mobile() {
+              @include flexProps(flex, null, center, null, null);
+              align-self: center;
+              width: 100%;
+            }
+          }
+          .btn {
+            padding: 0.875rem 1.656rem;
+            &:disabled {
+              background-color: $grey-82;
+              color: $grey-600;
+            }
+            @include mobile() {
+              width: 100%;
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.colSpan1 {
+  grid-column: span 1;
+}
+
+.colSpan2 {
+  grid-column: span 2;
+  @include mobile() {
+    grid-column: span 1;
+  }
+}

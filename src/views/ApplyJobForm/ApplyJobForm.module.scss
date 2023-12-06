@@ -1,0 +1,19 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.wrapper {
+  .heroSectionGradient {
+    background: $hero-section-gradient;
+    backdrop-filter: blur(2px);
+    height: 13.875rem;
+  }
+
+  .heroSectionContentContainer {
+    padding-top: 5.5rem;
+    padding-bottom: 2.5rem;
+
+    @include mobile() {
+      padding: 2.5rem 1rem;
+    }
+  }
+}

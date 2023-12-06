@@ -1,0 +1,127 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.outerWrapper {
+  background-color: $alice-blue-background-color;
+  padding-top: 2rem;
+  .wrapper {
+    .heading {
+      @include textStyling($title-font, normal, $light-font, $font-size-4xl, 4.8rem, $text-color, 0.03rem);
+      @include gridRowCol(1, span 7);
+      @include mobile() {
+        @include gridRowCol(null, span 4);
+        @include textStyling($title-font, normal, $bold-font, $font-size-xl, 1.5rem, $text-color, 0.03rem);
+      }
+    }
+    .subHeading {
+      @include gridRowCol(2, span 4);
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+      @include textStyling($text-font, normal, $normal-font, $font-size-md, 1.5rem, $grey-500, 0.01rem);
+      @include mobile() {
+        @include gridRowCol(null, span 4);
+        @include textStyling($text-font, normal, $normal-font, $font-size-sm, 1.31rem, $grey-500, 0.01rem);
+      }
+    }
+    .stepper {
+      @include gridRowCol(3, span 5);
+      @include mobile() {
+        @include gridRowCol(null, span 5);
+      }
+      .stepperText {
+        @include widthHeight(100%, null);
+        @include flexProps(flex, null, space-between, row, null);
+        @include mobile() {
+          @include gridRowCol(null, span 5);
+        }
+      }
+    }
+    .formContainer {
+      @include gridRowCol(4, span 13);
+      @include tablet() {
+        @include gridRowCol(null, span 9);
+      }
+      @include mobile() {
+        @include gridRowCol(null, span 5);
+      }
+      .formWrapper {
+        @include gridProps(repeat(3, 1fr), null, 1rem, 1.5rem);
+        @include tablet() {
+          @include gridProps(repeat(2, 1fr), null, null, null);
+        }
+        @include mobile() {
+          @include gridProps(1fr, null, null, null);
+        }
+      }
+      .salaryContainer {
+        @include flexProps(flex, null, null, column, null);
+        gap: 0.25rem;
+        .label {
+          @include textStyling($text-font, normal, 500, 0.87rem, 140%, $text-color, 0.01rem);
+        }
+        .inputContainerSalary {
+          @include textStyling($text-font, normal, $normal-font, $font-size-md, 1.5rem, null, 0.01rem);
+          @include widthHeight(100%, 3.25rem);
+          border-radius: 0.25rem;
+          border: 0.06rem solid $grey-100;
+          background: $white;
+          padding: 0.75rem 1rem;
+          @include flexProps(flex, center, space-between);
+        }
+      }
+    }
+    .buttonContainer {
+      @include gridRowCol(5, span 13);
+      margin: 1.25rem 0 2rem 0;
+      @include flexProps(flex, null, flex-end, null, null);
+      column-gap: 1rem;
+      @include tablet() {
+        @include gridRowCol(null, span 9);
+      }
+      @include mobile() {
+        @include gridRowCol(null, span 5);
+        @include flexProps(flex, null, null, column, null);
+        row-gap: 2.5rem;
+      }
+      .btnContainer {
+        @include mobile() {
+          @include flexProps(flex, null, null, row, null);
+          row-gap: 1.5rem;
+        }
+        .secondaryBtn {
+          @include widthHeight(100px, null);
+          padding: 0.875rem 1rem;
+          background-color: transparent;
+          @include mobile() {
+            @include widthHeight(100%, null);
+          }
+        }
+        .primaryBtn {
+          @include widthHeight(100px, null);
+          padding: 0.875rem 1rem;
+          @include mobile() {
+            @include widthHeight(100%, null);
+          }
+        }
+      }
+      .captcha {
+        height: 3rem;
+        @include tablet() {
+          @include flexProps(flex, null, flex-end, null, null);
+          align-self: flex-start;
+        }
+        @include mobile() {
+          @include flexProps(flex, null, center, null, null);
+          align-self: center;
+          width: 100%;
+        }
+      }
+    }
+    .inputContainer {
+      @include textStyling($text-font, normal, $normal-font, $font-size-md, 1.5rem, null, 0.01rem);
+      @include widthHeight(100%, null);
+      border: none;
+      padding: 0.75rem 1rem;
+    }
+  }
+}

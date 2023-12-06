@@ -1,0 +1,51 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.container {
+  width: max-content;
+  .label {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+    @include textStyling($text-font, normal, $medium-font, $font-size-md, 140%, $text-color, 0.015625rem);
+  }
+  .inputContainer {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    .input {
+      box-sizing: border-box important;
+      padding: 0.5rem 1rem;
+      border: 1px solid $secondary-blue-grey-500;
+      border-radius: 4px;
+      background: $white;
+      min-width: 2.5rem;
+      @include widthHeight(100%, 2.5rem);
+      @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $gray-1100, 0.03125);
+    }
+    .input:focus {
+      outline: none;
+      border: 2px solid $primary-blue;
+    }
+    .searchInput {
+      padding-right: 2.25rem;
+    }
+    .searchIcon {
+      padding-left: 2.75rem;
+      height: 1.5rem;
+      @include position(absolute, 0.5rem, 0.75rem, 0.5rem);
+    }
+    .crossIcon {
+      cursor: pointer;
+      height: 1.5rem;
+      @include position(absolute, 0.5rem, 0.75rem, 0.5rem);
+    }
+  }
+  /* Remove the search icon and clear icon in Safari and Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    display: none;
+  }
+}

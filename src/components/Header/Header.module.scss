@@ -1,0 +1,264 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.lightBackground {
+  &_bgColor {
+    background: $white;
+  }
+  &_textColor {
+    color: $primary-navy-blue;
+  }
+  &_logoColor {
+    path {
+      fill: $primary-blue;
+    }
+  }
+  &_activeMarker {
+    background: $primary-navy-blue;
+  }
+}
+.darkBackground {
+  &_bgColor {
+    background: $primary-navy-blue;
+  }
+  &_textColor {
+    color: $white;
+  }
+  &_logoColor {
+    path {
+      fill: $white;
+    }
+  }
+  &_activeMarker {
+    background: $white;
+  }
+}
+.blueBackground {
+  &_bgColor {
+    background: linear-gradient(135deg, $celtic-blue 0%, $denim-blue 100%);
+  }
+  &_textColor {
+    color: $white;
+  }
+  &_logoColor {
+    path {
+      fill: $white;
+    }
+  }
+  &_activeMarker {
+    background: $white;
+  }
+}
+
+.transparentBackground {
+  &_bgColor {
+    border-top: 1px solid $headerBorder;
+    border-bottom: 1px solid $headerBorder;
+  }
+  &_logoColor {
+    path {
+      fill: $white;
+    }
+  }
+  &_activeMarker {
+    background: $white;
+  }
+}
+
+.defaultBackground {
+  &_bgColor {
+    backdrop-filter: blur(3.125rem);
+    -webkit-backdrop-filter: blur(3.125rem);
+    border-top: 1px solid $headerBorder;
+    border-bottom: 1px solid $headerBorder;
+  }
+  &_logoColor {
+    path {
+      fill: $white;
+    }
+  }
+  &_activeMarker {
+    background: $white;
+  }
+}
+.headerWrapper {
+  @include position(fixed, 0);
+  z-index: 999;
+  width: 100%;
+
+  &.mobileNavActive {
+    @include tablet() {
+      background: $text-color;
+    }
+  }
+
+  .container {
+    @include flexProps(flex, center, center, column);
+    .headerContainer {
+      @include flexProps(flex, center, space-between);
+      @include widthHeight(100%, 4rem);
+      @include position(relative);
+
+      @include mobile() {
+        @include widthHeight(100%, 3.5rem);
+      }
+
+      .leftSection {
+        .logoContainer {
+          @include flexProps(flex, center, center, column, 0.25rem);
+          height: 2.5rem;
+          @include mobile() {
+            @include widthHeight(5.75rem, 2rem);
+          }
+          .logo {
+            @include widthHeight(5rem, 1.25006rem);
+            flex-shrink: 0;
+
+            @include mobile() {
+              @include widthHeight(5rem, 1.3125rem);
+            }
+          }
+        }
+      }
+
+      .rightSection {
+        padding: 0rem 0.25rem;
+        position: relative;
+        @include flexProps(flex, center, center, row, 0.5rem);
+        .navContainer {
+          @include flexProps(flex, center, center, row);
+          @include tablet() {
+            display: none;
+          }
+          .activeMarker {
+            position: absolute;
+            bottom: 1px;
+            height: 0.125rem;
+            border-radius: 0.25rem;
+            transition: left 0.5s;
+          }
+
+          .hideActiveMarker {
+            visibility: hidden;
+          }
+        }
+        .contactBtn {
+          @include tablet() {
+            padding: 0rem 0.75rem;
+            width: fit-content;
+            margin-right: 0.5rem;
+          }
+          @include mobile() {
+            display: none;
+          }
+        }
+
+        .hamberContainer {
+          @include widthHeight(3rem, 3rem);
+          flex-shrink: 0;
+          background: inherit;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          display: none;
+
+          .hambergerIcon {
+            @include widthHeight(3rem, 3rem);
+            flex-shrink: 0;
+          }
+
+          @include tablet() {
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .mobileNav {
+      width: 100%;
+      z-index: 999;
+      height: 100vh;
+      display: none;
+      @include position(relative);
+
+      @include tablet() {
+        display: inline-block;
+      }
+
+      .navContainer {
+        @include flexProps(flex, flex-start, null, column, 1rem);
+        margin-top: 1.5rem;
+        height: calc(100% - 14rem);
+        overflow-y: scroll;
+
+        @include mobile() {
+          height: calc(100% - 16.5rem);
+        }
+      }
+    }
+  }
+}
+
+.mobileNavFooter {
+  width: calc(100% + 3rem);
+  @include flexProps(flex, null, null, column);
+  @include position(absolute, null, -1rem, 0);
+  @include tablet() {
+    right: -2.5rem;
+    align-items: flex-end;
+  }
+
+  .doodleDotsContainer {
+    @include position(absolute);
+    bottom: 4.12rem;
+    right: -2rem;
+    .doodleDots {
+      width: 9.25rem;
+      height: 9.25rem;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.greatPlaceToWork {
+  @include flexProps(flex, center);
+  @include widthHeight(22.5rem, 5.3125rem);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, $dark-orange 0%, $goldenrod 100%);
+  filter: drop-shadow(-12px -12px 34px rgba(0, 0, 0, 0.16));
+  border-radius: 1rem 0 0 0;
+
+  @include mobile() {
+    width: 100%;
+  }
+
+  .logoContainer {
+    @include flexProps(flex);
+    margin-top: -2rem;
+    margin-left: 0.89rem;
+    margin-bottom: 0.81rem;
+    @include widthHeight(4.0435rem, 6.24994rem);
+    flex-shrink: 0;
+    .logo {
+      width: 100%;
+      filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.24));
+    }
+  }
+
+  .greatPlaceToWorkContent {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    @include flexProps(flex, null, null, column, 0.5rem);
+    .titleContainer {
+      width: 13.1875rem;
+      .title {
+        @include textStyling($title-font, normal, 400, 1.5rem, 120%, $midnight-blue, null);
+      }
+    }
+
+    .subTitle {
+      @include textStyling($text-font, normal, 400, 0.875rem, 140%, $midnight-blue, null);
+      opacity: 0.8700000047683716;
+    }
+  }
+}

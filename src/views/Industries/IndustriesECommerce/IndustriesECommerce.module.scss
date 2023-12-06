@@ -1,0 +1,31 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.industriesECommercePage {
+  .heroSectionGradient {
+    background: $eCommerceLinearGradient;
+  }
+
+  .heroSectionContentContainer {
+    padding: 11.625rem 0 7.625rem;
+
+    @include tablet() {
+      width: 100%;
+      margin: 0;
+      padding: 10.25rem 1.5rem;
+      @include gridProps(repeat(8, 1fr), null, 1rem, null);
+    }
+
+    @include mobile() {
+      padding: 8.938rem 1rem 5.438rem 1rem;
+      @include gridProps(repeat(4, 1fr), null, 1rem, null);
+    }
+  }
+
+  .ourServicesCard {
+    margin-bottom: 0 !important;
+  }
+  .eCommerceBottomContainer {
+    height: 13rem !important;
+  }
+}

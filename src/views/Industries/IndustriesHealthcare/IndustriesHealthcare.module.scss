@@ -1,0 +1,48 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.industriesHealthcarePage {
+  .heroSectionGradient {
+    background: $hero-section-gradient;
+  }
+
+  .heroSectionContentContainer {
+    padding-top: 11.625rem;
+    padding-bottom: 7.625rem;
+
+    @include tablet() {
+      width: 100%;
+      margin: 0;
+      padding: 10.25rem 1.5rem;
+      @include gridProps(repeat(8, 1fr), null, 1rem, null);
+    }
+
+    @include mobile() {
+      padding: 8.938rem 1rem 5.438rem 1rem;
+      @include gridProps(repeat(4, 1fr), null, 1rem, null);
+    }
+  }
+  .caseStudyContainer {
+    padding: 7rem auto;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include tablet() {
+      padding: 4.5rem auto;
+    }
+
+    @include mobile() {
+      padding: 4rem auto;
+    }
+  }
+
+  .clientLogoContainer {
+    @include mobile() {
+      @include gridProps(1fr 1fr);
+    }
+  }
+
+  .ourServicesCard {
+    margin-bottom: 0 !important;
+  }
+}

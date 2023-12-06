@@ -1,0 +1,42 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+.stepperWrapper {
+  @include widthHeight(90%, null);
+  @include flexProps(flex, center, space-between, row, null);
+  margin: auto;
+
+  .stepCount {
+    @include widthHeight(1.5rem, 1.5rem);
+    @include flexProps(flex, center, center, null, null);
+    @include textStyling($text-font, normal, $bold-font, $font-size-sm, 0.5rem, null, null);
+    border-radius: 50%;
+  }
+  .active {
+    color: $white;
+  }
+  .progressLine {
+    @include widthHeight(calc(100% - 2rem), 0);
+    border: 0.06rem solid $gray-border;
+  }
+  .activeLine {
+    border: 0.06rem solid $primary-blue;
+  }
+}
+.stepperText {
+  @include widthHeight(100%, 1.22rem);
+  @include flexProps(flex, null, space-between, null, null);
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  .basicDetails {
+    @include textStyling($text-font, normal, $normal-font, $font-size-sm, 1.22rem, $dark-black, 0.01rem);
+  }
+  .workDetails {
+    @include textStyling($text-font, normal, $normal-font, $font-size-sm, 1.22rem, $dark-black, 0.01rem);
+  }
+  .activeStep1 {
+    @include textStyling($text-font, normal, $medium-font, $font-size-sm, 1.22rem, $primary-blue, 0.01rem);
+  }
+  .activeStep2 {
+    @include textStyling($text-font, normal, $medium-font, $font-size-sm, 1.22rem, $primary-blue, 0.01rem);
+  }
+}

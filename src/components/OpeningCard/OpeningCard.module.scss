@@ -1,0 +1,54 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.hiringCard {
+  margin-top: 1rem;
+  width: 284px;
+  padding: 1.5rem;
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0px 24px 34px 0px rgba(0, 0, 0, 0.08);
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  @include tablet() {
+    grid-column: 1/5;
+    width: 100%;
+  }
+  @include mobile() {
+    grid-column: 1/5;
+    width: 100%;
+  }
+
+  .heading {
+    @include textStyling($title-font, normal, 700, 20px, 120%, $text-color, 0.5px);
+    grid-row: 1;
+    grid-column: 1/5;
+  }
+
+  .subtext {
+    @include textStyling($text-font, normal, 400, 14px, 120%, $grey-500, 0.25px);
+    padding: 1rem 0 2rem 0;
+    grid-column: 1/5;
+    grid-row: 2;
+    @include tablet() {
+      grid-column: 1/4;
+    }
+    @include mobile() {
+      padding: 0.5rem 0 1.5rem 0;
+      grid-column: 1/5;
+    }
+  }
+
+  .applyButton {
+    width: fit-content;
+    cursor: pointer;
+    grid-row: 3;
+
+    @include textStyling($text-font, normal, 700, 14px, 21px, $primary-blue, 0.25px);
+    .linkTo {
+      text-decoration: none;
+      color: $primary-blue;
+    }
+  }
+}

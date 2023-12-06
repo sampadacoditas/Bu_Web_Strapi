@@ -1,0 +1,240 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.navItem {
+  @include flexProps(flex, center, flex-start);
+  @include textStyling($text-font, normal, 400, 0.875rem, 150%, $white, 0.01563rem);
+  height: 4rem;
+  margin: 0rem 0.75rem;
+  flex-shrink: 0;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+
+  @include tablet() {
+    margin: 0;
+    height: 2.5rem;
+  }
+
+  &.lightActive {
+    border-bottom: 2px solid $primary-navy-blue;
+    color: $primary-navy-blue;
+  }
+  &.darkActive,
+  &.blueActive,
+  &.defaultActive {
+    border-bottom: 2px solid $white;
+    color: $white;
+  }
+
+  &:hover {
+    border-bottom: 2px solid transparent;
+  }
+
+  @include tablet() {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.dropbtn {
+  @include flexProps(flex, center, flex-start);
+  @include textStyling($text-font, normal, 400, 0.875rem, 150%, $white, 0.01563rem);
+  outline: none;
+  background-color: inherit;
+  border: none;
+  border-bottom: 2px solid transparent;
+  flex-shrink: 0;
+  text-align: center;
+  cursor: pointer;
+  height: 4rem;
+  padding-top: 0.18rem;
+
+  @include tablet() {
+    height: 2.5rem;
+  }
+
+  .dropbtnIcon {
+    @include widthHeight(1.25rem, 1.25rem);
+    margin-left: 0.25rem;
+    transform: rotate(90deg);
+    transition: all 0.3s;
+  }
+}
+
+.dropdownContent {
+  a {
+    padding: 0rem 1rem;
+    text-decoration: none;
+    transition: opacity 0.2s linear;
+    @include widthHeight(11.5rem, 2.5rem);
+    @include flexProps(flex, center, flex-start);
+    @include textStyling($text-font, normal, 500, 0.875rem, 1.225rem, $text-color, 0.016rem);
+    &:hover {
+      background: $secondary-blue-grey;
+      color: $primary-blue;
+    }
+  }
+}
+
+.dropdown {
+  border-bottom: 2px solid transparent;
+  margin: 0rem 0.75rem;
+  &.lightActive {
+    border-bottom: 2px solid $primary-navy-blue;
+  }
+  &.darkActive,
+  &.blueActive,
+  &.defaultActive {
+    border-bottom: 2px solid $white;
+  }
+  &.lightHover {
+    &:hover {
+      border-bottom: 2px solid $primary-navy-blue;
+    }
+  }
+  &.darkHover,
+  &.blueHover,
+  &.defaultHover {
+    &:hover {
+      border-bottom: 2px solid $white;
+    }
+  }
+
+  .lightArrow {
+    path {
+      fill: $primary-navy-blue;
+    }
+  }
+  .darkArrow,
+  .blueArrow,
+  .defaultArrow {
+    path {
+      fill: $white;
+    }
+  }
+
+  &:hover {
+    color: $white;
+    border-bottom: 2px solid transparent;
+    .dropbtnIcon {
+      transform: rotate(-90deg);
+    }
+  }
+
+  .dropdownContentVisible {
+    visibility: visible;
+    opacity: 1;
+    a {
+      opacity: 1 !important;
+    }
+  }
+
+  .dropdownContentInvisible {
+    visibility: hidden;
+    opacity: 0 !important;
+  }
+
+  .dropdownContent {
+    background-color: $white;
+    z-index: 1;
+    @include position(absolute, 100%);
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+    transition: visibility 0.2s, opacity 0.2s linear;
+    @include flexProps(flex, flex-start, null, column);
+    overflow: hidden;
+    box-shadow: $card-box-shadow;
+
+    &::before {
+      content: " ";
+      height: 0;
+    }
+    &::after {
+      height: auto;
+    }
+    a {
+      opacity: 0;
+    }
+  }
+}
+
+.tabNavItem {
+  border: none !important;
+  color: $light-grey;
+  @include tablet() {
+    @include textStyling($text-font, normal, 500, 1rem, 1.225rem, $light-grey, 0.016rem);
+  }
+}
+
+.tabDropdown {
+  width: 100%;
+  @include textStyling($text-font, normal, 500, 1rem, 1.225rem, $light-grey, 0.016rem);
+
+  &:hover .dropbtn {
+    color: $white;
+  }
+
+  .activeTab {
+    color: $white !important;
+  }
+
+  .dropbtn {
+    width: 100%;
+    justify-content: space-between;
+    color: $light-grey;
+    @include tablet() {
+      @include textStyling($text-font, normal, 500, 1rem, 1.225rem, $light-grey, 0.016rem);
+    }
+
+    .rotateUp {
+      transform: rotate(-90deg);
+      path {
+        fill: $white;
+      }
+    }
+
+    .rotateDown {
+      transform: rotate(90deg);
+      path {
+        fill: $white;
+      }
+    }
+
+    @include tablet() {
+      padding: 0;
+    }
+  }
+
+  .showDropdownContent {
+    display: flex;
+    @include flexProps(flex, flex-start, center, column, 1rem);
+  }
+
+  .hideDropdownContent {
+    display: none;
+  }
+
+  .dropdownContent {
+    background-color: transparent;
+    margin-top: 1rem;
+
+    a {
+      @include textStyling($text-font, normal, 400, 0.875rem, 150%, $white, 0.01563rem);
+      &:hover {
+        background: transparent;
+        color: $white;
+      }
+
+      @include tablet() {
+        width: 100%;
+        padding: 0;
+        @include textStyling($text-font, normal, 300, 1rem, 1.5rem, $pale-gray, 0.016rem);
+      }
+    }
+  }
+}
+
+.hideNavItem {
+  border-bottom: 2px solid transparent !important;
+}

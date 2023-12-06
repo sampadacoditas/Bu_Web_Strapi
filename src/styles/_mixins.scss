@@ -1,0 +1,205 @@
+@import "./variables.scss";
+
+@mixin buttonAppearance($backgroundColor, $textColor) {
+  background-color: $backgroundColor;
+  color: $textColor;
+}
+
+@mixin textStyling($fontFamily, $fontStyle, $fontWeight, $fontSize, $lineHeight, $color, $letter-spacing) {
+  font-family: $fontFamily;
+  font-style: $fontStyle;
+  font-weight: $fontWeight;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $color;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin flexProps($display, $alignItems: null, $justifyContent: null, $flexDirection: null, $gap: null, $wrap: null) {
+  display: $display;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+  flex-direction: $flexDirection;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+@mixin widthHeight($width: auto, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+// position mixin
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+
+  @if $top !=null {
+    top: $top;
+  }
+
+  @if $right !=null {
+    right: $right;
+  }
+
+  @if $bottom !=null {
+    bottom: $bottom;
+  }
+
+  @if $left !=null {
+    left: $left;
+  }
+}
+
+// Define media query mixins using variables
+@mixin mobile {
+  @media only screen and (max-width: #{$sm-min}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: #{$lg-min}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: #{$lg-min}) {
+    @content;
+  }
+}
+
+@mixin headerH1 {
+  font-family: $title-font;
+  font-size: 64px;
+  font-weight: 300;
+}
+
+@mixin headerH2 {
+  font-family: $title-font;
+  font-size: 48px;
+  font-weight: 600;
+}
+@mixin headerH3 {
+  font-family: $title-font;
+  font-size: 48px;
+  font-weight: 300;
+}
+@mixin headingH6 {
+  font-family: $title-font;
+  font-size: 20px;
+  font-weight: 700;
+}
+@mixin headingH7 {
+  font-family: $title-font;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@mixin bodyB1 {
+  font-family: $text-font;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 150%;
+  letter-spacing: 0.01563rem;
+}
+
+@mixin paragraphMedium {
+  font-family: $text-font;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+@mixin cardTitleMobile {
+  font-family: $title-font;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@mixin cardTitle {
+  font-family: $title-font;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@mixin caseStudyHeader {
+  font-family: $title-font;
+  font-size: 32px;
+}
+
+@mixin cardSubTitle {
+  font-family: $text-font;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+@mixin cardSubTitleMobile {
+  font-family: $text-font;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+@mixin cardLinkMobile {
+  font-family: $text-font;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+@mixin jdCardParameterValue {
+  font-family: $text-font;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@mixin jdCardParameterMobile {
+  font-family: $text-font;
+  font-size: 12px;
+  font-weight: 400;
+}
+@mixin jdCardParameterValueMobile {
+  font-family: $text-font;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@mixin heroBottomArray {
+  font-family: $text-font;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 150%;
+}
+@mixin cardDetailsLink {
+  font-family: $text-font;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@mixin gridProps($colum-num: null, $row-num: null, $column-gap: null, $row-gap: null) {
+  display: grid;
+  @if $colum-num != null {
+    grid-template-columns: $colum-num;
+  }
+  @if $row-num != null {
+    grid-template-rows: $row-num;
+  }
+  @if $column-gap != null {
+    column-gap: $column-gap;
+  }
+  @if $row-gap != null {
+    row-gap: $row-gap;
+  }
+}
+
+@mixin gridRowCol($rows: null, $columns: null) {
+  @if $rows != null {
+    grid-row: $rows;
+  }
+  @if $columns != null {
+    grid-column: $columns;
+  }
+}

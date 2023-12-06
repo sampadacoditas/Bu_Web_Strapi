@@ -1,0 +1,71 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.contentFrame {
+  padding-top: 4rem;
+  padding-bottom: 7rem;
+  @include mobile() {
+    padding-top: 1.5rem;
+    padding-bottom: 4.25rem;
+  }
+
+  .tabAndSearchRow {
+    grid-column: 1/13;
+    border-bottom: 1px solid $light-blue-grey;
+    @include flexProps(flex, center, space-between, null, 1.5rem, wrap);
+    @include tablet() {
+      grid-column: 1/9;
+    }
+    @include mobile() {
+      border-bottom: unset;
+      grid-column: 1/5;
+      @include flexProps(flex, flex-start, null, column, 1.5rem);
+    }
+    .tab {
+      @include mobile() {
+        width: 100%;
+        border-bottom: 1px solid $light-blue-grey;
+      }
+    }
+    .search {
+      .searchInput {
+        width: 20.5rem;
+      }
+      @include mobile() {
+        width: 100%;
+        .searchInput {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .cardContainer {
+    margin-top: 3rem;
+    grid-column: 1/13;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+    @include tablet() {
+      grid-column: 1/9;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mobile() {
+      margin-top: 2rem;
+      grid-column: 1/5;
+      grid-template-columns: 1fr;
+    }
+
+    .caseStudyCardContainer {
+      grid-column: span 1;
+      @include tablet() {
+        min-width: 100%;
+      }
+    }
+  }
+  .emptyPage {
+    margin-top: 3rem;
+    @include mobile() {
+      margin-top: 2rem;
+    }
+  }
+}

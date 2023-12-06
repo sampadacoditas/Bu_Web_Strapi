@@ -1,0 +1,103 @@
+import { FieldType } from "@/constants/constants";
+import { FORM_SECTION } from "./ApplyJobForm.constants";
+
+export const APPLY_JOB_FORM_FIELDS1 = [
+  {
+    id: 1,
+    type: FieldType.text,
+    label: FORM_SECTION.FNAME?.LABEL,
+    placeholder: FORM_SECTION.FNAME?.PLACEHOLDER,
+    name: "First_Name",
+    isRequired: true,
+  },
+  {
+    id: 2,
+    type: FieldType.text,
+    label: FORM_SECTION.LNAME?.LABEL,
+    placeholder: FORM_SECTION.LNAME?.PLACEHOLDER,
+    name: "Last_Name",
+    isRequired: true,
+  },
+  {
+    id: 3,
+    type: FieldType.text,
+    label: FORM_SECTION.EMAIL?.LABEL,
+    placeholder: FORM_SECTION.EMAIL?.PLACEHOLDER,
+    name: "Email",
+    isRequired: true,
+  },
+  {
+    id: 4,
+    type: FieldType.phone,
+    label: FORM_SECTION.MOB?.LABEL,
+    placeholder: FORM_SECTION.MOB?.PLACEHOLDER,
+    name: "Mobile",
+    isRequired: true,
+  },
+  {
+    id: 5,
+    type: FieldType.text,
+    label: FORM_SECTION.EXP?.LABEL,
+    placeholder: FORM_SECTION.EXP?.PLACEHOLDER,
+    name: "Total_Experience",
+    isRequired: true,
+  },
+  {
+    id: 6,
+    type: FieldType.text,
+    label: FORM_SECTION.LOCATION?.LABEL,
+    placeholder: FORM_SECTION.LOCATION?.PLACEHOLDER,
+    name: "City",
+    isRequired: true,
+  },
+];
+export const APPLY_JOB_FORM_FIELDS2 = [
+  {
+    id: 1,
+    type: FieldType.text,
+    label: FORM_SECTION.COMPANY?.LABEL,
+    placeholder: FORM_SECTION.COMPANY?.PLACEHOLDER,
+    name: "Current_Employer",
+    isRequired: false,
+  },
+  {
+    id: 2,
+    type: FieldType.text,
+    label: FORM_SECTION?.POSITION?.LABEL,
+    placeholder: FORM_SECTION.POSITION?.PLACEHOLDER,
+    name: "Current_Job_Title",
+    isRequired: false,
+  },
+  {
+    id: 3,
+    type: FieldType.salary,
+    label: FORM_SECTION.SALARY?.LABEL,
+    placeholder: FORM_SECTION.SALARY?.PLACEHOLDER,
+    name: "Current_Salary",
+    isRequired: false,
+  },
+  {
+    id: 4,
+    type: FieldType.dropdownField,
+    label: FORM_SECTION.NOTICE_PERIOD?.LABEL,
+    placeholder: FORM_SECTION.NOTICE_PERIOD?.PLACEHOLDER,
+    name: "noticePeriod",
+    isRequired: true,
+  },
+  {
+    id: 5,
+    type: FieldType.date,
+    label: FORM_SECTION.LAST_WORKING_DAY?.LABEL,
+    placeholder: FORM_SECTION.LAST_WORKING_DAY?.PLACEHOLDER,
+    name: "Last_Working_Day",
+    isRequired: true,
+  },
+  {
+    id: 6,
+    type: FieldType.file,
+    label: FORM_SECTION.RESUME?.LABEL,
+    placeholder: FORM_SECTION.RESUME?.PLACEHOLDER,
+    name: "Resume",
+    isRequired: true,
+  },
+];

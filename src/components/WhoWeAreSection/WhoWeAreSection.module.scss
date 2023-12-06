@@ -1,0 +1,99 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.whoWeAreSection {
+  .contentWrapper {
+    grid-row: 1;
+    grid-column: span 6;
+    align-self: center;
+    @include flexProps(flex, null, center, column);
+
+    @include mobile() {
+      grid-row: 1;
+      grid-column: span 5;
+    }
+
+    @include tablet() {
+      grid-row: 1;
+      grid-column: span 4;
+    }
+
+    .title {
+      margin-bottom: 0.5rem;
+      @include textStyling($title-font, normal, $light-font, $font-size-4xl, 120%, $text-color, 0.03125rem);
+
+      @include tablet() {
+        @include textStyling($title-font, normal, $light-font, 2.8rem, 120%, $text-color, 0.03125rem);
+      }
+      @include mobile() {
+        @include textStyling($title-font, normal, $light-font, 2.8rem, 120%, $text-color, 0.03125rem);
+      }
+    }
+
+    .description {
+      padding-top: 1rem;
+      @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $text-color, 0.01563rem);
+
+      @include tablet() {
+        @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $text-color, 0.01563rem);
+      }
+
+      @include mobile() {
+        @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $text-color, 0.01563rem);
+      }
+    }
+  }
+
+  .whoWeAreCardsWrapper {
+    display: grid;
+    grid-row: 1;
+    grid-column: span 6;
+
+    @include tablet() {
+      grid-row: 1;
+      grid-column: span 4;
+    }
+
+    @include mobile() {
+      grid-row: 2;
+      grid-column: span 4;
+      padding-top: 3rem;
+    }
+
+    .cardSection {
+      @include flexProps(flex, null, space-between, row, 1rem, wrap);
+
+      .whoWeAreCardsLayout {
+        @include flexProps(flex, center, center, column, 1.5rem);
+        flex: 40%;
+        background: $white;
+        padding: 1.5rem 1rem;
+        border-radius: 0.25rem;
+        box-shadow: 0rem 1.4375rem 2.1875rem 0rem $black-shadow;
+        width: 100%;
+
+        @include mobile() {
+          @include flexProps(flex, center, center, column, 1.5rem);
+        }
+
+        .cardTitle {
+          text-align: center;
+          @include textStyling($text-font, normal, $medium-font, $font-size-md, 150%, $text-color, 0.01563rem);
+
+          @include mobile() {
+            @include textStyling($text-font, normal, $normal-font, 0.875rem, 150%, $text-color, 0.01563rem);
+          }
+        }
+
+        .cardDescription {
+          text-align: center;
+          @include textStyling($text-font, normal, $normal-font, $font-size-md, 150%, $grey-500, 0.01563rem);
+
+          @include mobile() {
+            @include textStyling($text-font, normal, $semi-bold-font, 0.85rem, 150%, $text-color, 0.01563rem);
+          }
+        }
+      }
+    }
+  }
+}

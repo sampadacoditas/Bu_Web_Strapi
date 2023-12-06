@@ -1,0 +1,60 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.locationCardContainer {
+  @include flexProps(flex, center, null, column, 1.5rem);
+  width: 17.75rem;
+  @include tablet() {
+    width: 15.75763rem;
+    gap: 1.33163rem;
+  }
+
+  .title {
+    @include flexProps(flex, center, null, column, 0.25rem);
+
+    @include tablet() {
+      gap: 0.22194rem;
+    }
+
+    .countryIconContainer {
+      @include flexProps(flex, center, center);
+      @include widthHeight(2.5rem, 2.5rem);
+      .countryIcon {
+        @include widthHeight(2.08331rem, 1.25rem);
+        flex-shrink: 0;
+
+        @include tablet() {
+          @include widthHeight(1.8495rem, 1.10969rem);
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .location {
+      @include textStyling($text-font, normal, 500, 1rem, 150%, $text-color, 0.01563rem);
+      text-align: center;
+    }
+  }
+
+  .addressContainer {
+    @include flexProps(flex, center, null, column, 0.5rem);
+    @include textStyling($text-font, normal, 400, 0.875rem, 150%, $grey-500, 0.01563rem);
+    align-self: stretch;
+    text-align: center;
+
+    .addressSwitchContainer {
+      @include flexProps(flex, center, center, null, 0.5rem);
+      .active {
+        .icon {
+          color: $text-color;
+        }
+      }
+
+      .disable {
+        .icon {
+          color: $light-gray;
+        }
+      }
+    }
+  }
+}

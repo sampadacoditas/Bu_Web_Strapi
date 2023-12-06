@@ -1,0 +1,65 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.inputWrapper {
+  height: fit-content;
+  @include flexProps(flex, null, null, column, 0.25rem);
+
+  .required {
+    color: $red-error;
+  }
+
+  .label {
+    @include textStyling($text-font, normal, 500, 0.875rem, 140%, $text-color, 0.01563rem);
+  }
+
+  .inputContainer {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0 1px $light-gray;
+    border: 1px solid transparent;
+    background: $white;
+    @include flexProps(flex, center, space-between);
+
+    .input {
+      border: none;
+      outline: none;
+      resize: none;
+      background: $white;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      @include textStyling($text-font, normal, 400, 1rem, 150%, $primary-blue-1000, 0.01563rem);
+
+      &::placeholder {
+        color: $grey-300;
+
+        @include tablet() {
+          color: $grey-600;
+        }
+      }
+
+      @include tablet() {
+        letter-spacing: 0.03125rem;
+      }
+    }
+  }
+
+  .errorContainer {
+    border: 2px solid $red-error;
+    outline: none;
+    padding-right: 1rem;
+
+    .input {
+      padding-right: 0;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .errorTextContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .error {
+    @include textStyling($text-font, normal, 500, 0.75rem, 150%, $red-600, 0.03125rem);
+    height: 0.75rem;
+  }
+}

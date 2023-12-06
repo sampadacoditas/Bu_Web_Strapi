@@ -1,0 +1,75 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+.modalBackdrop {
+  height: 100%;
+  width: 100vw;
+  @include flexProps(flex, center, center, row, null);
+  @include position(fixed, 0, null, null, 0);
+  z-index: 1000;
+  background-color: rgba(17, 17, 17, 0.8);
+  .modal {
+    width: 36.5rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: $white;
+    @include mobile() {
+      padding: 1rem;
+      width: 20.5rem !important;
+    }
+
+    @include tablet() {
+      width: 32rem;
+    }
+  }
+}
+
+.headingModal {
+  @include flexProps(flex, center, space-between, row, null);
+  margin-bottom: 1.5rem;
+  .headingDetails {
+    @include flexProps(flex, null, null, row, 1rem);
+  }
+
+  .headingPersonDetails {
+    @include flexProps(flex, null, null, column, 0.5rem);
+    align-self: center;
+
+    .personName {
+      color: $gray-900;
+      @include cardTitle;
+      @include mobile() {
+        font-size: 1rem;
+        font-weight: 700;
+        font-style: $title-font;
+      }
+    }
+
+    .personPosition {
+      color: $grey-500;
+      @include cardSubTitle;
+
+      @include mobile() {
+        @include paragraphMedium;
+      }
+    }
+  }
+  .closeIcon {
+    cursor: pointer;
+    align-self: flex-start;
+
+    @include tablet() {
+      padding-left: 1rem;
+    }
+  }
+  .headingImage {
+    background: $gradient-background-color-cards;
+    border-radius: 0.5rem;
+    height: 6.25rem;
+    width: 6.25rem;
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 0.5rem;
+    }
+  }
+}

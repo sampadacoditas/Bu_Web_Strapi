@@ -1,0 +1,90 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.contentContainer {
+  background-color: $theme-bg-navy-blue;
+  padding: 4rem 0 4rem 0;
+
+  .mainContainer {
+    grid-column: 1/13;
+    @include flexProps(flex, null, null, column, null);
+
+    @include tablet() {
+      grid-column: 1/9;
+    }
+
+    @include mobile() {
+      grid-column: 1/5;
+    }
+  }
+  .heading {
+    padding-bottom: 0.5rem;
+    @include textStyling($title-font, normal, 700, 32px, 120%, $white, 0.5px);
+
+    @include tablet() {
+      padding-bottom: 0.5rem;
+      @include textStyling($title-font, normal, 700, 32px, 120%, $white, 0.5px);
+    }
+
+    @include mobile() {
+      padding-bottom: 0;
+      @include textStyling($title-font, normal, 700, 20px, 120%, $white, 0.5px);
+    }
+  }
+
+  .subText {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    grid-column: 1/13;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: $bavarian-blue;
+    @include textStyling($text-font, normal, 500, 1rem, 150%, $white, 0.25px);
+
+    @include mobile() {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .whiteLine {
+    height: 0.25rem;
+    width: 3.5rem;
+    border-radius: 0.5rem;
+    background-color: $white;
+    display: inline-block;
+
+    @include mobile() {
+      display: none;
+    }
+  }
+
+  .outcomeArray {
+    grid-column: 1/13;
+    @include flexProps(flex, null, null, column, 1rem);
+
+    .outcome {
+      @include textStyling($text-font, normal, 400, 1rem, 150%, $gray-200, 0.25px);
+      @include flexProps(flex, flex-start, null, row, 1rem);
+
+      .outcomeIcon {
+        padding-top: 0.25rem;
+      }
+    }
+  }
+}
+.outcomeImageContainer {
+  padding-top: 3rem;
+  height: 100%;
+  width: 100%;
+
+  @include mobile() {
+    padding-top: 2rem;
+  }
+
+  .outcomeImage {
+    @include tablet() {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

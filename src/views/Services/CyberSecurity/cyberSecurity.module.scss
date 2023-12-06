@@ -1,0 +1,45 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.cyberSecurityPage {
+  .heroSectionGradient {
+    background: $eCommerceLinearGradient;
+  }
+
+  .heroSectionContentContainer {
+    padding-top: 11.5rem;
+    padding-bottom: 7.5rem;
+
+    @include mobile() {
+      padding-top: 8.5rem;
+      padding-bottom: 5rem;
+    }
+
+    @include tablet() {
+      padding: 10.25rem 1.5rem;
+    }
+  }
+
+  .heroSectionTitle {
+    @include mobile() {
+      grid-column: 1/-1;
+    }
+  }
+
+  .ourServicesCard {
+    margin-bottom: 0 !important;
+  }
+
+  .howWeWorkContainer {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    @include tablet() {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+    @include mobile() {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+}

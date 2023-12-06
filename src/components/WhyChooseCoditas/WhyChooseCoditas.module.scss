@@ -1,0 +1,154 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+.container {
+  background-color: $alice-blue-background-color;
+  @include position(relative, null, null, null, null);
+  display: grid;
+  padding: 7rem 0;
+  @include mobile() {
+    padding: 4rem 0 !important;
+  }
+  @include tablet() {
+    padding: 4.5rem 0;
+  }
+}
+.titleContainer {
+  color: $text-color;
+  grid-column: 1/7;
+  padding-bottom: 3rem;
+  @include position(relative, null, null, null, null);
+  @include tablet() {
+    grid-column: 1/9 !important;
+  }
+  @include mobile() {
+    grid-column: 1/5 !important;
+    @include position(static, null, null, null, null);
+  }
+  .titleContainerHeader {
+    color: $text-color;
+    @include headerH1;
+    @include mobile {
+      @include headerH3;
+    }
+    @include tablet {
+      @include headerH3;
+      grid-column: 1/5;
+    }
+  }
+  .titleContainerDescription {
+    color: $gray-500;
+    padding-top: 1.5rem;
+    @include bodyB1;
+    @include tablet() {
+      padding-top: 0.5rem;
+      grid-column: 1/9;
+    }
+  }
+}
+.cardBoxLayout {
+  @include gridProps(1fr, null, null, 1rem);
+  @include gridRowCol(null, #{"1/ -1"});
+  @include tablet() {
+    @include gridProps(1fr, null, null, 1rem);
+  }
+  @include mobile() {
+    @include gridProps(1fr, null, null, 1rem);
+  }
+  .cardContainer {
+    @include flexProps(flex, flex-start, null, column, 1rem);
+    padding: 1.5rem;
+    text-align: left;
+    border-radius: 0.25rem;
+    background-color: $white;
+    box-shadow: 0 1.438rem 2.125rem 0 rgba(0, 0, 0, 0.08);
+    min-height: 5.5rem;
+    @include mobile() {
+      gap: 1.5rem;
+      max-height: fit-content;
+    }
+    .cardDescription {
+      color: $gray-500;
+      @include paragraphMedium;
+    }
+  }
+}
+.cardBox {
+  @include gridProps(repeat(3, 1fr), null, 1rem, 1rem);
+  grid-column: 1/-1;
+  // grid-auto-rows: minmax(min-content, 18.5rem);
+
+  @include tablet() {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(min-content, 19rem);
+  }
+  @include mobile() {
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(min-content, 18rem);
+  }
+  .cardContainer {
+    @include flexProps(flex, flex-start, null, column, 1rem);
+    padding: 1.5rem;
+    text-align: left;
+    border-radius: 0.25rem;
+    background-color: $white;
+    box-shadow: 0 1.438rem 2.125rem 0 rgba(0, 0, 0, 0.08);
+    z-index: 100;
+    // height: 17.5rem;
+
+    @include tablet() {
+      // height: 18rem;
+    }
+    @include mobile() {
+      gap: 1.5rem;
+      margin-top: 0;
+      // height: 17rem;
+    }
+    .detailsContainer {
+      margin-top: 2rem;
+      @include mobile() {
+        padding-bottom: 0;
+      }
+      @include tablet() {
+        padding-bottom: 0;
+      }
+    }
+    .cardTitle {
+      color: $text-color;
+      @include cardTitle;
+      margin-top: 1rem;
+      @include mobile() {
+        @include cardTitleMobile;
+        margin-top: 0;
+      }
+      @include tablet() {
+        // height: 3rem;
+      }
+    }
+    .cardDescription {
+      // height: 5rem;
+      margin-top: 0;
+      color: $gray-500;
+      @include paragraphMedium;
+      @include mobile() {
+        height: unset;
+      }
+    }
+  }
+}
+.buttonContainer {
+  @include flexProps(flex, center, center, row, 0);
+  padding-top: 3rem;
+  .viewMore {
+    @include widthHeight(6.25rem, 3rem);
+  }
+}
+.mobileDevTitleContainer {
+  @include mobile() {
+    margin-top: 4rem;
+  }
+}
+.mobileContentWrapper {
+  @include mobile() {
+    padding-top: 0rem !important;
+  }
+}

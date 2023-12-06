@@ -1,0 +1,60 @@
+@import "./typography";
+@import "./variables";
+@import "./mixins";
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+*:focus-visible {
+  outline: unset;
+}
+
+html body {
+  color: $text-color;
+  font-family: $text-font;
+  font-size: 16px;
+}
+
+.pageContainer {
+  min-height: 100vh;
+  @include flexProps(flex, null, space-between, column, null, null);
+
+  .contentMainWrapper {
+    @include flexProps(flex, null, null, column, null, null);
+  }
+}
+
+.content {
+  width: $desktop-content-container-size;
+  margin: 0 auto;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+
+  @include tablet() {
+    width: 100%;
+    margin: 0;
+    padding: 0 24px;
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @include mobile() {
+    width: 100%;
+    margin: 0;
+    padding: 0 16px;
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

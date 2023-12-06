@@ -1,0 +1,52 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.caseStudyPage {
+  .heroSectionGradient {
+    background: $hero-section-gradient;
+
+    @include mobile() {
+      background: linear-gradient(
+        72deg,
+        $case-study-bg-color-mobile-1 0%,
+        $case-study-bg-color-mobile-2 36.31%,
+        $case-study-bg-color-mobile-3 100%
+      );
+    }
+  }
+
+  .heroSectionContentContainer {
+    padding-top: 6rem;
+    padding-bottom: 15.7rem;
+    row-gap: 7.2rem;
+
+    @include mobile() {
+      padding-top: 4rem;
+      padding-bottom: 13.45rem;
+      row-gap: 6.95rem;
+    }
+  }
+
+  .studyDescriptionContainer {
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+
+    @include mobile() {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+}
+
+.healthCareHeroSection {
+  background-color: $theme-bg-navy-blue;
+  padding: 6.625rem 0 5.625rem 0;
+  @include position(relative, null, null, null, null);
+  margin-right: 0;
+  @include tablet() {
+    padding: 6rem 0 5.625rem 0;
+  }
+  @include mobile() {
+    padding: 5.5rem 0 0 0;
+  }
+}

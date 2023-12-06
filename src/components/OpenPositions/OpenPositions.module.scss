@@ -1,0 +1,139 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.container {
+  background: $white;
+  padding: 7rem 0;
+
+  @include tablet() {
+    padding: 4.5rem 0;
+  }
+
+  @include mobile() {
+    padding: 4rem 0;
+  }
+
+  @include position(relative, null, null, null, null);
+}
+
+.titleContainer {
+  grid-column: 1/7;
+
+  @include position(relative, null, null, null, null);
+  @include tablet() {
+    grid-column: span 5;
+  }
+  @include mobile() {
+    grid-column: 1/5;
+    @include position(static, null, null, null, null);
+  }
+
+  .titleLeftWrapper {
+    @include flexProps(flex, null, null, column, 3rem, null);
+
+    .titleContainerHeader {
+      color: $blue-900;
+      @include headerH1;
+      @include mobile {
+        @include headerH3;
+      }
+      @include tablet {
+        @include headerH3;
+      }
+    }
+  }
+}
+
+.buttonContainer {
+  @include flexProps(flex, center, flex-start, row, null);
+  @include position(relative, null, null, null, null);
+  background-color: $white;
+
+  .viewAll {
+    height: 3rem;
+    width: 6.25rem;
+
+    @include mobile() {
+      height: 2.5rem;
+    }
+  }
+}
+.listContainer {
+  cursor: pointer;
+  padding: 1rem;
+  padding-left: 0;
+  border-bottom: thin solid $grey-100;
+  width: 36.5rem;
+  @include flexProps(flex, null, space-between, row, null);
+
+  @include mobile() {
+    width: 100% !important;
+  }
+
+  @include tablet() {
+    width: 20.5rem;
+  }
+
+  .positionName {
+    color: $blue-900;
+    @include cardTitle;
+
+    @include mobile() {
+      @include cardTitleMobile;
+    }
+
+    @include tablet() {
+      @include cardTitleMobile;
+    }
+  }
+
+  .chevronIcon {
+    align-self: flex-end;
+    cursor: pointer;
+  }
+}
+.positionsContainer {
+  @include flexProps(flex, center, flex-start, row, 7.25rem);
+  width: 100%;
+
+  @include tablet() {
+    @include flexProps(flex, null, flex-start, row, 7.25rem);
+  }
+  @include mobile() {
+  }
+  .listBox {
+    grid-column: 1/7;
+
+    @include mobile() {
+      width: 100%;
+    }
+
+    @include tablet() {
+      grid-column: 1/5;
+    }
+  }
+}
+.imageContainer {
+  margin-top: -3.5rem;
+  grid-column: 8/13;
+  @include mobile {
+    display: none;
+  }
+  @include tablet() {
+    margin-top: 1rem;
+    grid-column: 6/9;
+    padding-left: 0;
+  }
+  .openPositionsImage {
+    height: 22.1875rem;
+    width: 28.225rem;
+    align-self: flex-end;
+    @include tablet() {
+      width: 16rem;
+      height: auto;
+    }
+    @include mobile() {
+      height: auto;
+    }
+  }
+}

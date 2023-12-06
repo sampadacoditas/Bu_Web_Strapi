@@ -1,0 +1,94 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.contentContainer {
+  @include gridProps(repeat(3, 1fr) !important, null, 1rem);
+  padding-bottom: 7rem;
+  @include tablet() {
+    @include gridProps(repeat(2, 1fr) !important, null, 1rem, 1rem);
+    padding-bottom: 4.5rem !important;
+  }
+  @include mobile() {
+    @include gridProps(repeat(1, 1fr) !important, null, 1rem, 1rem);
+    padding-bottom: 4rem !important;
+  }
+}
+
+.cardContainer {
+  @include mobile() {
+    @include flexProps(flex, null, null, null, null, null);
+  }
+
+  .complianceImage {
+    @include widthHeight(4rem, 4rem);
+    @include tablet() {
+      @include widthHeight(3.5rem, 3.5rem);
+    }
+  }
+  .complianceHeading {
+    @include textStyling($title-font, normal, 700, 1.25rem, 120%, $text-color, 0.031rem);
+    padding: 2rem 0 0.5rem 0;
+    @include tablet() {
+      @include textStyling($title-font, normal, 700, 1rem, 120%, $text-color, 0.031rem);
+    }
+
+    @include mobile() {
+      @include textStyling($title-font, normal, 700, 1rem, 120%, $text-color, 0.031rem);
+      padding: 0 0 0 1rem;
+    }
+  }
+  .complianceDescription {
+    @include textStyling($text-font, normal, 400, 1rem, 150%, $grey-500, 0.016rem);
+
+    @include tablet() {
+      @include textStyling($title-font, normal, 400, 0.75rem, 150%, $grey-500, 0.016rem);
+    }
+
+    @include mobile() {
+      @include textStyling($title-font, normal, 400, 0.75rem, 150%, $grey-500, 0.016rem);
+      padding: 0.5rem 0 0 1rem;
+    }
+  }
+}
+
+.mainContainer {
+  padding: 7rem 0 0;
+
+  @include tablet() {
+    padding: 4.5rem 1.5rem 0 !important;
+  }
+
+  @include mobile() {
+    padding: 4rem 1rem 0 !important;
+  }
+
+  .heading {
+    grid-row: 1;
+    grid-column: 1 / span 6;
+    @include textStyling($title-font, normal, 300, 4rem, 120%, $text-color, 0.031rem);
+
+    @include tablet() {
+      @include textStyling($title-font, normal, 300, 3rem, 120%, $text-color, 0.031rem);
+    }
+
+    @include mobile() {
+      @include textStyling($title-font, normal, 300, 3rem, 120%, $text-color, 0.031rem);
+      grid-column: 1 / span 4;
+    }
+  }
+  .subtext {
+    grid-row: 2;
+    grid-column: 1 / span 6;
+    @include textStyling($text-font, normal, 400, 1rem, 150%, $grey-500, 0.016rem);
+    padding: 1.5rem 0 3rem 0;
+
+    @include tablet() {
+      padding-top: 0.5rem;
+      grid-column: 1 / span 8;
+    }
+
+    @include mobile() {
+      grid-column: 1 / span 4;
+    }
+  }
+}

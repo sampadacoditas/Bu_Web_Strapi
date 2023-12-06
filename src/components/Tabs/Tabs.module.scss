@@ -1,0 +1,23 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.tabContainer {
+  display: flex;
+  .tabButton {
+    position: relative;
+    padding: 0.875rem 1rem;
+    background-color: transparent;
+    cursor: pointer;
+    @include textStyling($text-font, normal, $normal-font, $font-size-sm, 145%, $primary-blue-1000, 0.031rem);
+    .activeTab {
+      font-weight: $semi-bold-font;
+    }
+    .activeTab::before {
+      content: "";
+      width: 100%;
+      height: 0.1875rem;
+      background-color: $primary-blue;
+      @include position(absolute, null, null, 0, 0);
+    }
+  }
+}

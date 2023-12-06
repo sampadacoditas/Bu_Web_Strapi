@@ -1,0 +1,98 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.cardContainer {
+  border-radius: 0.5rem;
+  background: $primary-blue;
+  box-shadow: $case-study-card-box-shadow;
+  grid-column: span 6;
+  @include flexProps(flex);
+  min-width: 36.5rem;
+  min-height: 27.188rem;
+  @include widthHeight(100%, 100%);
+  @include mobile() {
+    @include flexProps(flex, flex-start, null, column, 1.5rem);
+    grid-column: span 3;
+    min-width: 20.5rem;
+    min-height: 31.375rem;
+    @include widthHeight(100%, 100%);
+  }
+
+  .imageContainer {
+    position: relative;
+    @include mobile() {
+      @include flexProps(flex, null, center);
+      width: 100%;
+    }
+    .imageContent {
+      position: absolute;
+      z-index: 1;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      @include widthHeight(16.755rem, calc(100% - 3rem));
+      object-fit: cover;
+      border-top-right-radius: 1.5rem;
+      border-bottom-right-radius: 1.5rem;
+      @include mobile() {
+        width: calc(100% - 3rem) !important;
+        height: 9.5rem;
+        object-fit: cover;
+        margin-top: 0;
+        object-position: center;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+        margin-bottom: 0;
+      }
+    }
+    .imageBackground {
+      border-radius: var(--xlarge, 1.5rem);
+      background: var(--colors-ada-theme-key-colors-tertiary, $primary-blue-600);
+      position: relative;
+      top: 2.25rem;
+      @include widthHeight(17.75rem, calc(100% - 4.5rem));
+      @include mobile() {
+        height: 10rem;
+        top: 0;
+        margin-left: 2.25rem;
+        margin-right: 2.25rem;
+      }
+    }
+  }
+  .contentContainer {
+    padding: 1.5rem;
+    @include flexProps(flex, null, space-between, column, null, wrap);
+    @include mobile() {
+      flex-grow: 1;
+      padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+    .title {
+      @include textStyling($title-font, normal, 700, 1.5rem, 120%, $white, 0.5px);
+    }
+    .subheading {
+      @include textStyling($text-font, normal, 400, 0.875rem, 120%, $white, 0.25px);
+      padding: 1rem 0 2.5rem 0;
+      @include mobile() {
+        @include textStyling($text-font, normal, 400, 0.875rem, 140%, $white, 0.25px);
+        padding: 0.5rem 0 1.5rem 0;
+      }
+    }
+    .pillContainer {
+      @include flexProps(flex, null, null, null, 0.5rem, wrap);
+      .pills {
+        @include textStyling($text-font, normal, 500, 0.75rem, 130%, $white, 0.25px);
+        margin: 0;
+        border: 1px solid $white;
+        border-radius: 1rem;
+        padding: 0.375rem 0.75rem;
+        width: fit-content;
+      }
+    }
+    .readContainer {
+      .read {
+        @include textStyling($text-font, normal, 700, 0.875rem, 150%, $white, 0.5px);
+        text-decoration: none;
+      }
+    }
+  }
+}

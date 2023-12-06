@@ -1,0 +1,475 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.container {
+  background: $theme-bg-navy-blue;
+  @include position(relative, null, null, null, null);
+  padding-bottom: 0;
+
+  @include mobile() {
+    padding-bottom: 0rem;
+  }
+}
+
+.titleContainer {
+  margin-top: 7rem;
+  color: $white;
+  grid-column: 1/7;
+  margin-bottom: 3rem;
+  @include position(relative, null, null, null, null);
+  @include flexProps(flex, flex-start, center, column, 0.5rem);
+
+  @include desktop() {
+    gap: 1.5rem;
+  }
+
+  @include tablet() {
+    grid-column: 1/9;
+    margin-top: 4.5rem;
+    gap: 0.5rem;
+  }
+  @include mobile() {
+    grid-column: 1/5 !important;
+    @include position(static, null, null, null, null);
+    margin-top: 4rem !important;
+  }
+
+  .imageContainer {
+    @include position(absolute, 3rem, null, null, null);
+    display: flex;
+    & > * {
+      align-self: flex-end;
+    }
+    @include mobile() {
+      @include position(absolute, -1rem, 0, null, 0);
+      overflow: hidden;
+      display: flex;
+
+      & > * {
+        align-self: flex-end;
+      }
+    }
+
+    .doodleDots {
+      grid-column: 9/13;
+      align-items: flex-end;
+      transform: rotate(28deg) scale(0.9);
+      overflow: hidden;
+      @include mobile() {
+        transform: rotate(-60deg) scale(0.4) !important;
+      }
+      & > * {
+        transform: rotate(-40deg);
+      }
+    }
+  }
+
+  .titleContainerHeader {
+    @include headerH1;
+    @include mobile {
+      @include headerH3;
+    }
+    @include tablet {
+      @include headerH3;
+    }
+  }
+  .titleContainerDescription {
+    color: $gray-200;
+    @include bodyB1;
+  }
+}
+
+.cardBox {
+  @include gridProps(repeat(4, 1fr), null, 1rem, 1rem);
+  grid-column: 1/-1;
+  grid-auto-rows: minmax(min-content, 17.5rem);
+
+  @include tablet() {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(min-content, 17rem);
+    margin: 0 auto;
+  }
+  @include mobile() {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    grid-auto-rows: minmax(min-content, 15rem);
+  }
+  .cardContainer {
+    @include position(relative, null, null, null, null);
+    @include flexProps(flex, flex-start, null, column, 2rem);
+    padding: 1.5rem;
+    text-align: left;
+    border-radius: 0.25rem;
+    color: $white;
+    background-color: $theme-bg-navy-blue;
+    box-shadow: $card-box-shadow;
+    z-index: 100;
+    &::after {
+      content: "";
+      @include position(absolute);
+      inset: 0;
+      border-radius: 0.25rem;
+      padding: 1px; /* control the border thickness */
+      background: linear-gradient(to top, $celtic-blue-0, $celtic-blue-32);
+      -webkit-mask: linear-gradient($theme-bg-navy-blue 0 0) content-box, linear-gradient($theme-bg-navy-blue 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    @include mobile() {
+      gap: 1.5rem;
+      margin-top: 0;
+    }
+    .detailsContainer {
+      @include flexProps(flex, flex-end);
+      flex: 1;
+      @include mobile() {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+      }
+      @include tablet() {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+    .cardContent {
+      @include flexProps(flex, null, null, column, 1rem);
+      .cardTitle {
+        @include cardTitle;
+        @include mobile() {
+          @include cardTitleMobile;
+        }
+      }
+      .cardDescription {
+        margin-top: 0;
+        color: $gray-200;
+        @include paragraphMedium;
+      }
+    }
+    .detailsLink {
+      text-decoration: none;
+      color: $theme-key-blue;
+      @include cardDetailsLink;
+    }
+
+    .detailsBtn {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .detailsBtn {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}
+.bottomSection {
+  @include position(absolute, null, null, 0, null);
+  width: 100%;
+  height: 5.5rem;
+  background-color: $white;
+  @include tablet {
+    bottom: 0;
+    height: 4.5rem;
+  }
+  @include mobile {
+    height: 4rem;
+  }
+}
+.buttonContainer {
+  @include position(relative, null, null, null, null);
+  @include flexProps(flex, center, center, row, null);
+  background-color: $white;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+.ourMissionCard {
+  margin-bottom: 0 !important;
+  height: 13rem !important;
+  @include tablet() {
+    height: 14rem !important;
+  }
+}
+.ourMissionBottomContainer {
+  background-color: $alice-blue-background-color;
+  height: 10rem !important;
+  @include tablet() {
+    height: 8rem !important;
+  }
+  @include mobile() {
+    height: 10rem !important;
+  }
+}
+
+.devopsCardBox,
+.dataScienceCardBox {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1rem !important;
+
+  @include tablet() {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-rows: minmax(min-content, 17rem);
+    margin: 0 auto;
+  }
+  @include mobile() {
+    grid-template-columns: 1fr !important;
+    margin: 0 auto;
+    grid-auto-rows: minmax(min-content, 15rem);
+  }
+
+  .devopsOurServicesCard {
+    margin-bottom: 0 !important;
+
+    .cardContent {
+      margin-bottom: 0 !important;
+    }
+
+    .bulletItem {
+      @include flexProps(flex, flex-start, null, row, 0.5rem);
+
+      .bulletDesc {
+        padding-bottom: 0.5rem;
+      }
+
+      .bulletIcon {
+        padding-top: 0.2rem;
+      }
+    }
+    .cardContent {
+      .cardTitle {
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+.devopsOurServicesBottomContainer {
+  height: 6.5rem !important;
+
+  @include tablet() {
+    height: 5.5rem !important;
+  }
+  @include mobile() {
+    height: 4rem !important;
+  }
+}
+
+.customBackdrop {
+  z-index: 1000 !important;
+  background: rgba(17, 17, 17, 0.88);
+}
+
+.customModal {
+  border-radius: 0.25rem !important;
+  background-color: $primary-navy-blue !important;
+  box-shadow: $modal-box-shadow;
+  @include mobile() {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
+
+.modalContainer {
+  @include flexProps(flex, flex-start, null, column, 2rem);
+  align-self: stretch;
+
+  @include mobile() {
+    gap: 1.5rem;
+  }
+
+  .header {
+    @include flexProps(flex, null, space-between, row, null);
+    width: 100%;
+    .iconContainer {
+      @include widthHeight(2.25rem, 2.25rem);
+    }
+    .closeIcon {
+      @include widthHeight(1.5rem, 1.5rem);
+      .icon {
+        @include widthHeight(1.5rem, 1.5rem);
+        cursor: pointer;
+        path {
+          fill: $gray-200 !important;
+        }
+      }
+    }
+  }
+  .modalBody {
+    @include flexProps(flex, flex-start, null, column, 1rem);
+    align-self: stretch;
+
+    @include mobile() {
+      gap: 0.5rem;
+    }
+
+    .modalTitleContainer {
+      flex: 1 0 0;
+      .title {
+        @include textStyling($title-font, normal, 700, 1.25rem, 120%, $white, 0.03125rem);
+        @include mobile() {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .modalDetailsContainer {
+      @include textStyling($text-font, normal, 400, 0.875rem, 140%, $gray-200, 0.01563rem);
+      .modalDescriptionList {
+        margin-top: 1rem;
+        .descContaier {
+          display: flex;
+          gap: 0.5rem;
+          .bullet {
+            padding-left: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.mobileDevOurServicesCard {
+  margin-bottom: 0 !important;
+
+  .cardContent {
+    margin-bottom: 0 !important;
+    flex: 1 !important;
+    .cardTitle {
+      padding-bottom: 0.5rem;
+    }
+  }
+}
+.mobileDevOurServicesBottomContainer {
+  @include mobile() {
+    height: 4rem !important;
+  }
+}
+.viewMore {
+  padding: 0.5rem 0.75rem;
+}
+
+.dataScienceBottomContainer {
+  height: 6.5rem !important;
+
+  @include tablet() {
+    height: 5.5rem !important;
+  }
+  @include mobile() {
+    height: 4rem !important;
+  }
+}
+.dataScienceCardBox {
+  .cardContainer {
+    @include tablet() {
+      margin-bottom: 0 !important;
+    }
+    @include mobile() {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+.healthCareBottomContainer {
+  background-color: $alice-blue-background-color;
+  height: 5.5rem !important;
+  @include tablet() {
+    height: 4.5rem !important;
+  }
+  @include mobile() {
+    height: 13rem !important;
+  }
+}
+.eCommerceBottomContainer {
+  background-color: $alice-blue-background-color;
+
+  height: 5.5rem !important;
+  @include tablet() {
+    height: 4.5rem !important;
+  }
+  @include mobile() {
+    height: 13rem !important;
+  }
+}
+
+.industriesBottomContainer {
+  background-color: $alice-blue-background-color;
+  @include mobile() {
+    height: 7rem !important;
+  }
+}
+
+.healthCareCardBox {
+  row-gap: 1rem;
+}
+.industriesCardBox {
+  grid-template-columns: repeat(3, 1fr);
+
+  @include tablet() {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(min-content, 17rem);
+    margin: 0 auto;
+  }
+  @include mobile() {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    grid-auto-rows: minmax(min-content, 15rem);
+  }
+}
+.healthCareCard {
+  margin-bottom: 0 !important;
+}
+
+.shoppingAndLogisticsContainer,
+.marTechBottomContainer {
+  height: 5.5rem !important;
+  background-color: $alice-blue-background-color;
+  @include tablet() {
+    height: 4.5rem !important;
+  }
+  @include mobile() {
+    height: 7rem !important;
+  }
+}
+
+.shoppingAndLogisticsBox,
+.marTechCardBox {
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 1rem;
+  @include tablet() {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(min-content, 17rem);
+    margin: 0 auto;
+  }
+  @include mobile() {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    grid-auto-rows: minmax(min-content, 15rem);
+  }
+}
+.homePageBottomSection {
+  @include mobile() {
+    height: 15rem !important;
+  }
+}
+
+.industriesBottomContainerBackground {
+  background-color: $alice-blue-background-color;
+}
+
+.edTechBottomContainer {
+  background-color: $white;
+}
+
+.buttonContainerBackground {
+  background-color: $alice-blue-background-color;
+}
+
+.ourMissionCardBox {
+  grid-auto-rows: unset !important;
+}

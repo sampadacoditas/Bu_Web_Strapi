@@ -1,0 +1,40 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.aboutUsPage {
+  .heroSectionGradient {
+    background: $hero-section-gradient;
+
+    @include mobile() {
+      background: linear-gradient(
+        72deg,
+        $case-study-bg-color-mobile-1 0%,
+        $black-gradient-2 36.31%,
+        $black-gradient-1 100%
+      );
+    }
+  }
+
+  .heroSectionContentContainer {
+    padding-top: 11.625rem;
+    padding-bottom: 7.625rem;
+
+    @include mobile() {
+      height: 36.375rem;
+      padding: 12.25rem 1rem;
+    }
+  }
+
+  .whoWeAreContainer {
+    padding: 7rem 0;
+    @include tablet() {
+      padding: 7rem 1.5rem;
+    }
+    @include mobile() {
+      padding: 4rem 1rem;
+    }
+  }
+}
+.bottomContainerDynamicClass{
+  background-color: $alice-blue-background-color !important;
+}

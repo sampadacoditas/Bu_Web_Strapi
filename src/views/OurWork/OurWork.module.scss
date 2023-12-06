@@ -1,0 +1,16 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+.ourWork {
+  .heroSectionGradient {
+    background: $hero-section-gradient;
+  }
+
+  .heroSectionContentContainer {
+    padding-top: 17.6875rem;
+    padding-bottom: 13.6875rem;
+    @include mobile() {
+      padding-top: 13.4375rem;
+      padding-bottom: 13.4375rem;
+    }
+  }
+}

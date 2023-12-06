@@ -1,0 +1,123 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.phoneWrapper {
+  height: fit-content;
+  @include flexProps(flex, null, null, column, 0.25rem);
+
+  .required {
+    color: $red-error;
+  }
+
+  .label {
+    @include textStyling($text-font, normal, 500, 0.875rem, 140%, $text-color, 0.01563rem);
+  }
+
+  .phoneContainer {
+    @include flexProps(flex, center, null, row, 0.5rem);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0 1px $light-gray;
+    border: 2px solid transparent;
+    background: $white;
+    &:has(.dropdownContainer) {
+      border: 2px solid $primary-blue;
+    }
+  }
+
+  .inputContainer {
+    background: $white;
+    @include flexProps(flex, center, null, row-reverse, 0.5rem);
+
+    .btnContainer {
+      border: none;
+      outline: none;
+      background: $white;
+      position: unset;
+      margin-left: 1rem;
+      font-size: 1rem;
+
+      :global(.selected-flag) {
+        padding: 1rem 0.5rem;
+      }
+    }
+
+    .phoneInput {
+      border: none;
+      outline: none;
+      background: $white;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      padding-left: 0;
+      @include textStyling($text-font, normal, 400, 1rem, 150%, $primary-blue-1000, 0.01563rem);
+      &::placeholder {
+        color: $grey-300;
+
+        @include tablet() {
+          color: $grey-600;
+        }
+      }
+
+      @include tablet() {
+        letter-spacing: 0.03125rem;
+      }
+    }
+
+    .dropdownContainer {
+      margin-left: -1rem;
+      top: 100%;
+      width: 100%;
+      border-radius: 0.25rem;
+      background: $white;
+      margin-top: 0.25rem;
+
+      box-shadow: 0px 1px 8px 0px rgba(175, 181, 185, 0.2), 0px 3px 3px 0px rgba(175, 181, 185, 0.12),
+        0px 3px 4px 0px rgba(175, 181, 185, 0.14);
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      :global(.country) {
+        padding: 0.75rem 1rem;
+        @include textStyling($text-font, normal, 400, 1rem, 150%, $primary-blue-1000, 0.03125rem);
+        &:focus,
+        &:hover {
+          background-color: $primary-blue-100 !important;
+        }
+      }
+
+      :global(.highlight) {
+        background-color: $primary-blue-100 !important;
+      }
+    }
+  }
+
+  .errorContainer {
+    border: 2px solid $red-error;
+    padding-right: 1rem;
+    .dropdownContainer {
+      width: calc(100% + 3rem);
+    }
+
+    .input {
+      padding-right: 0;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .error {
+    @include textStyling($text-font, normal, 500, 0.75rem, 150%, $red-600, 0.03125rem);
+    height: 0.75rem;
+  }
+}
+
+.searchContainer {
+  :global(.search-box) {
+    padding: 0.75rem !important;
+    width: calc(100% - 1rem);
+    @include textStyling($text-font, normal, 400, 1rem !important, 150%, $primary-blue-1000, 0.01563rem);
+  }
+  :global(.search-emoji) {
+    display: none !important;
+  }
+}

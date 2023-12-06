@@ -1,0 +1,79 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.jobListingCardLayout {
+  @include flexProps(flex, flex-start, flex-start, row, 1rem, wrap);
+  cursor: pointer;
+
+  .jobListingCard {
+    @include flexProps(flex, flex-start, flex-start, column, 2rem);
+    padding: 1.5rem;
+    flex-basis: calc(33.35% - 0.68rem);
+    height: 17rem;
+    width: 100%;
+    border-radius: 0.25rem;
+    background: var(--colors-ada-theme-background-white, $white);
+    box-shadow: 0rem 1.4375rem 2.125rem 0rem $light-grey-shadow;
+
+    @include tablet() {
+      flex-direction: column;
+      flex-basis: calc(50% - 0.5rem);
+      width: 100%;
+    }
+
+    @include mobile() {
+      height: auto;
+      flex-basis: auto;
+    }
+
+    .jobTitle {
+      @include flexProps(flex, stretch, null, column, null, null);
+      @include textStyling($title-font, normal, 700, 1.25rem, 120%, $text-color, 0.03125rem);
+
+      @include mobile() {
+        @include textStyling($title-font, normal, 700, 1rem, 120%, $grey-900-1, 0.03125rem);
+      }
+    }
+
+    .jobDescription {
+      @include flexProps(flex, stretch, null, column, null, null);
+      height: 7rem;
+      padding-bottom: 2rem;
+
+      @include textStyling($text-font, normal, 400, 0.875rem, 140%, $grey-500, 0.01563rem);
+
+      @include mobile() {
+        height: 3.75rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @include textStyling($text-font, normal, 400, 0.875rem, 140%, $grey-500, 0.01563rem);
+      }
+
+      @include tablet() {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .jobDetails {
+      margin: 0;
+      @include textStyling($text-font, normal, 700, 0.875rem, 150%, $primary-blue, 0.01563rem);
+
+      @include mobile() {
+        margin: 0;
+        padding-top: 2rem;
+        @include textStyling($text-font, normal, 700, 0.875rem, 1.3125rem, $primary-blue, 0.01563rem);
+      }
+    }
+  }
+
+  .emptyPage {
+    padding: 2rem 0;
+    width: 34.5625rem;
+    margin: 0 auto;
+
+    @include mobile() {
+      width: auto;
+    }
+  }
+}

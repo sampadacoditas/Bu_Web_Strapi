@@ -1,0 +1,43 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.dropdownWrapper {
+  display: flex;
+  flex-direction: column;
+  .label {
+    @include textStyling($text-font, normal, 500, 0.875rem, 140%, $text-color, 0.01563rem);
+    padding-bottom: 0.25rem;
+  }
+
+  .dropdown {
+    border-radius: 4px;
+    width: 100%;
+    height: 53px;
+    border: 1px solid $grey-100;
+    background: var(--colors-ada-theme-background-white, $white);
+    padding: 0.75rem;
+    @include textStyling($text-font, normal, 400, 16px, 150%, transparent, 0.5px);
+
+    &:hover {
+      border: 2px solid $primary-blue;
+    }
+
+    .option {
+      @include textStyling($text-font, normal, 400, 16px, 150%, $gray-1100, 0.5px);
+      display: block;
+      padding: 1rem;
+
+      &.placeholder {
+        display: none;
+      }
+    }
+  }
+
+  .placeholderCol {
+    color: $grey-300;
+  }
+
+  .activeColor {
+    color: $text-color;
+  }
+}

@@ -1,0 +1,35 @@
+export const FOOTER_CONSTANTS = {
+  codeIsArt: "Code is art, Code is us",
+  rightsReserved: `© ${new Date().getFullYear()} Coditas. All rights reserved.`,
+  pages: "Pages",
+  inMedia: "In Media",
+  socialMedia: "Social Media",
+  privacyPolicy: "Privacy Policy",
+  aboutUs: "About Us",
+  compliances: "Compliances",
+  contactUs: "Contact Us",
+  yourStory: "YourStory",
+  economicTimes: "Economic Times",
+  expressComputers: "Express Computers",
+  ciol: "CIOL",
+  linkedIn: "LinkedIn",
+  instagram: "Instagram",
+  facebook: "Facebook",
+  twitter: "Twitter",
+  buildYourCareer: "Build your career",
+  certifiedGreatPlace: "Be a part of a certified Great Place to Work!",
+  greatPlaceToWork: "Great Place To Work",
+  Notice: "Notice",
+};
+
+export const FOOTER_LINKS = {
+  YOURSTORY: "https://yourstory.com/2020/01/startup-iit-bombay-alumni-bootstrapped-coding/amp",
+  ECONOMIC_TIMES:
+    "https://hr.economictimes.indiatimes.com/news/trends/employee-experience/the-people-first-culture-why-it-matters/78778556",
+  EXPRESS_COMPUTERS: "https://www.expresscomputer.in/cloud/clean-coders-why-india-isnt-on-the-list/63760/",
+  CIOL: "https://www.ciol.com/startup-circle-success-story-coditas-connectandsell-case-study/",
+  LINKEDIN: "https://www.linkedin.com/company/coditas/",
+  INSTAGRAM: "https://www.instagram.com/coditas_hq/",
+  FACEBOOK: "https://www.facebook.com/Coditas/",
+  TWITTER: "https://twitter.com/coditashq",
+};

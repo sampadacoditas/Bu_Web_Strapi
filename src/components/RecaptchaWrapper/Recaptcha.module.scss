@@ -1,0 +1,23 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.captchaWrapper {
+  @include flexProps(flex, center, center, null, null, null);
+  column-gap: 0.75rem;
+  padding: 0.75rem;
+  border: 0.06rem solid $gray-100;
+  border-radius: 0.25rem;
+  @include mobile() {
+    @include flexProps(flex, center, flex-start, null, null, null);
+  }
+  .captchaText {
+    @include textStyling($text-font, normal, $normal-font, $font-size-sm, 1.26rem, $primary-blue-1000, 0.03rem);
+  }
+  .captcha {
+    display: none;
+    position: relative;
+  }
+  .captchCheckbox {
+    cursor: pointer;
+  }
+}
