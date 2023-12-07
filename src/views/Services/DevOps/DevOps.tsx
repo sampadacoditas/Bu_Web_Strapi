@@ -10,12 +10,22 @@ import {
 } from "@/components";
 import { DEV_OPS, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_DEVOPS_SERVICES_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS, getFormattedCaseStudyData } from "@/utils/helper";
+import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
 import { CONTACT_US_SCHEMA_DEVOPS_SERVICE } from "@/utils/schemas";
 import style from "./DevOps.module.scss";
 
 const DevOpsServices = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
+
+  const [
+    devopsCertifiedObject,
+    ourServicesObject,
+    howWeWorkDetailsObject,
+    caseStudyObject,
+    ourClientObject,
+    testimonyObject,
+    formDataObject,
+  ] = pageData.pageComponents;
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
@@ -23,20 +33,23 @@ const DevOpsServices = (props: any) => {
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     imagesArray: pageData?.cardArray1,
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
   const devopsCertifiedData = {
-    CONSTANTS: { TITLE: pageData?.sectionTitle1, DESCTIPTION: pageData?.description1 },
-    badges: pageData?.imagesSection1,
+    CONSTANTS: {
+      TITLE: devopsCertifiedObject?.headerDetails.title,
+      DESCTIPTION: devopsCertifiedObject?.headerDetails.desc,
+    },
+    badges: devopsCertifiedObject?.images,
   };
 
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle2,
-      desc: pageData?.description2,
+      header: ourServicesObject?.headerDetails.title,
+      desc: ourServicesObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServicesObject?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -46,37 +59,37 @@ const DevOpsServices = (props: any) => {
   };
 
   const howWeWorkDetails = {
-    title: pageData?.sectionTitle3,
-    description: pageData?.description3,
-    howWeWorkCard: pageData?.ourWorkCards,
+    title: howWeWorkDetailsObject?.headerDetails.title,
+    description: howWeWorkDetailsObject?.headerDetails.desc,
+    howWeWorkCard: howWeWorkDetailsObject?.howWeWorkCards,
   };
   const caseStudyData = {
-    title: pageData?.sectionTitle4,
-    description: pageData?.description4,
+    title: caseStudyObject?.title,
+    description: caseStudyObject?.desc,
     itemList: getFormattedCaseStudyData(caseStudyResp) || [],
     viewAllBtnBtnText: pageData?.caseStudyBtnText,
     cardBtnText: pageData?.cardBtnText,
   };
   const digitallyTransformedData = {
-    titleText: pageData?.sectionTitle5,
-    subTitle: pageData?.description5,
-    imagesArray: pageData?.technologyImages,
+    titleText: ourClientObject?.headerDetails.title,
+    subTitle: ourClientObject?.headerDetails.desc,
+    imagesArray: ourClientObject?.ourClientsImagesList,
   };
 
   const testimonyData = {
-    heading: pageData?.sectionTitle7,
-    employeeTestimony: pageData?.testimony,
-    commonSvgs: pageData?.commonSvgs || {},
+    heading: testimonyObject?.headerDetails.title,
+    employeeTestimony: testimonyObject?.testimonies,
+    commonSvgs: testimonyObject?.commonSvgs || {},
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle6,
-      description: pageData?.description6,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
       ...pageData.formContents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs || {},
   };
 

@@ -32,7 +32,6 @@ const OpenPositions = ({
   const handleViewAll = () => {
     push(PAGE_ROUTES.CAREERS_DOMAIN);
   };
-  console.log("open position");
   return (
     <div {...{ [CUSTOM_ID]: LIGHT_BG_NAV }} className={styles.container} id="open-position">
       <div className={`content`}>

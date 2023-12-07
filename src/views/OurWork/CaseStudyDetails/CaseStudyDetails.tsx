@@ -7,7 +7,6 @@ import CaseStudySection from "@/components/CaseStudySection/CaseStudySection";
 
 function CaseStudyDetails(props: any) {
   const { serviceName, caseStudyData, allCaseStudyData } = props;
-  console.log(caseStudyData);
   const formData = {
     constant: {
       title: caseStudyData?.form?.formTitle,

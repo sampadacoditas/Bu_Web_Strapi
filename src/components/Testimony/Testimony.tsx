@@ -3,6 +3,7 @@ import { ITestimony } from "./ITestimony";
 import { CUSTOM_ID, DARK_BG_NAV } from "@/constants/constants";
 import style from "./Testimony.module.scss";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 
 const Testimony = (props: ITestimony) => {
   const { employeeTestimony, heading, testimonyStyle, commonSvgs = {} } = props;
@@ -47,7 +48,7 @@ const Testimony = (props: ITestimony) => {
               <div className={style.profileImgMob}>
                 <CustomImage src={commonSvgs?.zigzagLines || ""} className={style.zigzag} alt="Zig Zag Lines" />
                 <CustomImage src={commonSvgs?.blueCircle || ""} className={style.blueCircle} alt="Blue Circle" />
-                <CustomImage src={item?.profileImg} className={style.personMob} alt="Profile" />
+                <CustomImage src={getImageUrl(item?.profileImg)} className={style.personMob} alt="Profile" />
               </div>
               <CustomImage src={commonSvgs?.qoute || ""} className={style.quote} alt="Quote" />
               <div className={style.description}>
@@ -60,7 +61,7 @@ const Testimony = (props: ITestimony) => {
               <div className={style.profileImg}>
                 <CustomImage src={commonSvgs?.zigzagLines} className={style.zigzag} alt="Zig Zag Lines" />
                 <CustomImage src={commonSvgs?.blueCircle} className={style.blueCircle} alt="Blue Circle" />
-                <CustomImage src={item?.profileImg} className={style.person} alt="Profile" />
+                <CustomImage src={getImageUrl(item?.profileImg)} className={style.person} alt="Profile" />
               </div>
             </div>
           );
@@ -68,13 +69,13 @@ const Testimony = (props: ITestimony) => {
 
         <div className={style.buttons}>
           <CustomImage
-            src={prevBtnDisabled ? commonSvgs?.disabledLeftBtn : commonSvgs?.enabledLeftBtn}
+            src={getImageUrl(prevBtnDisabled ? commonSvgs?.disabledLeftBtn : commonSvgs?.enabledLeftBtn)}
             onClick={!prevBtnDisabled ? handlePrev : handleNoAction}
             alt="Left Arrow"
             className={style.btnArrow}
           />
           <CustomImage
-            src={nextBtnDisabled ? commonSvgs?.disabledRightBtn : commonSvgs?.enabledRightBtn}
+            src={getImageUrl(nextBtnDisabled ? commonSvgs?.disabledRightBtn : commonSvgs?.enabledRightBtn)}
             onClick={!nextBtnDisabled ? handleNext : handleNoActionNext}
             alt="Right Arrow"
             className={style.btnArrow}

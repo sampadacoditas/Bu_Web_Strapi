@@ -8,27 +8,29 @@ import {
 } from "@/components";
 import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS } from "@/utils/helper";
+import { ServicesContactUS, getImageUrl } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import style from "./MobileDevelopment.module.scss";
 
 const MobileDevelopment = (props: any) => {
   const { attributes: pageData } = props;
+  const [ourServicesObject, howWeWorkObject, ourExpertiseObject, ourClientObject, formDataObject] =
+    pageData.pageComponents;
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle1,
-      desc: pageData?.description1,
+      header: ourServicesObject?.headerDetails.title,
+      desc: ourServicesObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServicesObject?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -38,35 +40,35 @@ const MobileDevelopment = (props: any) => {
   };
 
   const howWeWorkData = {
-    title: pageData?.sectionTitle2,
-    description: pageData?.description2,
-    howWeWorkCard: pageData?.ourWorkCards || [],
+    title: howWeWorkObject?.headerDetails.title,
+    description: howWeWorkObject?.headerDetails.desc,
+    howWeWorkCard: howWeWorkObject?.howWeWorkCards || [],
   };
 
   const ourExpertiseData = {
     headerData: {
-      header: pageData?.sectionTitle3,
-      desc: pageData?.description3,
+      header: ourExpertiseObject?.headerDetails.title,
+      desc: ourExpertiseObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.technologyImages || [],
+    cardsArray: ourExpertiseObject?.ourExpertiseImages || [],
   };
 
   const ourClientsData = {
     headerData: {
-      header: pageData?.sectionTitle4,
-      desc: pageData?.description4,
+      header: ourClientObject?.headerDetails.title,
+      desc: ourClientObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.imagesSection1 || [],
+    cardsArray: ourClientObject?.ourClientsImagesList || [],
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle5,
-      description: pageData?.description5,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
       ...pageData.formContents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs || {},
   };
 

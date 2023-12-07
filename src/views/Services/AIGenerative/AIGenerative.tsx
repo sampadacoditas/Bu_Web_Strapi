@@ -15,21 +15,29 @@ import style from "./AIGenerative.module.scss";
 
 const AIGenerative = (props: any) => {
   const { attributes: pageData } = props;
+  const [
+    ourServicesObject,
+    howWeWorkDetailsObject,
+    ourexpertiseObject,
+    whyChooseCoditasDataObject,
+    ourClientObject,
+    formDataObject,
+  ] = pageData.pageComponents;
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle1,
-      desc: pageData?.description1,
+      header: ourServicesObject?.headerDetails.title,
+      desc: ourServicesObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServicesObject?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -39,39 +47,39 @@ const AIGenerative = (props: any) => {
   };
 
   const howWeWorkDetails = {
-    title: pageData?.sectionTitle2,
-    description: pageData?.description2,
-    howWeWorkCard: pageData?.ourWorkCards,
+    title: howWeWorkDetailsObject?.headerDetails.title,
+    description: howWeWorkDetailsObject?.headerDetails.desc,
+    howWeWorkCard: howWeWorkDetailsObject?.howWeWorkCards,
   };
 
   const ourExpertiesData = {
-    title: pageData?.sectionTitle3,
-    description: pageData?.description3,
-    servicesImages: pageData?.technologyImages,
+    title: ourexpertiseObject?.headerDetails.title,
+    description: ourexpertiseObject?.headerDetails.desc,
+    servicesImages: ourexpertiseObject?.ourExpertiseImages,
   };
 
   const whyChooseCoditasData = {
     headerData: {
-      header: pageData?.sectionTitle4,
-      desc: pageData?.description4,
+      header: whyChooseCoditasDataObject?.headerDetails.title,
+      desc: whyChooseCoditasDataObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.whyChooseCoditas,
+    cardsArray: whyChooseCoditasDataObject?.whyChooseCoditasCards,
   };
 
   const digitallyTransformedData = {
-    titleText: pageData?.sectionTitle5,
-    subTitle: pageData?.description5,
-    imagesArray: pageData?.imagesSection1,
+    titleText: ourClientObject?.headerDetails.title,
+    subTitle: ourClientObject?.headerDetails.desc,
+    imagesArray: ourClientObject?.ourClientsImagesList,
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle6,
-      description: pageData?.description6,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
       ...pageData.formContents,
     },
-    fields: pageData?.cardArray3,
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData,
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs || {},
   };
 

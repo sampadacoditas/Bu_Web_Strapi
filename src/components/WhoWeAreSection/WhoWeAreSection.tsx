@@ -3,6 +3,7 @@ import { CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
 import { IWhoWeAreSectionProps, IWhoWeAreCardDetail, IWhoWeAreDescriptions } from "./IWhoWeareSection";
 import style from "./WhoWeAreSection.module.scss";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 
 const WhoWeAreSection: React.FC<IWhoWeAreSectionProps> = (props: any) => {
   const { contentContainerStyle, title, whoWeAreDescriptions, whoWeAreCardDetails } = props;
@@ -23,7 +24,7 @@ const WhoWeAreSection: React.FC<IWhoWeAreSectionProps> = (props: any) => {
             {whoWeAreCardDetails?.map((item: IWhoWeAreCardDetail, index: number) => {
               return (
                 <div className={style.whoWeAreCardsLayout} key={index}>
-                  <CustomImage src={item.icon} alt="icon" />
+                  <CustomImage src={getImageUrl(item.icon)} alt="icon" />
                   <div>
                     <p className={style.cardTitle}>{item.cardTitle}</p>
                     <p className={style.cardDescription}>{item.cardDescription}</p>

@@ -16,6 +16,7 @@ import {
 } from "@/constants/constants";
 import { ServicesContactUsForm } from "@/services/servicesContact.service";
 import styles from "./ServicesContactUs.module.scss";
+import { getImageUrl } from "@/utils/helper";
 
 const ContactUsField = (props: IContactUsField) => {
   const { isMobileView } = useWindowWidth();
@@ -104,7 +105,6 @@ const ServicesContactUs = (props: IServicesContactUs) => {
     resolver: yupResolver(props.schema),
     defaultValues: props.initialValues,
   });
-
   const { isDirty, isValid } = methods.formState;
 
   const reInitializeValues = () => {
@@ -186,7 +186,7 @@ const ServicesContactUs = (props: IServicesContactUs) => {
       <div className={`content ${styles.container}`} ref={ref}>
         <div
           className={`${styles.leftSection} ${props.customBackgroundImgClass || ""}`}
-          style={{ backgroundImage: `url(${props?.sideFormImage})` }}
+          style={{ backgroundImage: `url(${getImageUrl(props?.sideFormImage)})` }}
         >
           <div className={styles.titleContainer}>
             <p className={styles.title}>{props.constant.title}</p>
@@ -197,7 +197,15 @@ const ServicesContactUs = (props: IServicesContactUs) => {
           <FormProvider {...methods}>
             <form className={styles.formContainer} onSubmit={methods.handleSubmit(handleSubmit)} autoComplete="off">
               {props.fields.map((field: IContactUsField, index: number) => {
-                return <ContactUsField {...field} key={index} reInitialize={reInitialize} disabled={disableFields} commonSvgs={props?.commonSvgs}/>;
+                return (
+                  <ContactUsField
+                    {...field}
+                    key={index}
+                    reInitialize={reInitialize}
+                    disabled={disableFields}
+                    commonSvgs={props?.commonSvgs}
+                  />
+                );
               })}
 
               <div className={styles.btnContainer}>

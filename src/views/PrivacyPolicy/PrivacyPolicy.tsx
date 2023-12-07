@@ -1,6 +1,7 @@
 import { CustomImage, HeroSection } from "@/components";
 import { CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
 import styles from "./PrivacyPolicy.module.scss";
+import { getImageUrl } from "@/utils/helper";
 
 const Section = ({
   title,
@@ -38,8 +39,6 @@ const Section = ({
 
 const PrivacyPolicy = (props: any) => {
   const { attributes: pageData } = props;
-
-  console.log("pageData", pageData);
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,

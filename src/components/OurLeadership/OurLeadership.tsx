@@ -4,6 +4,7 @@ import { Button, CustomImage, Modal } from "@/components";
 import { CUSTOM_ID, DARK_BG_NAV, LIGHT_BG_NAV } from "@/constants/constants";
 import { OurLeadershipType, cardDataType, cardType } from "./IOurLeadership";
 import styles from "./OurLeadership.module.scss";
+import { getImageUrl } from "@/utils/helper";
 
 const Card = ({ data, handleClick, buttonText }: cardType) => {
   const { imgSrc } = data;
@@ -16,7 +17,7 @@ const Card = ({ data, handleClick, buttonText }: cardType) => {
   return (
     <div className={styles.cardContainer} onClick={handleModalOpen}>
       <div className={styles.cardImage}>
-        <CustomImage src={imgSrc} className={styles.personImage} alt="Employee" />
+        <CustomImage src={getImageUrl(imgSrc)} className={styles.personImage} alt="Employee" />
       </div>
       <div className={styles.cardDetails}>
         <div className={styles.cardContent}>
@@ -63,8 +64,6 @@ const OurLeadership = ({ headerData, cardsArray, buttonLabel, commonSvgs }: OurL
     setModalData(null);
   };
 
-  console.log("commonSvgs", commonSvgs)
-
   return (
     <div className={styles.container} id="headSectionAboutUs">
       <div className={`content`}>
@@ -75,8 +74,16 @@ const OurLeadership = ({ headerData, cardsArray, buttonLabel, commonSvgs }: OurL
             <div className={`${styles.imageContainer}`}>
               <div className="content ">
                 <div className={styles.doodleDots}>
-                  <CustomImage src={commonSvgs?.doodleDotsLeft} className={styles.doodleDotsLeft} alt="Left Doodle Dots" />
-                  <CustomImage src={commonSvgs?.doodleDotsLeft} className={styles.doodleDotsRight} alt="Right Doodle Dots" />
+                  <CustomImage
+                    src={commonSvgs?.doodleDotsLeft}
+                    className={styles.doodleDotsLeft}
+                    alt="Left Doodle Dots"
+                  />
+                  <CustomImage
+                    src={commonSvgs?.doodleDotsLeft}
+                    className={styles.doodleDotsRight}
+                    alt="Right Doodle Dots"
+                  />
                 </div>
               </div>
             </div>
@@ -112,7 +119,7 @@ const OurLeadership = ({ headerData, cardsArray, buttonLabel, commonSvgs }: OurL
           isOpen={isModalOpen}
           onClose={handleModalClose}
           header={{
-            image: modalData?.imgSrc || "",
+            image: getImageUrl(modalData?.imgSrc) || "",
             name: modalData?.name || "",
             position: modalData?.position || "",
           }}
