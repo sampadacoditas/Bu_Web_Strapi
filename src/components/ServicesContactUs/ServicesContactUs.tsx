@@ -30,6 +30,7 @@ const ContactUsField = (props: IContactUsField) => {
         name={props.name}
         maxLength={props.maxLength}
         disabled={props.disabled}
+        isRequired={props?.isRequired}
       />
     );
   }
