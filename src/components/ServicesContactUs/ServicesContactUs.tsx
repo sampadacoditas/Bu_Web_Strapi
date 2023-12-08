@@ -30,6 +30,7 @@ const ContactUsField = (props: IContactUsField) => {
         name={props.name}
         maxLength={props.maxLength}
         disabled={props.disabled}
+        isRequired={props?.isRequired}
       />
     );
   }
@@ -102,8 +103,8 @@ const ServicesContactUs = (props: IServicesContactUs) => {
   const { isMobileView } = useWindowWidth();
   const methods = useForm({
     mode: FORM_VALIDATE_MODE,
-    resolver: yupResolver(props.schema),
-    defaultValues: props.initialValues,
+    resolver: yupResolver(props?.schema),
+    defaultValues: props?.initialValues,
   });
   const { isDirty, isValid } = methods.formState;
 

@@ -29,14 +29,14 @@ const WhyChooseCoditas = ({
   cardAlignment,
   buttonLabel,
 }: WhyCooseCoditasType) => {
-  const initialCardList = cardsArray.slice(0, 6);
-  const initialMobileCardList = cardsArray.slice(0, 4);
+  const initialCardList = cardsArray?.slice(0, 6);
+  const initialMobileCardList = cardsArray?.slice(0, 4);
   const [aarayListToBeShown, setAarayListToBeShown] = useState<cardDataType[]>(initialCardList);
   const [mobileCardsList, setMobileCardsList] = useState<cardDataType[]>(initialMobileCardList);
   const [isButtonClicked, setIsButtonClicked] = useState<boolean>(false);
   const { isMobileView } = useWindowWidth();
   const cardsToBeMapped = isMobileView ? mobileCardsList : aarayListToBeShown;
-  const checkCardsLength = isMobileView ? cardsArray.length > 4 : cardsArray.length > 6;
+  const checkCardsLength = isMobileView ? cardsArray?.length > 4 : cardsArray?.length > 6;
   const handleViewMore = () => {
     const headSectionElement = document.getElementById("headSectionWhyChooseCoditas");
     setIsButtonClicked(true);
@@ -68,7 +68,7 @@ const WhyChooseCoditas = ({
             checkCardsLength ? "" : styles.cardBoxBottomPadding
           }`}
         >
-          {cardsToBeMapped.map((data, index: number) => (
+          {cardsToBeMapped?.map((data, index: number) => (
             <WhyChooseCoditasCard data={data} key={index} />
           ))}
         </div>

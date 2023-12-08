@@ -37,24 +37,26 @@ const Home = (props: any) => {
     buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
+  const [digitalTransform, ourServices, tech, hiringNow, ourOffices ] = pageData?.pageComponents;
+
   const digitallyTransformedData = {
     headerData: {
-      header: pageData?.digitallyTransformedSection?.headerDetails?.title,
-      desc: pageData?.digitallyTransformedSection?.headerDetails?.desc,
+      header: digitalTransform?.headerDetails?.title,
+      desc: digitalTransform?.headerDetails?.desc,
     },
-    cardsArray: pageData?.digitallyTransformedSection?.digitallyTransformedImages || [],
+    cardsArray: digitalTransform?.digitallyTransformedImages || [],
   };
 
   const ourServicesData = {
     headerData: {
-      header: pageData?.ourServicesCardsSection?.headerDetails?.title,
-      desc: pageData?.ourServicesCardsSection?.headerDetails?.desc,
+      header: ourServices?.headerDetails?.title,
+      desc: ourServices?.headerDetails?.desc,
     },
-    cardsArray: pageData?.ourServicesCardsSection?.serviceCards || [],
+    cardsArray: ourServices?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
-      cardBtnText: pageData?.ourServicesCardsSection?.cardBtnText,
+      cardBtnText: ourServices?.cardBtnText,
     },
     commonSvgs: pageData?.commonSvgs || {},
   };
@@ -68,23 +70,23 @@ const Home = (props: any) => {
 
   const technologyData = {
     headerData: {
-      header: pageData?.technologyImageSection?.headerDetails?.title,
-      desc: pageData?.technologyImageSection?.headerDetails?.desc,
+      header: tech?.headerDetails?.title,
+      desc: tech?.headerDetails?.desc,
     },
-    cardsArray: pageData?.technologyImageSection?.technologyImages || {},
+    cardsArray: tech?.technologyImages || {},
   };
 
   const hiringNowData = {
     headerData: {
-      header: pageData?.hiringNowSection?.headerDetails?.title,
-      desc: pageData?.hiringNowSection?.headerDetails?.desc,
+      header: hiringNow?.headerDetails?.title,
+      desc: hiringNow?.headerDetails?.desc,
     },
-    cardsArray: pageData?.hiringNowSection?.hiringNowCards || [],
+    cardsArray: hiringNow?.hiringNowCards || [],
   };
 
   const ourOfficesData = {
-    title: pageData?.ourOfficeSection?.headerDetails?.title,
-    addressData: pageData?.ourOfficeSection?.ourOffice || [],
+    title: ourOffices?.heading,
+    addressData: ourOffices?.ourOffice || [],
     map: getImageUrl(pageData?.map),
     commonSvgs: pageData?.commonSvgs,
     mappedSvgs: pageData?.mappedSvgs,

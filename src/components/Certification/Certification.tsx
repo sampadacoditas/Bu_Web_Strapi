@@ -2,6 +2,7 @@ import { ICertification } from "./ICertification";
 import style from "./Certification.module.scss";
 import { CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 const Certification = (props: ICertification) => {
   const { title, description, badgeList, customContainerClass } = props;
   return (
@@ -17,7 +18,7 @@ const Certification = (props: ICertification) => {
         {badgeList.map(item => {
           return (
             <div className={style.badge} key={item.id}>
-              <CustomImage src={item.src} alt="Badge" />
+              <CustomImage src={getImageUrl(item?.src ?? item?.badge)} alt="Badge" />
             </div>
           );
         })}

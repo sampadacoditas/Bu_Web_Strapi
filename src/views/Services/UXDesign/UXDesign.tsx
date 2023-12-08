@@ -15,6 +15,8 @@ import style from "./UXDesign.module.scss";
 
 const UXDesign = (props: any) => {
   const { attributes: pageData } = props;
+  
+  const [ourServices, howWeWork, ourExpertise, whyCoditas, ourClients, needHelp] = pageData?.pageComponents;
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
@@ -26,10 +28,10 @@ const UXDesign = (props: any) => {
 
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle1,
-      desc: pageData?.description1,
+      header: ourServices?.headerDetails?.title,
+      desc: ourServices?.headerDetails?.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServices?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -39,43 +41,43 @@ const UXDesign = (props: any) => {
   };
 
   const howWeWorkData = {
-    title: pageData?.sectionTitle2,
-    description: pageData?.description2,
-    howWeWorkCard: pageData?.ourWorkCards || [],
+    title: howWeWork?.headerDetails.title,
+    description: howWeWork?.headerDetails.desc,
+    howWeWorkCard: howWeWork?.howWeWorkCards || [],
   };
 
   const ourExpertiseData = {
     headerData: {
-      header: pageData?.sectionTitle3,
-      desc: pageData?.description3,
+      header: ourExpertise?.headerDetails?.title,
+      desc: ourExpertise?.headerDetails?.desc,
     },
-    cardsArray: pageData?.technologyImages || [],
+    cardsArray: ourExpertise?.ourExpertiseImages || [],
   };
 
   const whyChooseCoditas = {
     headerData: {
-      tile: pageData?.sectionTitle4,
-      desc: pageData?.description4,
+      tile: whyCoditas?.headerDetails?.title,
+      desc: whyCoditas?.headerDetails?.desc,
     },
-    cardsArray: pageData?.whyChooseCoditas,
+    cardsArray: whyCoditas?.whyChooseCoditasCards,
   };
 
   const ourClientsData = {
     headerData: {
-      header: pageData?.sectionTitle5,
-      desc: pageData?.description5,
+      header: ourClients?.headerDetails?.title,
+      desc: ourClients?.headerDetails?.desc,
     },
-    cardsArray: pageData?.imagesSection1 || [],
+    cardsArray: ourClients?.ourClientsImagesList || [],
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle6,
-      description: pageData?.description6,
+      title: needHelp?.formTitle,
+      description: needHelp?.formDesc,
       ...pageData.formContents,
     },
-    fields: pageData?.cardArray3,
-    sideFormImage: pageData?.sideFormImage,
+    fields: needHelp?.formFieldData,
+    sideFormImage: needHelp?.formSideImage,
     commonSvgs: pageData?.commonSvgs || {},
   };
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ILocationCard } from "./ILocationCard";
 import { CustomImage } from "..";
 import SVGComponent from "@/assets/icons";
+import { getImageUrl } from "@/utils/helper";
 
 const LocationCard = (props: ILocationCard) => {
   const { addresses, flagIcon, location, mappedSvgs } = props;
@@ -28,7 +29,7 @@ const LocationCard = (props: ILocationCard) => {
     <div className={style.locationCardContainer}>
       <div className={style.title}>
         <div className={style.countryIconContainer}>
-          <CustomImage className={style.countryIcon} src={flagIcon} alt="Flag" />
+          <CustomImage className={style.countryIcon} src={getImageUrl(flagIcon)} alt="Flag" />
         </div>
         <span className={style.location}>{location}</span>
       </div>
