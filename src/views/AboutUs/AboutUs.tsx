@@ -20,7 +20,7 @@ const AboutUs = (props: any) => {
 
   const whoAreWeData = {
     title: whoAreWeObject?.headerDetails?.title,
-    whoWeAreDescriptions: pageData?.cardArray2,
+    whoWeAreDescriptions: whoAreWeObject?.descList,
     whoWeAreCardDetails: whoAreWeObject?.whoAreWeCards || [],
   };
 

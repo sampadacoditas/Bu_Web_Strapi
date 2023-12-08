@@ -4,7 +4,7 @@ import { DomainListing, CareerDomainHeroSection } from "@/components";
 import { getCategories } from "./DomainHelper";
 import style from "./Domain.module.scss";
 import { useRouter } from "next/router";
-import { encodeParam } from "@/utils/helper";
+import { encodeParam, getImageUrl } from "@/utils/helper";
 
 const Domain = (props: any) => {
   const { attributes: pageData } = props;

@@ -41,7 +41,7 @@ const CyberSecurity = (props: any) => {
     constant: {
       title: formDataObject?.formTitle,
       description: formDataObject?.formDesc,
-      ...pageData.formContents,
+      ...formDataObject.contents,
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,

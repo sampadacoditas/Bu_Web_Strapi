@@ -17,9 +17,9 @@ import style from "./DataScience.module.scss";
 
 const DataScience = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
-  console.log("Data Science : ", pageData?.pageComponents);
   
-  const [certified, ourServices, challengesWeSolve, ourExpertise, howWeWork, caseStudies, ourClients, needHelp] = pageData?.pageComponents;
+  const [certified, ourServices, challengesWeSolve, ourExpertise, howWeWork, caseStudies, ourClients, formDataObject] =
+    pageData?.pageComponents;
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -75,13 +75,13 @@ const DataScience = (props: any) => {
 
   const formData = {
     constant: {
-      title: needHelp?.formTitle,
-      description: needHelp?.formDesc,
-      ...pageData.formContents,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
+      ...formDataObject.contents,
     },
-    fields: needHelp?.formFieldData || [],
-    sideFormImage: needHelp?.formSideImage,
-    commonSvgs: pageData?.commonSvgs || {},
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
+    commonSvgs: formDataObject?.commonSvgs || {},
   };
 
   const getFormmatedData = (data: any) => {

@@ -4,7 +4,7 @@ import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
 import AllSection from "./AllSection/AllSection";
 import style from "./OurWork.module.scss";
-import { getFormattedCaseStudyData } from "@/utils/helper";
+import { getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
 
 const OurWork = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
@@ -15,21 +15,21 @@ const OurWork = (props: any) => {
     buttonText: pageData?.heroBannerSection?.buttonText,
     buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
   };
-
+  const [formDataObject, emptyPageObject] = pageData.pageComponents;
   const emptyPageData = {
-    title: pageData?.sectionTitle2,
-    description: pageData?.description2,
-    logo: pageData?.imagesSection1?.emptyPage,
+    title: emptyPageObject?.title,
+    description: emptyPageObject?.desc,
+    logo: emptyPageObject?.emptyPage,
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle1,
-      description: pageData?.description1,
-      ...pageData.formContents,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
+      ...formDataObject.contents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs,
   };
 

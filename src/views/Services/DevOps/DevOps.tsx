@@ -25,13 +25,15 @@ const DevOpsServices = (props: any) => {
     ourClientObject,
     testimonyObject,
     formDataObject,
+    devopsBannerLogos,
   ] = pageData.pageComponents;
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
-    imagesArray: pageData?.cardArray1,
+    imagesArray: devopsBannerLogos?.devopsBannerLogos,
+    imageArrayText: devopsBannerLogos?.title,
     buttonText: pageData?.heroBannerSection?.buttonText,
     buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
@@ -86,7 +88,7 @@ const DevOpsServices = (props: any) => {
     constant: {
       title: formDataObject?.formTitle,
       description: formDataObject?.formDesc,
-      ...pageData.formContents,
+      ...formDataObject.contents,
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,

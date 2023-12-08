@@ -121,18 +121,20 @@ const HeroSection = (props: IHeroSection) => {
           {imagesArray && (
             <div className={style.bottomArrayContainer}>
               <div className={style.heroArrayText}>{imageArrayText}</div>
-              {imagesArray?.map((item, index: number) => {
-                return (
-                  <CustomImage
-                    key={index}
-                    src={item.imgSrc}
-                    alt={item.altText}
-                    className={`${style["bottomArrayContainer-image"]} ${
-                      customIconStyle ? style[customIconStyle] : style.heroIcons
-                    }`}
-                  />
-                );
-              })}
+              <div className={style.imageArray}>
+                {imagesArray?.map((item, index: number) => {
+                  return (
+                    <CustomImage
+                      key={index}
+                      src={getImageUrl(item.imgSrc)}
+                      alt={item.altText}
+                      className={`${style["bottomArrayContainer-image"]} ${
+                        customIconStyle ? style[customIconStyle] : style.heroIcons
+                      }`}
+                    />
+                  );
+                })}
+              </div>
             </div>
           )}
         </div>
