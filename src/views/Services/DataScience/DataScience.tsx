@@ -10,13 +10,16 @@ import {
 } from "@/components";
 import { DATA_SCIENCE, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_DATA_SCIENCE_SERVICES_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS, getFormattedCaseStudyData } from "@/utils/helper";
+import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
 import { CONTACT_US_SCHEMA_DATA_SCIENCE_SERVICE } from "@/utils/schemas";
 
 import style from "./DataScience.module.scss";
 
 const DataScience = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
+  
+  const [certified, ourServices, challengesWeSolve, ourExpertise, howWeWork, caseStudies, ourClients, formDataObject] =
+    pageData?.pageComponents;
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -25,60 +28,60 @@ const DataScience = (props: any) => {
     buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
   };
   const certificationData = {
-    title: pageData?.sectionTitle1,
-    description: pageData?.description1,
-    badgeList: pageData?.cardArray1,
+    title: certified?.headerDetails?.title,
+    description: certified?.headerDetails?.desc,
+    badgeList: certified?.images,
   };
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle2,
-      desc: pageData?.description2,
+      header: ourServices?.headerDetails?.title,
+      desc: ourServices?.headerDetails?.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServices?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
-      cardBtnText: pageData?.serviceBtnText,
+      cardBtnText: ourServices?.cardBtnText,
     },
     commonSvgs: pageData?.commonSvgs || {},
   };
   const challengesWeSolveData = {
-    title: pageData?.sectionTitle3,
-    description: pageData?.description3,
-    howWeWorkCard: pageData?.cardArray2,
+    title: challengesWeSolve?.headerDetails?.title,
+    description: challengesWeSolve?.headerDetails?.desc,
+    howWeWorkCard: challengesWeSolve?.challengesWeSolveCards,
   };
   const ourExpertiesData = {
-    title: pageData?.sectionTitle4,
-    description: pageData?.description4,
-    servicesImages: pageData?.technologyImages,
+    title: ourExpertise?.headerDetails?.title,
+    description: ourExpertise?.headerDetails?.desc,
+    servicesImages: ourExpertise?.ourExpertiseImages,
   };
   const howWeWorkData = {
-    title: pageData?.sectionTitle5,
-    description: pageData?.description5,
-    howWeWorkCard: pageData?.ourWorkCards,
+    title: howWeWork?.headerDetails?.title,
+    description: howWeWork?.headerDetails?.desc,
+    howWeWorkCard: howWeWork?.howWeWorkCards,
   };
   const caseStudyData = {
-    title: pageData?.sectionTitle6,
-    description: pageData?.description6,
+    title: caseStudies?.title,
+    description: caseStudies?.desc,
     itemList: getFormattedCaseStudyData(caseStudyResp) || [],
     viewAllBtnBtnText: pageData?.caseStudyBtnText,
     cardBtnText: pageData?.cardBtnText,
   };
   const digitallyTransformedData = {
-    titleText: pageData?.sectionTitle7,
-    subTitle: pageData?.description7,
-    imagesArray: pageData?.imagesSection1,
+    titleText: ourClients?.headerDetails?.title,
+    subTitle: ourClients?.headerDetails?.desc,
+    imagesArray: ourClients?.ourClientsImagesList,
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle8,
-      description: pageData?.description8,
-      ...pageData.formContents,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
+      ...formDataObject.contents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
-    commonSvgs: pageData?.commonSvgs || {},
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
+    commonSvgs: formDataObject?.commonSvgs || {},
   };
 
   const getFormmatedData = (data: any) => {

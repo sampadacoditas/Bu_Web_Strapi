@@ -2,9 +2,10 @@ import React from "react";
 import style from "./Card.module.scss";
 import { ICardProps } from "./ICard.ts";
 import { useRouter } from "next/router";
+import { getImageUrl } from "@/utils/helper.ts";
 
 const Card = (props: ICardProps) => {
-  const {push} = useRouter();
+  const { push } = useRouter();
   const { item: itemProp, theme: themeProp, customStyle: customStyleProp } = props;
   const { tag, description, image, link, linkText = "Read more", isExternalLink } = itemProp;
   const theme = themeProp ?? "light";
@@ -23,7 +24,7 @@ const Card = (props: ICardProps) => {
     <div className={`${style.card} ${style[theme + "Card"]}`}>
       <div
         className={style.cardImage}
-        style={{ backgroundImage: `url(${image})`, height: customStyle?.imgHeight ?? "10rem" }}
+        style={{ backgroundImage: `url(${getImageUrl(image)})`, height: customStyle?.imgHeight ?? "10rem" }}
       >
         {tagSpan}
       </div>

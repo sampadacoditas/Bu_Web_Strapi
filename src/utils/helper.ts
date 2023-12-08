@@ -46,4 +46,4 @@ export const getImageUrl = (image: any) => {
   const baseURL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL;
   const imageUrl = image?.data?.attributes?.url || "";
   return `${baseURL}${imageUrl}`;
-}
+};

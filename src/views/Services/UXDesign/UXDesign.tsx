@@ -16,7 +16,7 @@ import style from "./UXDesign.module.scss";
 const UXDesign = (props: any) => {
   const { attributes: pageData } = props;
   
-  const [ourServices, howWeWork, ourExpertise, whyCoditas, ourClients, needHelp] = pageData?.pageComponents;
+  const [ourServices, howWeWork, ourExpertise, whyCoditas, ourClients, formDataObject] = pageData?.pageComponents;
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
@@ -72,12 +72,12 @@ const UXDesign = (props: any) => {
 
   const formData = {
     constant: {
-      title: needHelp?.formTitle,
-      description: needHelp?.formDesc,
-      ...pageData.formContents,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
+      ...formDataObject.contents,
     },
-    fields: needHelp?.formFieldData,
-    sideFormImage: needHelp?.formSideImage,
+    fields: formDataObject?.formFieldData,
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs || {},
   };
 

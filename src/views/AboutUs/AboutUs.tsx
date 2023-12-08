@@ -5,47 +5,45 @@ import style from "./AboutUs.module.scss";
 import { getImageUrl } from "@/utils/helper";
 
 const AboutUs = (props: any) => {
-  const { push } = useRouter();
   const { attributes: pageData } = props;
+  const { push } = useRouter();
 
-  console.log("pageData", pageData);
+  const [whoAreWeObject, ourServicesObject, visionObject, leadershipObject] = pageData.pageComponents;
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
   const whoAreWeData = {
-    headerData: {
-      header: pageData?.sectionTitle1,
-      desc: pageData?.cardArray2,
-    },
-    cardsArray: pageData?.ourWorkCards || [],
+    title: whoAreWeObject?.headerDetails?.title,
+    whoWeAreDescriptions: whoAreWeObject?.descList,
+    whoWeAreCardDetails: whoAreWeObject?.whoAreWeCards || [],
   };
 
   const ourMissionData = {
     headerData: {
-      header: pageData?.sectionTitle2,
-      desc: pageData?.description2,
+      header: ourServicesObject?.headerDetails.title,
+      desc: ourServicesObject?.headerDetails?.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServicesObject?.serviceCards || [],
     commonSvgs: pageData?.commonSvgs || {},
   };
 
   const ourVisionData = {
-    header: pageData?.sectionTitle3,
-    desc: pageData?.description3,
+    titletext: visionObject?.title,
+    subtitle: visionObject?.desc,
   };
 
   const meetOurLeadersData = {
     headerData: {
-      header: pageData?.sectionTitle4,
-      desc: pageData?.description4,
+      header: leadershipObject?.headerDetails.title,
+      desc: leadershipObject?.headerDetails?.desc,
     },
-    cardsArray: pageData?.cardArray1 || [],
+    cardsArray: leadershipObject?.leadershipCardsData || [],
     buttonLabel: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -56,22 +54,13 @@ const AboutUs = (props: any) => {
   return (
     <div className={style.aboutUsPage}>
       <HeroSection
-        title={heroSectionData?.title}
-        description={heroSectionData?.description}
-        image={heroSectionData?.image}
-        buttonText={heroSectionData?.buttonText}
-        buttonSvg={heroSectionData?.buttonSvg}
+        {...heroSectionData}
         contentContainerStyle={style.heroSectionContentContainer}
         heroSectionGradientStyle={style.heroSectionGradient}
         showContactUsButton={true}
         handleContactUsClick={() => push(PAGE_ROUTES.CONTACT_US)}
       />
-      <WhoWeAreSection
-        contentContainerStyle={style.whoWeAreContainer}
-        title={whoAreWeData?.headerData?.header}
-        whoWeAreDescriptions={whoAreWeData?.headerData?.desc}
-        whoWeAreCardDetails={whoAreWeData?.cardsArray}
-      />
+      <WhoWeAreSection contentContainerStyle={style.whoWeAreContainer} {...whoAreWeData} />
       <Ourservices
         {...ourMissionData}
         hasCardButton={false}
@@ -79,7 +68,7 @@ const AboutUs = (props: any) => {
         showAllCards={true}
         customCardBoxStyle="ourMissionCardBox"
       />
-      <OurVision titletext={ourVisionData?.header} subtitle={ourVisionData?.desc} />
+      <OurVision {...ourVisionData} />
       <OurLeadership {...meetOurLeadersData} />
     </div>
   );

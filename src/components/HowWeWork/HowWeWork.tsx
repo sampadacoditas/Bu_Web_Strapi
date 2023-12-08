@@ -19,8 +19,8 @@ const HowWeWork = (props: IHowWeWork) => {
               return (
                 <div className={`${style.cardStyle} ${customCardStyle ? style[customCardStyle] : ""}`} key={index}>
                   <div className={style.howWeWorkLogo}>
-                    <CustomImage src={getImageUrl(detail.logo)} alt=""/>
-                    </div>
+                    <CustomImage src={getImageUrl(detail.logo)} alt="" />
+                  </div>
                   <div className={style.cardContent}>
                     <p className={style.cardTitle}>{detail.title}</p>
                     <p className={style.cardDesc}>{detail.description}</p>

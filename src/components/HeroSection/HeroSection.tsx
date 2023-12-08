@@ -3,7 +3,7 @@ import Typist from "react-typist-component";
 import { Button, CustomImage } from "@/components";
 import { IHeroSection } from "./IHeroSection";
 import style from "./HeroSection.module.scss";
-import { baseURLStrapi } from "@/constants/routeConstants";
+import { getImageUrl } from "@/utils/helper";
 
 const HeroSection = (props: IHeroSection) => {
   const {
@@ -100,11 +100,7 @@ const HeroSection = (props: IHeroSection) => {
                   }}
                 >
                   <span className={style.iconContainer}>
-                    <CustomImage
-                      src={`${baseURLStrapi}${buttonSvg}`}
-                      alt="paperplane"
-                      className={style.paperplaneSvg}
-                    />
+                    <CustomImage src={`${getImageUrl(buttonSvg)}`} alt="paperplane" className={style.paperplaneSvg} />
                   </span>
                   <span className={style.btnText}>{buttonText}</span>
                 </Button>
@@ -125,18 +121,20 @@ const HeroSection = (props: IHeroSection) => {
           {imagesArray && (
             <div className={style.bottomArrayContainer}>
               <div className={style.heroArrayText}>{imageArrayText}</div>
-              {imagesArray?.map((item, index: number) => {
-                return (
-                  <CustomImage
-                    key={index}
-                    src={item.imgSrc}
-                    alt={item.altText}
-                    className={`${style["bottomArrayContainer-image"]} ${
-                      customIconStyle ? style[customIconStyle] : style.heroIcons
-                    }`}
-                  />
-                );
-              })}
+              <div className={style.imageArray}>
+                {imagesArray?.map((item, index: number) => {
+                  return (
+                    <CustomImage
+                      key={index}
+                      src={getImageUrl(item.imgSrc)}
+                      alt={item.altText}
+                      className={`${style["bottomArrayContainer-image"]} ${
+                        customIconStyle ? style[customIconStyle] : style.heroIcons
+                      }`}
+                    />
+                  );
+                })}
+              </div>
             </div>
           )}
         </div>

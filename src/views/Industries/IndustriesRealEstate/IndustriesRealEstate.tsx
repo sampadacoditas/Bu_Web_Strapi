@@ -1,5 +1,5 @@
 import { HeroSection, Ourservices, ServicesContactUs, WhyChooseCoditas } from "@/components";
-import { ServicesContactUS } from "@/utils/helper";
+import { ServicesContactUS, getImageUrl } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
@@ -8,19 +8,20 @@ import styles from "./IndustriesRealEstate.module.scss";
 const IndustriesRealEstate = (props: any) => {
   const { attributes: pageData } = props;
 
+  const [ourServicesObject, whyChooseCoditasObject, formDataObject] = pageData.pageComponents;
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle1,
-      desc: pageData?.description1,
+      header: ourServicesObject?.headerDetails.title,
+      desc: ourServicesObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServicesObject?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -31,10 +32,10 @@ const IndustriesRealEstate = (props: any) => {
 
   const whyChooseCoditasData = {
     headerData: {
-      header: pageData?.sectionTitle2,
-      desc: pageData?.description2,
+      header: whyChooseCoditasObject?.headerDetails.title,
+      desc: whyChooseCoditasObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.whyChooseCoditas || [],
+    cardsArray: whyChooseCoditasObject?.whyChooseCoditasCards || [],
     buttonLabel: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -43,12 +44,12 @@ const IndustriesRealEstate = (props: any) => {
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle3,
-      description: pageData?.description3,
-      ...pageData.formContents,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
+      ...formDataObject.contents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs,
   };
 

@@ -1,5 +1,5 @@
 import { HeroSection, HowWeWork, Ourservices, ServicesContactUs } from "@/components";
-import { ServicesContactUS } from "@/utils/helper";
+import { ServicesContactUS, getImageUrl } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
@@ -7,21 +7,22 @@ import styles from "./cyberSecurity.module.scss";
 
 const CyberSecurity = (props: any) => {
   const { attributes: pageData } = props;
+  const [ourServicesObject, howWeWorkObject, formDataObject] = pageData.pageComponents;
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle1,
-      desc: pageData?.description1,
+      header: ourServicesObject?.headerDetails.title,
+      desc: ourServicesObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServicesObject?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -31,19 +32,19 @@ const CyberSecurity = (props: any) => {
   };
 
   const howWeWorkDetails = {
-    title: pageData?.sectionTitle2,
-    description: pageData?.description2,
-    howWeWorkCard: pageData?.ourWorkCards,
+    title: howWeWorkObject?.headerDetails.title,
+    description: howWeWorkObject?.headerDetails.desc,
+    howWeWorkCard: howWeWorkObject?.howWeWorkCards,
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle3,
-      description: pageData?.description3,
-      ...pageData.formContents,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
+      ...formDataObject.contents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs || {},
   };
 

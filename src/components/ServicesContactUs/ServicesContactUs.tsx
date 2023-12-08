@@ -30,6 +30,7 @@ const ContactUsField = (props: IContactUsField) => {
         name={props.name}
         maxLength={props.maxLength}
         disabled={props.disabled}
+        isRequired={props?.isRequired}
       />
     );
   }
@@ -105,7 +106,6 @@ const ServicesContactUs = (props: IServicesContactUs) => {
     resolver: yupResolver(props?.schema),
     defaultValues: props?.initialValues,
   });
-
   const { isDirty, isValid } = methods.formState;
 
   const reInitializeValues = () => {
@@ -198,7 +198,15 @@ const ServicesContactUs = (props: IServicesContactUs) => {
           <FormProvider {...methods}>
             <form className={styles.formContainer} onSubmit={methods.handleSubmit(handleSubmit)} autoComplete="off">
               {props.fields.map((field: IContactUsField, index: number) => {
-                return <ContactUsField {...field} key={index} reInitialize={reInitialize} disabled={disableFields} commonSvgs={props?.commonSvgs}/>;
+                return (
+                  <ContactUsField
+                    {...field}
+                    key={index}
+                    reInitialize={reInitialize}
+                    disabled={disableFields}
+                    commonSvgs={props?.commonSvgs}
+                  />
+                );
               })}
 
               <div className={styles.btnContainer}>

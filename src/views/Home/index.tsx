@@ -28,17 +28,20 @@ const Home = (props: any) => {
     });
     return filteredData;
   };
-  console.log(pageData);
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
-    titleArray: pageData?.cardArray1,
+    titleArray: pageData?.heroBannerSection?.typistText,
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
-  const [digitalTransform, ourServices, tech, hiringNow, ourOffices ] = pageData?.pageComponents;
+  const [digitalTransform, ourServices, tech, hiringNow, ourOffices, ourWorjObject, svgObject] =
+    pageData?.pageComponents;
+  console.log(svgObject);
+  const [markerInactiveObjecct, markerActiveObject, crossIconObject, doodleDotsRightObject, doodleDotsLeftObject] =
+    svgObject.svgs;
 
   const digitallyTransformedData = {
     headerData: {
@@ -63,8 +66,8 @@ const Home = (props: any) => {
   };
 
   const caseStudyData = {
-    title: pageData?.sectionTitle1,
-    description: pageData?.description1,
+    title: ourWorjObject?.headerDetails.title,
+    description: ourWorjObject?.headerDetails.desc,
     itemList: filteredCaseStudies(caseStudyResp) || [],
     cardBtnText: pageData?.caseStudyBtnText,
   };
@@ -135,7 +138,7 @@ const Home = (props: any) => {
       />
       <CaseStudySection
         {...caseStudyData}
-        moreCaseStudyData={pageData?.cardArray2}
+        moreCaseStudyData={ourWorjObject?.ourWorkCards}
         showMoreCard={true}
         showBigCaseStudyCard={true}
         customWrapperClass={style.caseStudyContainer}

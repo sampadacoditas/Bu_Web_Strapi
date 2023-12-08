@@ -9,6 +9,7 @@ import {
   LIGHT_BG_NAV,
 } from "@/constants/constants";
 import styles from "./DevopsCertified.module.scss";
+import { getImageUrl } from "@/utils/helper";
 
 const DevopsCertified = (props: IDevopsCertified) => {
   const { CONSTANTS, badges, customContainerClass } = props;
@@ -40,7 +41,7 @@ const DevopsCertified = (props: IDevopsCertified) => {
 
       <div className={styles.badgeContainer}>
         {badges.map((badge: IBadge, index: number) => {
-          return <CustomImage src={badge.badge} key={index} alt="badge" className={styles.badgeImg}/>;
+          return <CustomImage src={getImageUrl(badge.badge)} key={index} alt="badge" className={styles.badgeImg} />;
         })}
       </div>
 
@@ -51,7 +52,7 @@ const DevopsCertified = (props: IDevopsCertified) => {
               {badgeRow.map((badge: IBadge, index: number) => {
                 return (
                   <div className={styles.badge} key={index}>
-                    <CustomImage src={badge.badge} alt="badge" />
+                    <CustomImage src={getImageUrl(badge.badge)} alt="badge" />
                   </div>
                 );
               })}

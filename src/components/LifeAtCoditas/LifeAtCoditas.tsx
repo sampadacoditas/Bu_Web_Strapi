@@ -3,6 +3,7 @@ import { ILifeAtCoditas } from "./ILifeAtCoditas";
 import style from "./LifeAtCoditas.module.scss";
 import { CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 
 const LifeAtCoditas = (props: ILifeAtCoditas) => {
   const { contentContainerStyle, title, descriptionList, image } = props;
@@ -23,7 +24,7 @@ const LifeAtCoditas = (props: ILifeAtCoditas) => {
             </div>
           </div>
           <div className={style.imageLayout}>
-            <CustomImage className={style.imgStyle} src={image} alt={""} />
+            <CustomImage className={style.imgStyle} src={getImageUrl(image)} alt={""} />
           </div>
         </div>
       </div>
@@ -32,3 +33,4 @@ const LifeAtCoditas = (props: ILifeAtCoditas) => {
 };
 
 export default LifeAtCoditas;
+0;

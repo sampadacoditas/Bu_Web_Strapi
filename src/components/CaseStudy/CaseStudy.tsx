@@ -22,8 +22,8 @@ const CaseStudy = (props: ICaseStudy) => {
     showViewAllBtn = true,
   } = props;
   const CardList = itemList
-    .slice(0, 4)
-    .map((item, index) => (
+    ?.slice(0, 4)
+    ?.map((item, index) => (
       <Card key={`${index}` + `${item.id}`} item={item} theme={theme} />
     ));
   function viewAllClickHandler() {

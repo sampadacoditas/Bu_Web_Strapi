@@ -15,6 +15,8 @@ import style from "./QualityTest.module.scss";
 const QualityTest = (props: any) => {
   const { attributes: pageData } = props;
 
+  const [ourServices, howWeWork, ourExpertise, ourClients, formDataObject] = pageData?.pageComponents;
+
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -25,10 +27,10 @@ const QualityTest = (props: any) => {
 
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle1,
-      desc: pageData?.description1,
+      header: ourServices?.headerDetails?.title,
+      desc: ourServices?.headerDetails?.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServices?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -38,31 +40,31 @@ const QualityTest = (props: any) => {
   };
 
   const howWeWorkDetails = {
-    title: pageData?.sectionTitle2,
-    description: pageData?.description2,
-    howWeWorkCard: pageData?.ourWorkCards,
+    title: howWeWork?.headerDetails?.title,
+    description: howWeWork?.headerDetails?.desc,
+    howWeWorkCard: howWeWork?.howWeWorkCards,
   };
 
   const ourExpertiesData = {
-    title: pageData?.sectionTitle3,
-    description: pageData?.description3,
-    servicesImages: pageData?.technologyImages,
+    title: ourExpertise?.headerDetails?.title,
+    description: ourExpertise?.headerDetails?.desc,
+    servicesImages: ourExpertise?.ourExpertiseImages,
   };
 
   const digitallyTransformedData = {
-    titleText: pageData?.sectionTitle4,
-    subTitle: pageData?.description4,
-    imagesArray: pageData?.imagesSection1,
+    titleText: ourClients?.headerDetails?.title,
+    subTitle: ourClients?.headerDetails?.desc,
+    imagesArray: ourClients?.ourClientsImagesList,
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle5,
-      description: pageData?.description5,
-      ...pageData.formContents,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
+      ...formDataObject.contents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs || {},
   };
 

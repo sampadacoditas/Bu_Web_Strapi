@@ -1,40 +1,45 @@
 import { CaseStudy, HeroSection, LifeAtCoditas, OpenPositions, Testimony, WhoWeAreSection } from "@/components";
 import style from "./Careers.module.scss";
+import { getImageUrl } from "@/utils/helper";
 
 const Careers = (props: any) => {
   const { attributes: pageData } = props;
+  const [whoWeAreCardDataObject, caseStudyDataObject, lifeAtCoditasObject, testimonyObject, openPositionObject] =
+    pageData.pageComponents;
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
+
   const whoWeAreCardData = {
-    title: pageData?.sectionTitle1,
+    title: whoWeAreCardDataObject?.headerDetails.title,
     whoWeAreDescriptions: pageData?.cardArray1?.section1,
-    whoWeAreCardDetails: pageData?.ourWorkCards,
+    whoWeAreCardDetails: whoWeAreCardDataObject?.whyJoinCoditasCards,
   };
   const caseStudyData = {
-    title: pageData?.sectionTitle2,
-    description: pageData?.description2,
+    title: caseStudyDataObject?.headerDetails.title,
+    description: caseStudyDataObject?.headerDetails.desc,
+    itemList: caseStudyDataObject.coditasInMediaCards,
   };
   const lifeAtCoditasData = {
-    title: pageData?.sectionTitle3,
+    title: lifeAtCoditasObject?.title,
     descriptionList: pageData?.cardArray1?.section2,
-    image: pageData?.imagesSection1?.coverImg || "",
+    image: lifeAtCoditasObject.coverImg || "",
   };
   const testimonyData = {
-    heading: pageData?.sectionTitle4,
-    employeeTestimony: pageData?.testimony,
-    commonSvgs: pageData?.commonSvgs,
+    heading: testimonyObject?.headerDetails.title,
+    employeeTestimony: testimonyObject?.testimonies,
+    commonSvgs: testimonyObject?.openPositions,
   };
   const openPositionData = {
     headerData: {
-      header: pageData?.sectionTitle5,
+      header: openPositionObject?.headerDetails.title,
     },
-    positionsArray: pageData?.hiringNowCards,
-    openPositions: pageData?.imagesSection1?.openPositions,
+    positionsArray: openPositionObject?.openPositionsList,
+    openPositions: openPositionObject?.openPositions,
     viewAllBtn: pageData?.viewMoreBtnText,
     rightArrow: pageData?.commonSvgs?.rightChevron,
   };
@@ -62,7 +67,7 @@ const Careers = (props: any) => {
         handleJoinUsClick={scrollToOpenPositions}
       />
       <WhoWeAreSection {...whoWeAreCardData} contentContainerStyle={style.whyJoinCoditasContainer} />
-      <CaseStudy {...caseStudyData} itemList={pageData.ourServicesCards} theme={"dark"} showViewAllBtn={false} />
+      <CaseStudy {...caseStudyData} theme={"dark"} showViewAllBtn={false} />
       <LifeAtCoditas {...lifeAtCoditasData} contentContainerStyle={style.lifeAtCoditasSection} />
       <Testimony {...testimonyData} />
       <div id="open-positions-id">
