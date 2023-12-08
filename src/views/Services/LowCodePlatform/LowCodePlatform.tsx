@@ -8,25 +8,27 @@ import {
 } from "@/components";
 import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS } from "@/utils/helper";
+import { ServicesContactUS, getImageUrl } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import styles from "./LowCodePlatform.module.scss";
 
 const LowCodePlatform = (props: any) => {
   const { attributes: pageData } = props;
+  const [ourServicesObject, howWeWorkObject, ourExpertiseObject, ourClientObject, formDataObject] =
+    pageData.pageComponents;
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle1,
-      desc: pageData?.description1,
+      header: ourServicesObject?.headerDetails.title,
+      desc: ourServicesObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServicesObject?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -35,29 +37,29 @@ const LowCodePlatform = (props: any) => {
     commonSvgs: pageData?.commonSvgs || {},
   };
   const howWeWorkData = {
-    title: pageData?.sectionTitle2,
-    description: pageData?.description2,
-    howWeWorkCard: pageData?.ourWorkCards,
+    title: howWeWorkObject?.headerDetails.title,
+    description: howWeWorkObject?.headerDetails.desc,
+    howWeWorkCard: howWeWorkObject?.howWeWorkCards,
   };
   const ourExpertiesData = {
-    title: pageData?.sectionTitle3,
-    description: pageData?.description3,
-    servicesImages: pageData?.technologyImages,
+    title: ourExpertiseObject?.headerDetails.title,
+    description: ourExpertiseObject?.headerDetails.desc,
+    servicesImages: ourExpertiseObject?.ourExpertiseImages,
   };
   const digitallyTransformedData = {
-    titleText: pageData?.sectionTitle4,
-    subTitle: pageData?.description4,
-    imagesArray: pageData?.imagesSection1,
+    titleText: ourClientObject?.headerDetails.title,
+    subTitle: ourClientObject?.headerDetails.desc,
+    imagesArray: ourClientObject?.ourClientsImagesList,
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle5,
-      description: pageData?.description5,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
       ...pageData.formContents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs || {},
   };
 

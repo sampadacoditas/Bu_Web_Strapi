@@ -13,7 +13,7 @@ const WhoWeAreSection: React.FC<IWhoWeAreSectionProps> = (props: any) => {
       <div className={`content ${contentContainerStyle}`}>
         <div className={style.contentWrapper}>
           <p className={style.title}>{title}</p>
-          {whoWeAreDescriptions.map((item: string, index: number) => {
+          {whoWeAreDescriptions?.map((item: string, index: number) => {
             return (
               <div key={index} className={style.description} dangerouslySetInnerHTML={{ __html: sanitize(item) }} />
             );

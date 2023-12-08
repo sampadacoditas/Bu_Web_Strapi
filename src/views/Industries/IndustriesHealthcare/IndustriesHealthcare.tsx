@@ -8,7 +8,7 @@ import {
   WhyChooseCoditas,
   CaseStudySection,
 } from "@/components";
-import { ServicesContactUS, getFormattedCaseStudyData } from "@/utils/helper";
+import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import { HEALTHCARE, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
@@ -17,24 +17,34 @@ import styles from "./IndustriesHealthcare.module.scss";
 const IndustriesHealthcare = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
 
+  const [
+    complianceDataObject,
+    ourServicesObject,
+    whyChooseCoditasObject,
+    caseStudyDataObject,
+    digitallyTransformedObject,
+    testimonyObject,
+    formDataObject,
+  ] = pageData.pageComponents;
+
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
   const complianceData = {
-    title: pageData?.sectionTitle1,
-    subtext: pageData?.description1,
-    compliancesContent: pageData?.imagesSection1 || [],
+    title: complianceDataObject?.headerDetails.title,
+    subtext: complianceDataObject?.headerDetails.desc,
+    compliancesContent: complianceDataObject?.compliance || [],
   };
   const ourServicesData = {
     headerData: {
-      header: pageData?.sectionTitle2,
-      desc: pageData?.description2,
+      header: ourServicesObject?.headerDetails.title,
+      desc: ourServicesObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.ourServicesCards || [],
+    cardsArray: ourServicesObject?.serviceCards || [],
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -44,10 +54,10 @@ const IndustriesHealthcare = (props: any) => {
   };
   const whyChooseCoditasData = {
     headerData: {
-      header: pageData?.sectionTitle3,
-      desc: pageData?.description3,
+      header: whyChooseCoditasObject?.headerDetails.title,
+      desc: whyChooseCoditasObject?.headerDetails.desc,
     },
-    cardsArray: pageData?.whyChooseCoditas || [],
+    cardsArray: whyChooseCoditasObject?.whyChooseCoditasCards || [],
     buttonLabel: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
@@ -56,32 +66,32 @@ const IndustriesHealthcare = (props: any) => {
   };
 
   const caseStudyData = {
-    title: pageData?.sectionTitle4,
-    description: pageData?.description4,
+    title: caseStudyDataObject?.title,
+    description: caseStudyDataObject?.desc,
     itemList: getFormattedCaseStudyData(caseStudyResp) || [],
     viewAllBtnBtnText: pageData?.caseStudyBtnText,
     cardBtnText: pageData?.cardBtnText,
   };
 
   const digitallyTransformedData = {
-    titleText: pageData?.sectionTitle5,
-    subTitle: pageData?.description5,
-    imagesArray: pageData?.technologyImages,
+    titleText: digitallyTransformedObject?.headerDetails.title,
+    subTitle: digitallyTransformedObject?.headerDetails.desc,
+    imagesArray: digitallyTransformedObject?.ourClientsImagesList,
   };
   const testimonyData = {
-    heading: pageData?.sectionTitle7,
-    employeeTestimony: pageData?.testimony,
+    heading: testimonyObject?.headerDetails.title,
+    employeeTestimony: testimonyObject?.testimonies,
     commonSvgs: pageData?.commonSvgs,
   };
 
   const formData = {
     constant: {
-      title: pageData?.sectionTitle6,
-      description: pageData?.description6,
+      title: formDataObject?.formTitle,
+      description: formDataObject?.formDesc,
       ...pageData.formContents,
     },
-    fields: pageData?.cardArray3 || [],
-    sideFormImage: pageData?.sideFormImage,
+    fields: formDataObject?.formFieldData || [],
+    sideFormImage: formDataObject?.formSideImage,
     commonSvgs: pageData?.commonSvgs,
   };
 

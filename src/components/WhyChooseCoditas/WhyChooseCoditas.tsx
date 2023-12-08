@@ -4,6 +4,7 @@ import { WhyCooseCoditasType, cardDataType, cardType } from "./IWhyChooseCoditas
 import styles from "./WhyChooseCoditas.module.scss";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import { CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
+import { getImageUrl } from "@/utils/helper";
 
 const WhyChooseCoditasCard = ({ data }: cardType) => {
   return (
@@ -11,7 +12,7 @@ const WhyChooseCoditasCard = ({ data }: cardType) => {
       {data.icon && data.title && (
         <>
           <div className={styles.imageContainer}>
-            <CustomImage src={data.icon} className={styles.icon} alt="Why Choose Coditas" />
+            <CustomImage src={getImageUrl(data.icon)} className={styles.icon} alt="Why Choose Coditas" />
           </div>
           <div className={styles.cardTitle}>{data.title}</div>
         </>

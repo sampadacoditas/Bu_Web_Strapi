@@ -4,6 +4,7 @@ import useWindowWidth from "@/hooks/useWindowWidth";
 import { OpenPositionsType, listType } from "./IOpenPositions";
 import { PAGE_ROUTES, CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
 import styles from "./OpenPositions.module.scss";
+import { getImageUrl } from "@/utils/helper";
 
 const List = ({ listItem, rightArrow = "" }: listType) => {
   const { push } = useRouter();
@@ -40,13 +41,17 @@ const OpenPositions = ({
             <div className={styles.titleContainerHeader}>{headerData.header}</div>
             <div className={styles.positionsContainer}>
               <div className={styles.listBox}>
-                {positionsArray.map((data, index: number) => (
+                {positionsArray?.map((data, index: number) => (
                   <List key={index} listItem={data} rightArrow={rightArrow} />
                 ))}
               </div>
               {!isMobileView && (
                 <div className={styles.imageContainer}>
-                  <CustomImage src={openPositions} className={styles.openPositionsImage} alt="Open Positions" />
+                  <CustomImage
+                    src={getImageUrl(openPositions)}
+                    className={styles.openPositionsImage}
+                    alt="Open Positions"
+                  />
                 </div>
               )}
             </div>
