@@ -2,9 +2,10 @@ import { useFormContext } from "react-hook-form";
 import { IFormInput } from "./IFormInput";
 import styles from "./FormInput.module.scss";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 
 const FormInput = (props: IFormInput) => {
-  const { isRequired, label, placeholder, name, classNames, type = "text", commonSvgs,...rest } = props;
+  const { isRequired, label, placeholder, name, classNames, type = "text", commonSvgs, ...rest } = props;
   const {
     register,
     formState: { errors },
@@ -29,7 +30,7 @@ const FormInput = (props: IFormInput) => {
           {...rest}
           onBlur={handleBlur}
         />
-        {errors[name]?.message && <CustomImage src={commonSvgs?.errorIcon || ""} alt=""/>}
+        {errors[name]?.message && <CustomImage src={getImageUrl(commonSvgs?.errorIcon) || ""} alt="" />}
       </div>
       <span className={styles.error}>{errors[name]?.message && <>{errors[name]?.message}</>}</span>
     </div>

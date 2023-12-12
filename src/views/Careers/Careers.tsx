@@ -17,7 +17,7 @@ const Careers = (props: any) => {
 
   const whoWeAreCardData = {
     title: whoWeAreCardDataObject?.headerDetails.title,
-    whoWeAreDescriptions: pageData?.cardArray1?.section1,
+    whoWeAreDescriptions: whoWeAreCardDataObject?.descList,
     whoWeAreCardDetails: whoWeAreCardDataObject?.whyJoinCoditasCards,
   };
   const caseStudyData = {
@@ -27,7 +27,7 @@ const Careers = (props: any) => {
   };
   const lifeAtCoditasData = {
     title: lifeAtCoditasObject?.title,
-    descriptionList: pageData?.cardArray1?.section2,
+    descriptionList: lifeAtCoditasObject?.descList,
     image: lifeAtCoditasObject.coverImg || "",
   };
   const testimonyData = {

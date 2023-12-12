@@ -18,6 +18,8 @@ const Openings = (props: any) => {
   const { push, query } = useRouter();
 
   const category = decodeParam(String(query.category));
+  const [formContent, stepperForm1, stepperForm2, jobDescription, commonSvgs, emptyPageData] = pageData.pageComponents;
+  const [chevronRightIcon, search, inputCrossIcon] = commonSvgs?.svgs;
 
   const getOpeningsAsPerBusinessFunctions = (category: string | undefined, openings: any) => {
     return openings
@@ -75,16 +77,16 @@ const Openings = (props: any) => {
 
   const navigationList = [
     {
-      label: pageData?.jobDescriptionData?.breadcrumbLabels?.careers,
-      url: pageData?.routes?.careeers,
+      label: jobDescription.breadcrumbLabels?.careers,
+      url: jobDescription?.routes?.careeers,
     },
     {
-      label: pageData?.jobDescriptionData?.breadcrumbLabels?.bussinessFunc,
-      url: pageData?.routes?.domain,
+      label: jobDescription?.breadcrumbLabels?.bussinessFunc,
+      url: jobDescription?.routes?.domain,
     },
     {
       label: category ?? "",
-      url: pageData?.routes?.domain,
+      url: jobDescription?.routes?.domain,
     },
   ];
 
@@ -92,17 +94,17 @@ const Openings = (props: any) => {
     title: category,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     navigationList: navigationList,
-    rightArrow: pageData?.commonSvgs?.chevronRightIcon,
+    rightArrow: chevronRightIcon.value,
   };
 
   const jobListingData = {
-    constant: pageData?.cardArray1,
+    constant: jobDescription?.supportingText,
     emptyPageData: {
-      title: pageData?.sectionTitle2,
-      description: pageData?.description2,
-      logo: pageData?.imagesSection1?.emptyPage,
+      title: emptyPageData?.title,
+      description: emptyPageData?.desc,
+      logo: emptyPageData.emptyPage,
     },
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: { search: search.value, inputCrossIcon: inputCrossIcon.value },
   };
 
   return (

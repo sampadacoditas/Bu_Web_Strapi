@@ -6,6 +6,7 @@ import { ICalendar, IField } from "./ICalendar";
 import "react-datepicker/dist/react-datepicker.css";
 import style from "./Calendar.module.scss";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 
 const Calendar = (props: ICalendar) => {
   const { label, name, isRequired = false, commonSvgs = {} } = props;
@@ -25,7 +26,7 @@ const Calendar = (props: ICalendar) => {
                 ? DATE_FORMAT?.DATE_FORMAT_PLACEHOLDER
                 : field?.value?.toLocaleDateString(DATE_FORMAT?.LOCAlE_TO_STRING_FORMAT)}
             </span>
-            <CustomImage src={commonSvgs?.calendar} alt="Calendar" />
+            <CustomImage src={getImageUrl(commonSvgs?.calendar)} alt="Calendar" />
           </div>
         }
         renderCustomHeader={({
