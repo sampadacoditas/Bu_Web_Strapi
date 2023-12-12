@@ -12,6 +12,7 @@ import styles from "./OurServices.module.scss";
 import { getImageUrl } from "@/utils/helper";
 
 const Card = ({ data, hasCardButton, customClass, customCardContentClass, openModal, buttonText }: cardType) => {
+  console.log(data);
   const handleOpenModel = () => {
     if (openModal) {
       openModal(data.modalData);
@@ -79,13 +80,13 @@ const OurServicesModel = ({ data, isModalOpen, closeModal, commonSvgs }: modalTy
             <div className={styles.modalDetailsContainer}>
               <p className={styles.modalDescription}>{data?.desc}</p>
 
-              {data?.descList && (
+              {data?.descLists && (
                 <div className={styles.modalDescriptionList}>
-                  {data?.descList.map((desc, index: number) => {
+                  {data?.descLists.map((description: any, index: number) => {
                     return (
                       <p className={styles.descContaier} key={index}>
                         <span className={styles.bullet}>&#8226;</span>
-                        <span>{desc}</span>
+                        <span>{description.desc}</span>
                       </p>
                     );
                   })}
@@ -116,11 +117,13 @@ const Ourservices = ({
   commonSvgs,
 }: OurServicesType) => {
   const mobileCardsList = showAllCards ? cardsArray : cardsArray.slice(0, 4);
+  console.log(cardsArray);
   const { isMobileView, isTabletView } = useWindowWidth();
   const [isButtonClicked, setIsButtonClicked] = useState<boolean>(false);
   const [initialListForMobile, setInitialListForMobile] = useState<cardDataType[]>(mobileCardsList);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [modalData, setModalData] = useState<modalDataType | null>(null);
+  console.log(buttonLabel);
 
   const openModal = (data: modalDataType) => {
     setIsModalOpen(true);

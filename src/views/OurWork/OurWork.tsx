@@ -8,6 +8,7 @@ import { getFormattedCaseStudyData, getImageUrl, mapArrayImages } from "@/utils/
 
 const OurWork = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
+  console.log(caseStudyResp);
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
