@@ -6,7 +6,7 @@ import { getCareerOpenings } from "@/services/career.services";
 import { sanitize } from "isomorphic-dompurify";
 import style from "./Openings.module.scss";
 import { useRouter } from "next/router";
-import { decodeParam } from "@/utils/helper";
+import { decodeParam, getImageUrl } from "@/utils/helper";
 
 const Openings = (props: any) => {
   const { attributes: pageData } = props;

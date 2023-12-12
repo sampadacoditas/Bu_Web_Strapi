@@ -4,7 +4,7 @@ import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
 import AllSection from "./AllSection/AllSection";
 import style from "./OurWork.module.scss";
-import { getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
+import { getFormattedCaseStudyData, getImageUrl, mapArrayImages } from "@/utils/helper";
 
 const OurWork = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
@@ -15,7 +15,8 @@ const OurWork = (props: any) => {
     buttonText: pageData?.heroBannerSection?.buttonText,
     buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
   };
-  const [formDataObject, emptyPageObject] = pageData.pageComponents;
+  const [formDataObject, emptyPageObject, svgObject] = pageData.pageComponents;
+  const commonSvgs = mapArrayImages(svgObject)
   const emptyPageData = {
     title: emptyPageObject?.title,
     description: emptyPageObject?.desc,
@@ -30,7 +31,7 @@ const OurWork = (props: any) => {
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs,
   };
 
   return (
@@ -45,7 +46,7 @@ const OurWork = (props: any) => {
         tabs={pageData?.ourWorkCards}
         cardBtnText={pageData?.cardBtnText}
         emptyPageData={emptyPageData}
-        commonSvgs={pageData?.commonSvgs}
+        commonSvgs={commonSvgs}
       />
       <ServicesContactUs
         {...formData}

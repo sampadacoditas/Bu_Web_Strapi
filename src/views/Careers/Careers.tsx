@@ -1,11 +1,12 @@
 import { CaseStudy, HeroSection, LifeAtCoditas, OpenPositions, Testimony, WhoWeAreSection } from "@/components";
 import style from "./Careers.module.scss";
-import { getImageUrl } from "@/utils/helper";
+import { getImageUrl, mapArrayImages } from "@/utils/helper";
 
 const Careers = (props: any) => {
   const { attributes: pageData } = props;
-  const [whoWeAreCardDataObject, caseStudyDataObject, lifeAtCoditasObject, testimonyObject, openPositionObject] =
+  const [whoWeAreCardDataObject, caseStudyDataObject, lifeAtCoditasObject, testimonyObject, openPositionObject, , svgObject] =
     pageData.pageComponents;
+  const commonSvgs = mapArrayImages(svgObject)
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -32,7 +33,7 @@ const Careers = (props: any) => {
   const testimonyData = {
     heading: testimonyObject?.headerDetails.title,
     employeeTestimony: testimonyObject?.testimonies,
-    commonSvgs: testimonyObject?.openPositions,
+    commonSvgs: commonSvgs,
   };
   const openPositionData = {
     headerData: {
@@ -41,8 +42,9 @@ const Careers = (props: any) => {
     positionsArray: openPositionObject?.openPositionsList,
     openPositions: openPositionObject?.openPositions,
     viewAllBtn: pageData?.viewMoreBtnText,
-    rightArrow: pageData?.commonSvgs?.rightChevron,
+    rightArrow: commonSvgs,
   };
+  console.log("Chevron : ", commonSvgs?.rightChevron)
 
   const scrollToOpenPositions = () => {
     const element = document.getElementById("open-position");

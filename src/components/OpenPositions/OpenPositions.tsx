@@ -42,7 +42,7 @@ const OpenPositions = ({
             <div className={styles.positionsContainer}>
               <div className={styles.listBox}>
                 {positionsArray?.map((data, index: number) => (
-                  <List key={index} listItem={data} rightArrow={rightArrow} />
+                  <List key={index} listItem={data} rightArrow={rightArrow?.rightChevron} />
                 ))}
               </div>
               {!isMobileView && (
