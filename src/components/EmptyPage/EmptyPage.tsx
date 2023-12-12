@@ -1,6 +1,7 @@
 import { CustomImage } from "@/components";
 import emptyPage from "@/assets/images/emptyPage.png";
 import style from "./EmptyPage.module.scss";
+import { getImageUrl } from "@/utils/helper";
 
 const EmptyPage = (props: any) => {
   const {
@@ -12,7 +13,7 @@ const EmptyPage = (props: any) => {
   return (
     <div className={`${style.emptyPage} ${className}`}>
       <div className={style.container}>
-        <CustomImage src={logo ?? emptyPage} alt="Empty Page" />
+        <CustomImage src={getImageUrl(logo) ?? emptyPage} alt="Empty Page" />
         <span className={style.title}>{title}</span>
         <span className={style.description}>{description}</span>
       </div>

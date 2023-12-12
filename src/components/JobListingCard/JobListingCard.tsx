@@ -21,7 +21,7 @@ const JobListingCard = (props: IJobListingCard) => {
           );
         })
       ) : (
-        <EmptyPage className={style.emptyPage} {...emptyPageData}/>
+        <EmptyPage className={style.emptyPage} {...emptyPageData} />
       )}
     </div>
   );

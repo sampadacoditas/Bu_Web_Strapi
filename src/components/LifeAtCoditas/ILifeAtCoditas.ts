@@ -1,6 +1,6 @@
 export interface ILifeAtCoditas {
   contentContainerStyle?: string;
   title?: string;
-  descriptionList?: string[];
+  descriptionList?: { id: number; desc: string }[];
   image: string;
 }

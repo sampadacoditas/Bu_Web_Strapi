@@ -48,6 +48,40 @@ import { Loader } from "../index";
 
 const Form = (props: IForms) => {
   const { jobId = 0, pageData } = props;
+  const [formContent, stepperForm1, stepperForm2, jobDescription, commonSvg] = pageData.pageComponents;
+
+  const [firstNameObject, lastNameObject, emailObject, phoneNumberObject, experienceObject, currentLocationObject] =
+    stepperForm1.stepperFormField;
+  const [
+    chevronRightIcon,
+    search,
+    inputCrossIcon,
+    activeStep,
+    disabledStep,
+    completedStep,
+    calendar,
+    uploadFile,
+    checkboxSelected,
+    errorIcon,
+    disabledCheckbox,
+    deleteIcon,
+    greenTick,
+  ] = commonSvg.svgs;
+
+  const commonSvgs = {
+    activeStep: activeStep.value,
+    disabledStep: disabledStep.value,
+    greenTick: greenTick.value,
+    errorIcon: errorIcon.value,
+    calendar: calendar.value,
+    uploadFile: uploadFile.value,
+    deleteIcon: deleteIcon.value,
+    chevronRightIcon: chevronRightIcon.value,
+    disabledCheckbox: disabledCheckbox.value,
+    completedStep: completedStep.value,
+    checkboxSelected: checkboxSelected.value,
+  };
+
   const [_datepick, setDatePick] = useState<Date | null>();
   const [prevBtnDisabled, setPrevBtnDisabled] = useState<boolean>(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState<boolean>(true);
@@ -187,51 +221,51 @@ const Form = (props: IForms) => {
             <form onSubmit={handlePrevention} noValidate className={style.formContainer} autoComplete="off">
               <div className={style.formWrapper}>
                 <FormInput
-                  label={pageData?.cardArray2?.firstName?.label}
-                  isRequired={pageData?.cardArray2?.firstName?.isRequired}
-                  placeholder={pageData?.cardArray2?.firstName?.placeholder}
+                  label={firstNameObject?.label}
+                  isRequired={firstNameObject?.isRequired}
+                  placeholder={firstNameObject?.placeholder}
                   className={style.inputContainer}
-                  name={pageData?.cardArray2?.firstName?.name}
+                  name={firstNameObject?.name}
                   commonSvgs={pageData?.commonSvgs}
                 />
                 <FormInput
-                  label={pageData?.cardArray2?.lastName?.label}
-                  isRequired={pageData?.cardArray2?.lastName?.isRequired}
-                  placeholder={pageData?.cardArray2?.lastName?.placeholder}
+                  label={lastNameObject.label}
+                  isRequired={lastNameObject.isRequired}
+                  placeholder={lastNameObject.placeholder}
                   className={style.inputContainer}
-                  name={pageData?.cardArray2?.lastName?.name}
+                  name={lastNameObject.name}
                   commonSvgs={pageData?.commonSvgs}
                 />
                 <FormInput
-                  label={pageData?.cardArray2?.email?.label}
-                  isRequired={pageData?.cardArray2?.email?.isRequired}
-                  placeholder={pageData?.cardArray2?.email?.placeholder}
+                  label={emailObject.label}
+                  isRequired={emailObject.isRequired}
+                  placeholder={emailObject.placeholder}
                   className={style.inputContainer}
-                  name={pageData?.cardArray2?.email?.name}
+                  name={emailObject.name}
                   commonSvgs={pageData?.commonSvgs}
                 />
                 <InputPhone
                   classNames={style.mobile}
-                  label={pageData?.cardArray2?.phone?.label}
-                  placeholder={pageData?.cardArray2?.phone?.placeholder}
-                  name={pageData?.cardArray2?.phone?.name}
+                  label={phoneNumberObject.label}
+                  placeholder={phoneNumberObject.placeholder}
+                  name={phoneNumberObject.name}
                   isRequired={pageData?.cardArray2?.isRequired}
                   commonSvgs={pageData?.commonSvgs}
                 />
                 <FormInput
-                  label={pageData?.cardArray2?.experience?.label}
-                  isRequired={pageData?.cardArray2?.experience?.isRequired}
-                  placeholder={pageData?.cardArray2?.experience?.placeholder}
+                  label={experienceObject?.label}
+                  isRequired={experienceObject?.isRequired}
+                  placeholder={experienceObject?.placeholder}
                   className={style.inputContainer}
-                  name={pageData?.cardArray2?.experience?.name}
+                  name={experienceObject?.name}
                   commonSvgs={pageData?.commonSvgs}
                 />
                 <FormInput
-                  label={pageData?.cardArray2?.city?.label}
-                  isRequired={pageData?.cardArray2?.city?.isRequired}
-                  placeholder={pageData?.cardArray2?.city?.placeholder}
+                  label={currentLocationObject?.label}
+                  isRequired={currentLocationObject?.isRequired}
+                  placeholder={currentLocationObject?.placeholder}
                   className={style.inputContainer}
-                  name={pageData?.cardArray2?.city?.name}
+                  name={currentLocationObject?.name}
                   commonSvgs={pageData?.commonSvgs}
                 />
               </div>
@@ -243,7 +277,7 @@ const Form = (props: IForms) => {
           <FormProvider {...methodStep2}>
             <form onSubmit={handlePrevention} noValidate className={style.formContainer} autoComplete="off">
               <div className={style.formWrapper}>
-                {pageData?.cardArray3?.map((item: FORM_ITEM_TYPE, index: number) => {
+                {stepperForm2?.stepperFormField?.map((item: FORM_ITEM_TYPE, index: number) => {
                   return <span key={index}>{handleDisplayFields(item)}</span>;
                 })}
               </div>
@@ -263,7 +297,7 @@ const Form = (props: IForms) => {
             className={style.inputContainer}
             name={item?.name}
             value={watch2(item?.name)}
-            commonSvgs={pageData?.commonSvgs}
+            commonSvgs={commonSvgs}
           />
         );
       case FieldType?.date:
@@ -274,7 +308,7 @@ const Form = (props: IForms) => {
             label={item?.label}
             name={item?.name}
             isRequired={item?.isRequired}
-            commonSvgs={pageData?.commonSvgs}
+            commonSvgs={commonSvgs}
           />
         );
       case FieldType?.file:
@@ -286,7 +320,7 @@ const Form = (props: IForms) => {
             name={item?.name}
             label={item?.label}
             error={error}
-            commonSvgs={pageData?.commonSvgs}
+            commonSvgs={commonSvgs}
           />
         );
       case FieldType?.dropdownField:
@@ -372,19 +406,19 @@ const Form = (props: IForms) => {
         <div className={style.subHeading}>{pageData?.description1}</div>
         <div className={style.stepper}>
           <Stepper
-            commonSvgs={pageData?.commonSvgs}
+            commonSvgs={commonSvgs}
             activeStep={step}
-            values={[{ text: pageData?.formContents?.step1 }, { text: pageData?.formContents?.step2 }]}
+            values={[{ text: formContent?.step1 }, { text: formContent?.step2 }]}
           />
         </div>
-        {handleForm(step)}
+        {handleForm(1)}
         <div className={style.buttonContainer}>
           {step == 1 && (
             <div className={style.captcha}>
               <RecaptchaWrapper
                 selected={isReCAPTCHASelected}
                 setIsSelected={setIsReCAPTCHASelected}
-                label={pageData?.formContents?.captcha}
+                label={formContent?.captcha}
                 commonSvgs={pageData?.commonSvgs}
               />
             </div>
@@ -396,20 +430,14 @@ const Form = (props: IForms) => {
               className={style.secondaryBtn}
               disabled={prevBtnDisabled}
             >
-              {pageData?.formContents?.backBtn}
+              {formContent?.backBtn}
             </Button>
             <Button
               onClick={step == 0 ? onSubmitHandler : onSubmitHandler2}
               className={style.primaryBtn}
               disabled={nextBtnDisabled}
             >
-              {step == 0 ? (
-                pageData?.formContents?.nextBtn
-              ) : loading ? (
-                <Loader size="sm" />
-              ) : (
-                pageData?.formContents?.submitBtn
-              )}
+              {step == 0 ? formContent?.nextBtn : loading ? <Loader size="sm" /> : formContent?.submitBtn}
             </Button>
           </div>
         </div>

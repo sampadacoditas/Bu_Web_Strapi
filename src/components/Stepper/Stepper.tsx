@@ -3,6 +3,7 @@ import { FORM_SECTION } from "@/views/Careers/ApplyJobForm.constants";
 import style from "./Stepper.module.scss";
 import { Fragment } from "react";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 
 const Stepper = (props: StepperProps) => {
   const { activeStep, values, commonSvgs = {} } = props;
@@ -23,11 +24,11 @@ const Stepper = (props: StepperProps) => {
               <div>
                 <div className={activeStep >= index ? `${style.stepCount} ${style.active}` : `${style.stepCount}`}>
                   {activeStep > index ? (
-                    <CustomImage src={commonSvgs?.greenTick} alt="Done" />
+                    <CustomImage src={getImageUrl(commonSvgs?.greenTick)} alt="Done" />
                   ) : activeStep >= index ? (
-                    <CustomImage src={commonSvgs?.activeStep} alt="Active" />
+                    <CustomImage src={getImageUrl(commonSvgs?.activeStep)} alt="Active" />
                   ) : (
-                    <CustomImage src={commonSvgs?.disabledStep} alt="Disabled" />
+                    <CustomImage src={getImageUrl(commonSvgs?.disabledStep)} alt="Disabled" />
                   )}
                 </div>
               </div>

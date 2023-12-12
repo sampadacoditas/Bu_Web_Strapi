@@ -39,7 +39,6 @@ const Home = (props: any) => {
 
   const [digitalTransform, ourServices, tech, hiringNow, ourOffices, ourWorjObject, svgObject] =
     pageData?.pageComponents;
-  console.log(svgObject);
   const [markerInactiveObjecct, markerActiveObject, crossIconObject, doodleDotsRightObject, doodleDotsLeftObject] =
     svgObject.svgs;
 

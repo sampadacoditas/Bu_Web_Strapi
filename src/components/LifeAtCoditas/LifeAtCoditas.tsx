@@ -14,10 +14,10 @@ const LifeAtCoditas = (props: ILifeAtCoditas) => {
           <div className={style.contentSectionLayout}>
             <p className={style.title}>{title}</p>
             <div className={style.descriptionLayout}>
-              {descriptionList?.map((ele: string, index: number) => {
+              {descriptionList?.map((ele: { id: number; desc: string }, index: number) => {
                 return (
                   <React.Fragment key={index}>
-                    <p className={style.description}>{ele}</p>
+                    <p className={style.description}>{ele?.desc}</p>
                   </React.Fragment>
                 );
               })}

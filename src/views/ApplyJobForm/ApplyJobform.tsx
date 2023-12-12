@@ -6,7 +6,7 @@ import { getCareerJobDescription } from "@/components/JDContainer/JDContainer.se
 import style from "./ApplyJobForm.module.scss";
 import { PAGE_ROUTES, CAREERS_OPENINGS } from "@/constants/constants";
 import { useRouter } from "next/router";
-import { encodeParam } from "@/utils/helper";
+import { encodeParam, getImageUrl } from "@/utils/helper";
 
 interface INavigationListItem {
   label: string;

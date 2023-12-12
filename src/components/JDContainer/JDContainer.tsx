@@ -8,15 +8,10 @@ import { PAGE_ROUTES, CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
 import { getCareerJobDescription } from "./JDContainer.service";
 import { sanitize } from "isomorphic-dompurify";
 import { useRouter } from "next/router";
+import { getImageUrl } from "@/utils/helper";
 
 const JDCard = (cardData: JDCardType) => {
-  const {
-    department,
-    jobType,
-    location,
-    minExperience,
-    jdContainerData,
-  } = cardData;
+  const { department, jobType, location, minExperience, jdContainerData } = cardData;
 
   const { isMobileView, isTabletView } = useWindowWidth();
   const { push, query } = useRouter();
@@ -32,24 +27,26 @@ const JDCard = (cardData: JDCardType) => {
           <div className={styles.jdCardRows}>
             <div className={styles.jdCardRowContainer}>
               <div className={styles.jdCardColumnData}>
-                <CustomImage src={jdContainerData?.jobDescriptionIcons?.jobDepartment || ""} alt="" />
+                <CustomImage src={getImageUrl(jdContainerData?.jobDescriptionIcons?.jobDepartment) || ""} alt="" />
                 <div className={styles.detailParameter}>{jdContainerData?.jobDescriptionLabels?.departmentTitle}</div>
                 <div className={styles.detailParameterValue}>{department}</div>
               </div>
               <div className={styles.jdCardColumnData}>
-                <CustomImage src={jdContainerData?.jobDescriptionIcons?.experience || ""} alt="" />
-                <div className={styles.detailParameter}>{jdContainerData?.jobDescriptionLabels?.minExperienceTitle}</div>
+                <CustomImage src={getImageUrl(jdContainerData?.jobDescriptionIcons?.experience) || ""} alt="" />
+                <div className={styles.detailParameter}>
+                  {jdContainerData?.jobDescriptionLabels?.minExperienceTitle}
+                </div>
                 <div className={styles.detailParameterValue}>{minExperience}</div>
               </div>
             </div>
             <div className={styles.jdCardRowContainer}>
               <div className={styles.jdCardColumnData}>
-                <CustomImage src={jdContainerData?.jobDescriptionIcons?.location || ""} alt="" />
+                <CustomImage src={getImageUrl(jdContainerData?.jobDescriptionIcons?.location) || ""} alt="" />
                 <div className={styles.detailParameter}>{jdContainerData?.jobDescriptionLabels?.locationTitle}</div>
                 <div className={styles.detailParameterValue}>{location}</div>
               </div>
               <div className={styles.jdCardColumnData}>
-                <CustomImage src={jdContainerData?.jobDescriptionIcons?.jobType || ""} alt="" />
+                <CustomImage src={getImageUrl(jdContainerData?.jobDescriptionIcons?.jobType) || ""} alt="" />
                 <div className={styles.detailParameter}>{jdContainerData?.jobDescriptionLabels?.jobTypeTitle}</div>
                 <div className={styles.detailParameterValue}>{jobType}</div>
               </div>
@@ -59,28 +56,44 @@ const JDCard = (cardData: JDCardType) => {
       ) : (
         <Fragment>
           <div className={styles.jobDetail}>
-            <CustomImage src={jdContainerData?.jobDescriptionIcons?.location || ""} className={styles.locationIcon} alt="" />
+            <CustomImage
+              src={getImageUrl(jdContainerData?.jobDescriptionIcons?.location) || ""}
+              className={styles.locationIcon}
+              alt=""
+            />
             <div className={styles.detail}>
               <div className={styles.detailParameter}>{jdContainerData?.jobDescriptionLabels?.locationTitle}</div>
               <div className={styles.detailParameterValue}>{location}</div>
             </div>
           </div>
           <div className={styles.jobDetail}>
-            <CustomImage src={jdContainerData?.jobDescriptionIcons?.jobType || ""} className={styles.jdTypeIcon} alt="" />
+            <CustomImage
+              src={getImageUrl(jdContainerData?.jobDescriptionIcons?.jobType) || ""}
+              className={styles.jdTypeIcon}
+              alt=""
+            />
             <div className={styles.detail}>
               <div className={styles.detailParameter}>{jdContainerData?.jobDescriptionLabels?.jobTypeTitle}</div>
               <div className={styles.detailParameterValue}>{jobType}</div>
             </div>
           </div>
           <div className={styles.jobDetail}>
-            <CustomImage src={jdContainerData?.jobDescriptionIcons?.jobDepartment || ""} className={styles.departmentIcon} alt="" />
+            <CustomImage
+              src={getImageUrl(jdContainerData?.jobDescriptionIcons?.jobDepartment) || ""}
+              className={styles.departmentIcon}
+              alt=""
+            />
             <div className={styles.detail}>
               <div className={styles.detailParameter}>{jdContainerData?.jobDescriptionLabels?.departmentTitle}</div>
               <div className={styles.detailParameterValue}>{department}</div>
             </div>
           </div>
           <div className={`${styles.jobDetail} ${styles.lastJobDetail}`}>
-            <CustomImage src={jdContainerData?.jobDescriptionIcons?.experience || ""} className={styles.minExpIcon} alt="" />
+            <CustomImage
+              src={getImageUrl(jdContainerData?.jobDescriptionIcons?.experience) || ""}
+              className={styles.minExpIcon}
+              alt=""
+            />
             <div className={styles.detail}>
               <div className={styles.detailParameter}>{jdContainerData?.jobDescriptionLabels?.minExperienceTitle}</div>
               <div className={styles.detailParameterValue}>{minExperience}</div>
@@ -137,7 +150,6 @@ const JDContainer = (props: IJDContainer) => {
   useEffect(() => {
     getCareerJobOpeningDetails();
   }, []);
-
   return (
     <div {...{ [CUSTOM_ID]: LIGHT_BG_NAV }} className={styles.container}>
       <div className={`content`}>

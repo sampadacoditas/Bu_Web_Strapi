@@ -2,6 +2,7 @@ import { IFileUploader } from "./IFileUploader";
 import { UPLOAD_RESUME_MSGS } from "@/constants/constants";
 import style from "./FileUploader.module.scss";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 
 const FileUploader = (props: IFileUploader) => {
   const { handleFile, value, deleteFile, name, label, error, commonSvgs = {} } = props;
@@ -20,13 +21,18 @@ const FileUploader = (props: IFileUploader) => {
           <div className={style.resumeDetails}>
             <div className={style.resumeName}>
               <CustomImage
-                src={error?.err ? commonSvgs?.errorIcon : commonSvgs?.greenTick}
+                src={error?.err ? getImageUrl(commonSvgs?.errorIcon) : getImageUrl(commonSvgs?.greenTick)}
                 className={style.tick}
                 alt="Error"
               />
               <span className={style.name}>{value?.name}</span>
             </div>
-            <CustomImage src={commonSvgs?.deleteIcon} className={style.delete} onClick={deleteFile} alt="Delete" />
+            <CustomImage
+              src={getImageUrl(commonSvgs?.deleteIcon)}
+              className={style.delete}
+              onClick={deleteFile}
+              alt="Delete"
+            />
           </div>
         ) : (
           <div>
@@ -40,7 +46,7 @@ const FileUploader = (props: IFileUploader) => {
             ></input>
             <div className={style.uploadFileSection}>
               <CustomImage
-                src={error?.err ? commonSvgs?.errorIcon : commonSvgs?.uploadFile}
+                src={error?.err ? getImageUrl(commonSvgs?.errorIcon) : getImageUrl(commonSvgs?.uploadFile)}
                 className={style.uploadIcon}
                 alt="Upload"
               />

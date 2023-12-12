@@ -2,6 +2,7 @@ import { IBreadCrumbs, ICrumbs } from "./IBreadCrumbs";
 import style from "./BreadCrumbs.module.scss";
 import { CustomImage } from "..";
 import Link from "next/link";
+import { getImageUrl } from "@/utils/helper";
 
 const BreadCrumbs = (props: IBreadCrumbs) => {
   const { breadCrumbs, rightArrow = "" } = props;
@@ -19,7 +20,7 @@ const BreadCrumbs = (props: IBreadCrumbs) => {
             {index !== breadCrumbs.length - 1 ? (
               <>
                 <Link href={crumb.url}>{crumb.label}</Link>
-                <CustomImage src={rightArrow} alt="Chevron Right" />
+                <CustomImage src={getImageUrl(rightArrow)} alt="Chevron Right" />
               </>
             ) : (
               <span>{crumb.label}</span>

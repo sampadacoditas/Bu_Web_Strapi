@@ -3,6 +3,7 @@ import { INPUT_TYPES } from "@/constants/constants";
 import { IInput } from "./IInput";
 import style from "./Input.module.scss";
 import { CustomImage } from "..";
+import { getImageUrl } from "@/utils/helper";
 
 const Input = (props: IInput) => {
   const { SEARCH, TEXT } = INPUT_TYPES;
@@ -17,13 +18,13 @@ const Input = (props: IInput) => {
     if (type === SEARCH && !value?.toString().length) {
       return (
         <span className={style.searchIcon}>
-          <CustomImage src={commonSvgs?.search} alt="Search" />
+          <CustomImage src={getImageUrl(commonSvgs?.search)} alt="Search" />
         </span>
       );
     } else if (type === SEARCH && value?.toString().length) {
       return (
         <span onClick={handleCrossClick} className={`${style.crossIcon}`}>
-          <CustomImage src={commonSvgs?.inputCrossIcon} alt="Cross" />
+          <CustomImage src={getImageUrl(commonSvgs?.inputCrossIcon)} alt="Cross" />
         </span>
       );
     }

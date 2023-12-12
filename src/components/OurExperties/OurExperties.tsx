@@ -15,11 +15,7 @@ const OurExperties = (props: IOurExperties) => {
         </div>
         <div className={`${style.layout} ${style.cards}`}>
           <div className={`${style.wViewLayout} ${style.mViewMT}`}>
-            <CustomImage
-              src={getImageUrl(getImageUrl(servicesImages?.[0]?.img))}
-              alt="MarTech"
-              className={style.expertiseImage}
-            />
+            <CustomImage src={getImageUrl(servicesImages?.[0]?.img)} alt="MarTech" className={style.expertiseImage} />
           </div>
 
           <div className={style.mViewDP}>
