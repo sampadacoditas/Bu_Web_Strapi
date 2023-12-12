@@ -11,7 +11,7 @@ import {
 } from "@/components";
 import { PAGE_ROUTES, homePageCaseStudyData } from "@/constants/constants";
 import style from "./Home.module.scss";
-import { getImageUrl } from "@/utils/helper";
+import { getImageUrl, mapArrayImages } from "@/utils/helper";
 
 const Home = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
@@ -37,10 +37,14 @@ const Home = (props: any) => {
     buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
-  const [digitalTransform, ourServices, tech, hiringNow, ourOffices, ourWorjObject, svgObject] =
+  const [digitalTransform, ourServices, tech, hiringNow, ourOffices, ourWorkObject, svgObject] =
     pageData?.pageComponents;
-  const [markerInactiveObjecct, markerActiveObject, crossIconObject, doodleDotsRightObject, doodleDotsLeftObject] =
-    svgObject.svgs;
+    // const [markerInactiveObjecct, markerActiveObject, crossIconObject, doodleDotsRightObject, doodleDotsLeftObject] =
+    //   svgObject.svgs;
+    // const [svgs] = svgObject.svgs;
+    // console.log(svgObject);
+    
+    const commonSvgs = mapArrayImages(svgObject)
 
   const digitallyTransformedData = {
     headerData: {
@@ -61,12 +65,13 @@ const Home = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: ourServices?.cardBtnText,
     },
-    commonSvgs: pageData?.commonSvgs || {},
+    // commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   const caseStudyData = {
-    title: ourWorjObject?.headerDetails.title,
-    description: ourWorjObject?.headerDetails.desc,
+    title: ourWorkObject?.headerDetails.title,
+    description: ourWorkObject?.headerDetails.desc,
     itemList: filteredCaseStudies(caseStudyResp) || [],
     cardBtnText: pageData?.caseStudyBtnText,
   };
@@ -90,10 +95,14 @@ const Home = (props: any) => {
   const ourOfficesData = {
     title: ourOffices?.heading,
     addressData: ourOffices?.ourOffice || [],
-    map: getImageUrl(pageData?.map),
-    commonSvgs: pageData?.commonSvgs,
+    map: getImageUrl(ourOffices?.map),
+    // commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs,
     mappedSvgs: pageData?.mappedSvgs,
   };
+
+  console.log("Map src : ", ourOfficesData?.map);
+  console.log("pageData : ", pageData)
 
   useEffect(() => {
     const homePage = document.getElementById("homePage");
@@ -137,7 +146,7 @@ const Home = (props: any) => {
       />
       <CaseStudySection
         {...caseStudyData}
-        moreCaseStudyData={ourWorjObject?.ourWorkCards}
+        moreCaseStudyData={ourWorkObject?.ourWorkCards}
         showMoreCard={true}
         showBigCaseStudyCard={true}
         customWrapperClass={style.caseStudyContainer}

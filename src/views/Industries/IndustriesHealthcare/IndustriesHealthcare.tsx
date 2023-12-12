@@ -8,7 +8,7 @@ import {
   WhyChooseCoditas,
   CaseStudySection,
 } from "@/components";
-import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
+import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl, mapArrayImages } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import { HEALTHCARE, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
@@ -25,7 +25,10 @@ const IndustriesHealthcare = (props: any) => {
     digitallyTransformedObject,
     testimonyObject,
     formDataObject,
+    svgObject
   ] = pageData.pageComponents;
+
+  const commonSvgs = mapArrayImages(svgObject)
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
@@ -50,7 +53,7 @@ const IndustriesHealthcare = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: pageData?.serviceBtnText,
     },
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs,
   };
   const whyChooseCoditasData = {
     headerData: {
@@ -81,7 +84,7 @@ const IndustriesHealthcare = (props: any) => {
   const testimonyData = {
     heading: testimonyObject?.headerDetails.title,
     employeeTestimony: testimonyObject?.testimonies,
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs,
   };
 
   const formData = {
@@ -92,7 +95,7 @@ const IndustriesHealthcare = (props: any) => {
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs,
   };
 
   return (
