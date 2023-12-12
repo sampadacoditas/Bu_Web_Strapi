@@ -1,5 +1,5 @@
 import { HeroSection, Ourservices, ServicesContactUs, WhyChooseCoditas } from "@/components";
-import { ServicesContactUS, getImageUrl } from "@/utils/helper";
+import { ServicesContactUS, getImageUrl, mapArrayImages } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
@@ -8,7 +8,9 @@ import styles from "./IndustriesRealEstate.module.scss";
 const IndustriesRealEstate = (props: any) => {
   const { attributes: pageData } = props;
 
-  const [ourServicesObject, whyChooseCoditasObject, formDataObject] = pageData.pageComponents;
+  const [ourServicesObject, whyChooseCoditasObject, formDataObject, svgObject] = pageData.pageComponents;
+  const commonSvgs = mapArrayImages(svgObject)
+
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -27,7 +29,7 @@ const IndustriesRealEstate = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: pageData?.serviceBtnText,
     },
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs,
   };
 
   const whyChooseCoditasData = {
@@ -50,7 +52,7 @@ const IndustriesRealEstate = (props: any) => {
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs,
   };
 
   return (

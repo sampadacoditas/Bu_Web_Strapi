@@ -2,13 +2,15 @@ import { useRouter } from "next/router";
 import { HeroSection, OurLeadership, OurVision, Ourservices, WhoWeAreSection } from "@/components";
 import { PAGE_ROUTES } from "@/constants/constants";
 import style from "./AboutUs.module.scss";
-import { getImageUrl } from "@/utils/helper";
+import { getImageUrl, mapArrayImages } from "@/utils/helper";
 
 const AboutUs = (props: any) => {
   const { attributes: pageData } = props;
   const { push } = useRouter();
 
-  const [whoAreWeObject, ourServicesObject, visionObject, leadershipObject] = pageData.pageComponents;
+  const [whoAreWeObject, ourServicesObject, visionObject, leadershipObject, svgObject] = pageData.pageComponents;
+  
+  const commonSvgs = mapArrayImages(svgObject)
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
@@ -30,7 +32,7 @@ const AboutUs = (props: any) => {
       desc: ourServicesObject?.headerDetails?.desc,
     },
     cardsArray: ourServicesObject?.serviceCards || [],
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   const ourVisionData = {
@@ -49,7 +51,7 @@ const AboutUs = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: pageData?.serviceBtnText,
     },
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs || {},
   };
   return (
     <div className={style.aboutUsPage}>

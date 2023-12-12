@@ -18,5 +18,5 @@ export interface OpenPositionsType {
   positionsArray: Array<listDataType>;
   openPositions?: string;
   viewAllBtn?: string;
-  rightArrow?: string;
+  rightArrow?: string | any;
 }

@@ -2,11 +2,14 @@ import { ContactUsForm, HeroSection, OurOffices } from "@/components";
 import { CONTACT_US_INITIAL_VALUES, CONTACT_US_SCHEMA } from "@/components/ContactUsForm/ContactUsForm.helper";
 import { CONTACT_US_FORM } from "@/constants/constants";
 import style from "./ContactUs.module.scss";
-import { getImageUrl } from "@/utils/helper";
+import { getImageUrl, mapArrayImages } from "@/utils/helper";
 
 const ContactUs = (props: any) => {
   const { attributes: pageData } = props;
 
+  const [ formDataObject, ourOffices, svgObject] = pageData?.pageComponents;
+  const commonSvgs = mapArrayImages(svgObject)
+ 
   const getFormattedData = (data: any) => {
     const formattedData = {
       ...data,
@@ -24,17 +27,17 @@ const ContactUs = (props: any) => {
   };
 
   const formData = {
-    title: pageData?.sectionTitle1,
-    description: pageData?.description1,
+    title: formDataObject?.formTitle,
+    description: formDataObject?.formDesc,
     formContents: pageData?.formContents,
-    commonSvgs: pageData?.commonSvgs,
+    commonSvgs: commonSvgs,
   };
 
   const ourOfficesData = {
-    title: pageData?.sectionTitle6,
-    addressData: pageData?.officeLocations,
-    map: getImageUrl(pageData?.map),
-    commonSvgs: pageData?.commonSvgs || {},
+    title: ourOffices?.heading,
+    addressData: ourOffices?.ourOffice || [],
+    map: getImageUrl(ourOffices?.map),
+    commonSvgs: commonSvgs || {},
     mappedSvgs: pageData?.mappedSvgs || {},
   };
 
