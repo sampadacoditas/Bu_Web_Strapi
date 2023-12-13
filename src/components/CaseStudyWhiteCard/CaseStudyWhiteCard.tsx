@@ -16,7 +16,6 @@ const CaseStudyWhiteCard = (props: ICaseStudyWhiteCard) => {
     cardBtnText,
     pillsArr,
   } = props;
-  // console.log(pills);
   return (
     <div className={`${styles.cardContainer} ${customClassCardWrapper} ${theme == "dark" ? styles.darkCard : ""}`}>
       <div className={styles.imageContainer}>

@@ -49,7 +49,6 @@ import { Loader } from "../index";
 const Form = (props: IForms) => {
   const { jobId = 0, pageData } = props;
   const [formContent, stepperForm1, stepperForm2, jobDescription, commonSvg, headingData] = pageData.pageComponents;
-  console.log(pageData);
 
   const [firstNameObject, lastNameObject, emailObject, phoneNumberObject, experienceObject, currentLocationObject] =
     stepperForm1.stepperFormField;

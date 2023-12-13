@@ -20,7 +20,6 @@ const DataScience = (props: any) => {
 
   const [certified, ourServices, challengesWeSolve, ourExpertise, howWeWork, caseStudies, ourClients, formDataObject] =
     pageData?.pageComponents;
-  console.log(caseStudyResp);
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,

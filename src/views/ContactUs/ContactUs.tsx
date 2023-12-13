@@ -10,8 +10,6 @@ const ContactUs = (props: any) => {
   const [headingData, formDataObject, ourOffices, svgObject] = pageData?.pageComponents;
   const commonSvgs = mapArrayImages(svgObject);
 
-  console.log(pageData);
-
   const getFormattedData = (data: any) => {
     const formattedData = {
       ...data,

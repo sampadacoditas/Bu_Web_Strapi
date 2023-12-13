@@ -30,7 +30,6 @@ const IndustriesHealthcare = (props: any) => {
   ] = pageData.pageComponents;
 
   const commonSvgs = mapArrayImages(svgObject);
-  console.log(pageData);
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
