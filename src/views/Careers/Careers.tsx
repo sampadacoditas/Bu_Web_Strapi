@@ -44,7 +44,6 @@ const Careers = (props: any) => {
     viewAllBtn: pageData?.viewMoreBtnText,
     rightArrow: commonSvgs,
   };
-  console.log("Chevron : ", commonSvgs?.rightChevron)
 
   const scrollToOpenPositions = () => {
     const element = document.getElementById("open-position");

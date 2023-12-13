@@ -48,7 +48,7 @@ import { Loader } from "../index";
 
 const Form = (props: IForms) => {
   const { jobId = 0, pageData } = props;
-  const [formContent, stepperForm1, stepperForm2, jobDescription, commonSvg] = pageData.pageComponents;
+  const [formContent, stepperForm1, stepperForm2, jobDescription, commonSvg, headingData] = pageData.pageComponents;
 
   const [firstNameObject, lastNameObject, emailObject, phoneNumberObject, experienceObject, currentLocationObject] =
     stepperForm1.stepperFormField;
@@ -402,8 +402,8 @@ const Form = (props: IForms) => {
   return (
     <div {...{ [CUSTOM_ID]: LIGHT_BG_NAV }} className={style.outerWrapper}>
       <div className={`content ${style.wrapper}`}>
-        <div className={style.heading}>{pageData?.sectionTitle1}</div>
-        <div className={style.subHeading}>{pageData?.description1}</div>
+        <div className={style.heading}>{headingData?.title}</div>
+        <div className={style.subHeading}>{headingData?.desc}</div>
         <div className={style.stepper}>
           <Stepper
             commonSvgs={commonSvgs}
@@ -411,7 +411,7 @@ const Form = (props: IForms) => {
             values={[{ text: formContent?.step1 }, { text: formContent?.step2 }]}
           />
         </div>
-        {handleForm(1)}
+        {handleForm(0)}
         <div className={style.buttonContainer}>
           {step == 1 && (
             <div className={style.captcha}>

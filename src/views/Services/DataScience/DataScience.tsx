@@ -17,7 +17,7 @@ import style from "./DataScience.module.scss";
 
 const DataScience = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
-  
+
   const [certified, ourServices, challengesWeSolve, ourExpertise, howWeWork, caseStudies, ourClients, formDataObject] =
     pageData?.pageComponents;
   const heroSectionData = {

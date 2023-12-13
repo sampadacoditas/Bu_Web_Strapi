@@ -6,7 +6,7 @@ import style from "./OurOffices.module.scss";
 import { getImageUrl } from "@/utils/helper";
 
 const OurOffices = (props: IOurOfffices) => {
-  const { addressData = [], map = "", commonSvgs={}, mappedSvgs={} } = props;
+  const { addressData = [], map = "", commonSvgs = {}, mappedSvgs = {} } = props;
   const [usAddress, uaeAddress, indAddress] = addressData;
 
   const indLocation = indAddress ? indAddress.location : "";
@@ -32,7 +32,7 @@ const OurOffices = (props: IOurOfffices) => {
               return (
                 <div key={index} className={style.location}>
                   <div className={style.flagIconContainer}>
-                    <CustomImage src={getImageUrl(location.flagIcon)} className={style.flagIcon} alt="Flag" />
+                    <CustomImage src={location.flagIcon} className={style.flagIcon} alt="Flag" />
                   </div>
                   <div className={style.address}>
                     <span className={style.currentLocation}>{location.location}</span>
@@ -56,23 +56,23 @@ const OurOffices = (props: IOurOfffices) => {
           <div className={style.locationsContainer}>
             <CustomImage src={map} alt="world map" className={style.mapImage} />
             <div className={style.puneLocation}>
-              <Tooltip
+              {/* <Tooltip
                 content={<LocationCard location={indLocation} flagIcon={indFlagIcon} addresses={indAddresses} mappedSvgs={mappedSvgs}/>}
               >
                 <LocationMarker alt="Pune Location" commonSvgs={commonSvgs}/>
-              </Tooltip>
+              </Tooltip> */}
             </div>
             <div className={style.usLocation}>
-              <Tooltip content={<LocationCard location={usLocation} flagIcon={usFlagIcon} addresses={usAddresses} mappedSvgs={mappedSvgs}/>}>
+              {/* <Tooltip content={<LocationCard location={usLocation} flagIcon={usFlagIcon} addresses={usAddresses} mappedSvgs={mappedSvgs}/>}>
                 <LocationMarker alt="US Location" commonSvgs={commonSvgs}/>
-              </Tooltip>
+              </Tooltip> */}
             </div>
             <div className={style.uaeLocation}>
-              <Tooltip
+              {/* <Tooltip
                 content={<LocationCard location={uaeLocation} flagIcon={uaeFlagIcon} addresses={uaeAddresses} mappedSvgs={mappedSvgs}/>}
               >
                 <LocationMarker alt="UAE Location" commonSvgs={commonSvgs}/>
-              </Tooltip>
+              </Tooltip> */}
             </div>
           </div>
         </div>

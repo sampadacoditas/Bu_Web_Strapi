@@ -16,7 +16,7 @@ const OurWork = (props: any) => {
     buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
   };
   const [formDataObject, emptyPageObject, svgObject] = pageData.pageComponents;
-  const commonSvgs = mapArrayImages(svgObject)
+  const commonSvgs = mapArrayImages(svgObject);
   const emptyPageData = {
     title: emptyPageObject?.title,
     description: emptyPageObject?.desc,

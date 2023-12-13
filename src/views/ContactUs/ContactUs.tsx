@@ -7,9 +7,9 @@ import { getImageUrl, mapArrayImages } from "@/utils/helper";
 const ContactUs = (props: any) => {
   const { attributes: pageData } = props;
 
-  const [ formDataObject, ourOffices, svgObject] = pageData?.pageComponents;
-  const commonSvgs = mapArrayImages(svgObject)
- 
+  const [headingData, formDataObject, ourOffices, svgObject] = pageData?.pageComponents;
+  const commonSvgs = mapArrayImages(svgObject);
+
   const getFormattedData = (data: any) => {
     const formattedData = {
       ...data,
@@ -27,10 +27,10 @@ const ContactUs = (props: any) => {
   };
 
   const formData = {
-    title: formDataObject?.formTitle,
-    description: formDataObject?.formDesc,
-    formContents: pageData?.formContents,
-    commonSvgs: commonSvgs,
+    title: headingData?.title,
+    description: headingData?.desc,
+    formContents: formDataObject?.contents,
+    commonSvgs: commonSvgs || {},
   };
 
   const ourOfficesData = {
@@ -53,7 +53,7 @@ const ContactUs = (props: any) => {
         getFormattedData={getFormattedData}
         contentContainerStyle={style.contactUsContainer}
         constant={CONTACT_US_FORM}
-        fields={pageData?.cardArray3}
+        fields={formDataObject?.formFieldData}
         schema={CONTACT_US_SCHEMA}
         initialValues={CONTACT_US_INITIAL_VALUES}
         handleSubmit={() => {

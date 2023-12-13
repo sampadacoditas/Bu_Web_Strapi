@@ -8,33 +8,34 @@ const CaseStudyWhiteCard = (props: ICaseStudyWhiteCard) => {
   const {
     description: title,
     caseStudyDecsriptiveSection,
-    image,
+    img,
     pills,
     link,
     customClassCardWrapper,
     theme,
     cardBtnText,
+    pillsArr,
   } = props;
   return (
     <div className={`${styles.cardContainer} ${customClassCardWrapper} ${theme == "dark" ? styles.darkCard : ""}`}>
       <div className={styles.imageContainer}>
-        <CustomImage src={image} alt={title} className={styles.image} />
+        <CustomImage src={img} alt={title} className={styles.image} />
       </div>
       <div className={styles.contentWrapper}>
         <div className={styles.contentContainer}>
           <div className={styles.title}>{title}</div>
           <div className={styles.subtext}>{replaceStrong(caseStudyDecsriptiveSection?.businessDescription)}</div>
           <div className={styles.pillContainer}>
-            {pills
-              ?.map((item, index) => {
+            {pillsArr
+              ?.map((item: any, index: number) => {
                 return (
                   <div className={styles.pills} key={index}>
-                    {item}
+                    {item.desc}
                   </div>
                 );
               })
               .slice(0, 3)}
-            {pills?.length > 3 ? <div className={styles.pills} key="count">{`+${pills.length - 3}`}</div> : ""}
+            {pillsArr?.length > 3 ? <div className={styles.pills} key="count">{`+${pillsArr.length - 3}`}</div> : ""}
           </div>
         </div>
         <Link href={link || ""} className={styles.readmore}>

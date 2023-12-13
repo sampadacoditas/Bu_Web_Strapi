@@ -13,6 +13,7 @@ import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import { HEALTHCARE, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
 import styles from "./IndustriesHealthcare.module.scss";
+import { MultiValueGeneric } from "node_modules/react-select/dist/declarations/src/components/MultiValue";
 
 const IndustriesHealthcare = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
@@ -25,10 +26,10 @@ const IndustriesHealthcare = (props: any) => {
     digitallyTransformedObject,
     testimonyObject,
     formDataObject,
-    svgObject
+    svgObject,
   ] = pageData.pageComponents;
 
-  const commonSvgs = mapArrayImages(svgObject)
+  const commonSvgs = mapArrayImages(svgObject);
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
@@ -51,7 +52,7 @@ const IndustriesHealthcare = (props: any) => {
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
-      cardBtnText: pageData?.serviceBtnText,
+      cardBtnText: ourServicesObject?.cardBtnText,
     },
     commonSvgs: commonSvgs,
   };

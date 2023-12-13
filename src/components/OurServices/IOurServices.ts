@@ -20,7 +20,7 @@ export interface modalDataType {
   icon: string;
   title: string;
   desc: string;
-  descList?: string[];
+  descLists?: string[];
 }
 
 export interface modalType {
