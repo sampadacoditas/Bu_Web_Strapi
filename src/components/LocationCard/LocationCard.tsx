@@ -3,10 +3,18 @@ import { useState } from "react";
 import { ILocationCard } from "./ILocationCard";
 import { CustomImage } from "..";
 import SVGComponent from "@/assets/icons";
-import { getImageUrl } from "@/utils/helper";
+import { getImageUrl, mapArrayImages } from "@/utils/helper";
 
 const LocationCard = (props: ILocationCard) => {
-  const { addresses, flagIcon, location, mappedSvgs } = props;
+  const { addresses, flagIcon, location, mappedSvgs={} } = props;
+
+  const getImageIcons = mappedSvgs?.mappedData?.reduce((acc: any, curr: any) => {
+    acc[curr?.label] = curr?.value
+    return acc;
+  }, [])
+  const {leftArrow, rightArrow} = getImageIcons;
+
+  
   const [currentAddressIndex, setCurrentAddressIndex] = useState<number>(0);
 
   const isNextAddressAvailable = () => addresses.length !== currentAddressIndex + 1;
@@ -40,11 +48,11 @@ const LocationCard = (props: ILocationCard) => {
         {(isNextAddressAvailable() || isPrevAddressAvailable()) && (
           <div className={style.addressSwitchContainer}>
             <span onClick={handleShowPrevAddress} className={isPrevAddressAvailable() ? style.active : style.disable}>
-              <SVGComponent name={mappedSvgs?.leftArrow} className={style.icon}/>
+              <SVGComponent name={leftArrow} className={style.icon}/>
             </span>
 
             <span onClick={handleShowNextAddress} className={isNextAddressAvailable() ? style.active : style.disable}>
-              <SVGComponent name={mappedSvgs?.rightArrow} className={style.icon}/>
+              <SVGComponent name={rightArrow} className={style.icon}/>
             </span>
           </div>
         )}
