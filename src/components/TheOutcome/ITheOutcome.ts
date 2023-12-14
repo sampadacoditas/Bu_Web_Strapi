@@ -1,7 +1,7 @@
 export interface IOutcome {
   heading: string;
   subText: string;
-  outcomeArray: string[];
+  outcomeArray: { id: number; desc: string }[];
   outcomeImg?: string;
   outcomeImgMobile?: string;
   outcomeIcon?: string;

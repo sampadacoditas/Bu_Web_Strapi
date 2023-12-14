@@ -7,6 +7,8 @@ import CaseStudySection from "@/components/CaseStudySection/CaseStudySection";
 
 function CaseStudyDetails(props: any) {
   const { serviceName, caseStudyData, allCaseStudyData } = props;
+  console.log(caseStudyData);
+  // console.log(caseStudyData);
   const formData = {
     constant: {
       title: caseStudyData?.form?.formTitle,
@@ -22,13 +24,13 @@ function CaseStudyDetails(props: any) {
     <div className={styles.caseStudyPage}>
       <CaseStudyHeroSection
         title={caseStudyData.bannerTitle}
-        image={caseStudyData.bannerImg}
-        contentContainerStyle={caseStudyData.bannerSideImg ? "" : styles.heroSectionContentContainer}
+        image={caseStudyData.bannerImage}
+        contentContainerStyle={caseStudyData.bannerSideImage ? "" : styles.heroSectionContentContainer}
         heroSectionGradientStyle={
-          caseStudyData.bannerSideImg ? styles.healthCareHeroSection : styles.heroSectionGradient
+          caseStudyData.bannerSideImage ? styles.healthCareHeroSection : styles.heroSectionGradient
         }
-        breadCrumbs={caseStudyData.breadcrumbs}
-        sideImg={caseStudyData.bannerSideImg}
+        breadCrumbs={caseStudyData.breadcrumbsArr}
+        sideImg={caseStudyData.bannerSideImage}
         commonSvgs={caseStudyData?.commonSvgs}
       />
       <StudyDescriptionSection
@@ -36,11 +38,11 @@ function CaseStudyDetails(props: any) {
         studyDescription={caseStudyData.caseStudyDecsriptiveSection}
       />
       <TheOutcome
-        heading={caseStudyData.outcomeHeading}
-        subText={caseStudyData.outcomeSubText}
-        outcomeArray={caseStudyData.outcomeArray}
-        outcomeImg={caseStudyData.outcomeImg}
-        outcomeImgMobile={caseStudyData.outcomeImgMobile}
+        heading={caseStudyData?.outcomeHeading}
+        subText={caseStudyData?.outcomeSubText}
+        outcomeArray={caseStudyData?.outcomeArr}
+        outcomeImg={caseStudyData?.outcomeImage}
+        outcomeImgMobile={caseStudyData?.outcomeImageMobile}
         outcomeIcon={caseStudyData?.commonSvgs?.outcomeStar}
       />
       <CaseStudySection title={caseStudyData?.moreCaseStudyTitle} description={""} itemList={allCaseStudyData} />

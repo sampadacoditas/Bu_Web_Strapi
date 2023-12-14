@@ -7,9 +7,10 @@ export interface ICaseStudyBlueCard {
   description: string;
   caseStudyDecsriptiveSection: caseStudyDecsriptiveSection;
   image: string;
-  pills: string[];
+  pillsArr: { id: number; desc: string }[];
   customClassCardWrapper?: string;
   theme?: string;
   link?: string;
   cardBtnText?: string;
+  bannerImage?: string;
 }

@@ -6,7 +6,7 @@ import useWindowWidth from "@/hooks/useWindowWidth";
 import { CustomImage } from "..";
 
 const CaseStudyBlueCard = (props: ICaseStudyBlueCard) => {
-  const { description: title, caseStudyDecsriptiveSection, image, pills, link, cardBtnText } = props;
+  const { bannerImage, description: title, caseStudyDecsriptiveSection, pillsArr, link, cardBtnText } = props;
   const { isMobileView } = useWindowWidth();
   const mobilePillCount = 1;
   const desktopPillCount = 3;
@@ -15,7 +15,7 @@ const CaseStudyBlueCard = (props: ICaseStudyBlueCard) => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.imageContainer}>
-        <CustomImage src={image} alt={title} className={styles.imageContent} />
+        <CustomImage src={bannerImage || ""} alt={title} className={styles.imageContent} />
         <div className={styles.imageBackground} />
       </div>
       <div className={styles.contentContainer}>
@@ -23,18 +23,18 @@ const CaseStudyBlueCard = (props: ICaseStudyBlueCard) => {
           <div className={styles.title}>{title}</div>
           <div className={styles.subheading}>{replaceStrong(caseStudyDecsriptiveSection?.businessDescription)}</div>
           <div className={styles.pillContainer}>
-            {pills?.length > 0 &&
-              pills
+            {pillsArr?.length > 0 &&
+              pillsArr
                 ?.map((item, index) => {
                   return (
                     <div className={styles.pills} key={index}>
-                      {item}
+                      {item?.desc}
                     </div>
                   );
                 })
                 .slice(0, pillsCount)}
-            {pills?.length > pillsCount ? (
-              <div className={styles.pills} key="count">{`+${pills?.length - pillsCount}`}</div>
+            {pillsArr?.length > pillsCount ? (
+              <div className={styles.pills} key="count">{`+${pillsArr?.length - pillsCount}`}</div>
             ) : (
               ""
             )}

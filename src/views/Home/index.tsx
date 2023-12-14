@@ -39,8 +39,8 @@ const Home = (props: any) => {
 
   const [digitalTransform, ourServices, tech, hiringNow, ourOffices, ourWorkObject, svgObject, mappedSvgs] =
     pageData?.pageComponents;
-    
-    const commonSvgs = mapArrayImages(svgObject)
+
+  const commonSvgs = mapArrayImages(svgObject);
 
   const digitallyTransformedData = {
     headerData: {
@@ -61,7 +61,6 @@ const Home = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: ourServices?.cardBtnText,
     },
-    // commonSvgs: pageData?.commonSvgs || {},
     commonSvgs: commonSvgs || {},
   };
 
@@ -71,7 +70,6 @@ const Home = (props: any) => {
     itemList: filteredCaseStudies(caseStudyResp) || [],
     cardBtnText: pageData?.caseStudyBtnText,
   };
-
   const technologyData = {
     headerData: {
       header: tech?.headerDetails?.title,

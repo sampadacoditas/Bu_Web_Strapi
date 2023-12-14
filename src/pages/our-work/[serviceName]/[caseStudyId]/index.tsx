@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 const CaseStudyDetails = dynamic(import("@/views/OurWork/CaseStudyDetails/CaseStudyDetails"));
 
 const CaseStudyDetailsPage = ({ serviceName, caseStudyData, allCaseStudyData, caseStudyResp }: any) => {
+  console.log(caseStudyData);
   return (
     <CaseStudyDetails serviceName={serviceName} caseStudyData={caseStudyData} allCaseStudyData={allCaseStudyData} />
   );

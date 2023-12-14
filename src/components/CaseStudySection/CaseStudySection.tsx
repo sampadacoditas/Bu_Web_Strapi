@@ -30,7 +30,6 @@ const CaseStudySection = (props: any) => {
       setCaseStudyData(itemList?.slice(1));
     }
   };
-
   function viewAllClickHandler() {
     const route = serviceName ? `${PAGE_ROUTES.OUR_WORK}/${serviceName}` : PAGE_ROUTES.OUR_WORK;
     push(route);

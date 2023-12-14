@@ -8,6 +8,7 @@ import { CustomImage } from "..";
 
 const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
   const { contentContainerStyle, studyDescription } = props;
+  console.log(studyDescription);
 
   return (
     <div {...{ [CUSTOM_ID]: LIGHT_BG_NAV }} className={style.studyDescriptionSection}>
@@ -15,12 +16,12 @@ const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
         <div className={style.studyDescriptionLayout}>
           <div className={style.overviewLayout}>
             <div className={style.overviewSection}>
-              <p className={style.title}>{studyDescription.overview || STUDY_DESCRIPTION_CONSTANTS.overview}</p>
+              <p className={style.title}>{studyDescription?.overview || STUDY_DESCRIPTION_CONSTANTS.overview}</p>
               <CustomImage src={Divider.src} alt="Divider" />
             </div>
             <p
               className={style.subTitle}
-              dangerouslySetInnerHTML={{ __html: sanitize(studyDescription.overviewDescription) }}
+              dangerouslySetInnerHTML={{ __html: sanitize(studyDescription?.overviewDescription) }}
             />
           </div>
           <div className={style.overviewLayout}>
@@ -33,7 +34,7 @@ const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
                 className={
                   studyDescription?.showBusinessDescriptionBackground ? style.highlightedDescription : style.description
                 }
-                dangerouslySetInnerHTML={{ __html: sanitize(studyDescription.businessDescription) }}
+                dangerouslySetInnerHTML={{ __html: sanitize(studyDescription?.businessDescription) }}
               />
 
               {studyDescription?.businessDescriptionArray?.map((list: string, index: number) => {
@@ -53,7 +54,7 @@ const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
             <div className={style.solutionDescriptionLayout}>
               <p
                 className={style.highlightedText}
-                dangerouslySetInnerHTML={{ __html: sanitize(studyDescription.ourSolutionDescription) }}
+                dangerouslySetInnerHTML={{ __html: sanitize(studyDescription?.ourSolutionDescription) }}
               />
               {studyDescription?.ourSolutionArray?.map((list: string, index: number) => {
                 return (

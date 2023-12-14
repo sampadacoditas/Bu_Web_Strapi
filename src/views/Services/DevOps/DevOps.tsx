@@ -10,13 +10,19 @@ import {
 } from "@/components";
 import { DEV_OPS, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_DEVOPS_SERVICES_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl, mapArrayImages, mappedIconsArr } from "@/utils/helper";
+import {
+  ServicesContactUS,
+  getFormattedCaseStudyData,
+  getImageUrl,
+  mapArrayImages,
+  mappedIconsArr,
+} from "@/utils/helper";
 import { CONTACT_US_SCHEMA_DEVOPS_SERVICE } from "@/utils/schemas";
 import style from "./DevOps.module.scss";
 
 const DevOpsServices = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
-  
+
   const [
     devopsCertifiedObject,
     ourServicesObject,
@@ -26,14 +32,11 @@ const DevOpsServices = (props: any) => {
     testimonyObject,
     formDataObject,
     devopsBannerLogos,
-    svgObject, 
-    mappedImgObj
+    svgObject,
   ] = pageData.pageComponents;
-  
-  const commonSvgs = mapArrayImages(svgObject)
-  
-  const mappedSvgs = mappedIconsArr(mappedImgObj?.mappedData)
-  
+
+  const commonSvgs = mapArrayImages(svgObject);
+
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -58,6 +61,8 @@ const DevOpsServices = (props: any) => {
       desc: ourServicesObject?.headerDetails.desc,
     },
     cardsArray: ourServicesObject?.serviceCards || [],
+    bulletIcon: ourServicesObject?.bulletIcon,
+
     buttonLabels: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
