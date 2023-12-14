@@ -1,11 +1,11 @@
 import loader from "@/assets/images/loader.gif";
 import styles from "./Splash.module.scss";
-import { CustomImage } from "@/components";
+import Image from "next/image";
 
 const Splash = () => {
   return (
     <div className={styles.splashPage}>
-      <CustomImage src={loader.src} alt="loading" loading="eager" priority={true}/>
+      <Image src={loader.src} alt="loading" loading="eager" priority={true} width={0} height={0} className={`${styles.customImageContainer}`} />
     </div>
   );
 };
