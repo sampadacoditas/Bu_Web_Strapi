@@ -10,13 +10,13 @@ import {
 } from "@/components";
 import { DEV_OPS, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_DEVOPS_SERVICES_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
+import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl, mapArrayImages, mappedIconsArr } from "@/utils/helper";
 import { CONTACT_US_SCHEMA_DEVOPS_SERVICE } from "@/utils/schemas";
 import style from "./DevOps.module.scss";
 
 const DevOpsServices = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
-
+  
   const [
     devopsCertifiedObject,
     ourServicesObject,
@@ -26,8 +26,14 @@ const DevOpsServices = (props: any) => {
     testimonyObject,
     formDataObject,
     devopsBannerLogos,
+    svgObject, 
+    mappedImgObj
   ] = pageData.pageComponents;
-
+  
+  const commonSvgs = mapArrayImages(svgObject)
+  
+  const mappedSvgs = mappedIconsArr(mappedImgObj?.mappedData)
+  
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -57,7 +63,7 @@ const DevOpsServices = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: pageData?.serviceBtnText,
     },
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   const howWeWorkDetails = {
@@ -81,7 +87,7 @@ const DevOpsServices = (props: any) => {
   const testimonyData = {
     heading: testimonyObject?.headerDetails.title,
     employeeTestimony: testimonyObject?.testimonies,
-    commonSvgs: testimonyObject?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   const formData = {
@@ -92,7 +98,7 @@ const DevOpsServices = (props: any) => {
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   return (

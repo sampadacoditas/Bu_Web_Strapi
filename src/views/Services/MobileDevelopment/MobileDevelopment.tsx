@@ -8,14 +8,15 @@ import {
 } from "@/components";
 import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS, getImageUrl } from "@/utils/helper";
+import { ServicesContactUS, getImageUrl, mapArrayImages } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import style from "./MobileDevelopment.module.scss";
 
 const MobileDevelopment = (props: any) => {
   const { attributes: pageData } = props;
-  const [ourServicesObject, howWeWorkObject, ourExpertiseObject, ourClientObject, formDataObject] =
+  const [ourServicesObject, howWeWorkObject, ourExpertiseObject, ourClientObject, formDataObject, svgObject, mappedImgObj] =
     pageData.pageComponents;
+    const commonSvgs = mapArrayImages(svgObject)
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
@@ -36,7 +37,7 @@ const MobileDevelopment = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: pageData?.serviceBtnText,
     },
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   const howWeWorkData = {
@@ -69,7 +70,7 @@ const MobileDevelopment = (props: any) => {
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   return (

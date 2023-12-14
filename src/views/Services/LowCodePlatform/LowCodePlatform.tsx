@@ -8,14 +8,15 @@ import {
 } from "@/components";
 import { servicesFormType } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS, getImageUrl } from "@/utils/helper";
+import { ServicesContactUS, getImageUrl, mapArrayImages } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import styles from "./LowCodePlatform.module.scss";
 
 const LowCodePlatform = (props: any) => {
   const { attributes: pageData } = props;
-  const [ourServicesObject, howWeWorkObject, ourExpertiseObject, ourClientObject, formDataObject] =
+  const [ourServicesObject, howWeWorkObject, ourExpertiseObject, ourClientObject, formDataObject, svgObject] =
     pageData.pageComponents;
+  const commonSvgs = mapArrayImages(svgObject);
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -34,7 +35,7 @@ const LowCodePlatform = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: pageData?.serviceBtnText,
     },
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
   const howWeWorkData = {
     title: howWeWorkObject?.headerDetails.title,
@@ -60,7 +61,7 @@ const LowCodePlatform = (props: any) => {
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   return (

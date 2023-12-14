@@ -7,7 +7,7 @@ import { getImageUrl, mapArrayImages } from "@/utils/helper";
 const ContactUs = (props: any) => {
   const { attributes: pageData } = props;
 
-  const [headingData, formDataObject, ourOffices, svgObject] = pageData?.pageComponents;
+  const [headingData, formDataObject, ourOffices, svgObject, mappedSvgs] = pageData?.pageComponents;
   const commonSvgs = mapArrayImages(svgObject);
 
   const getFormattedData = (data: any) => {
@@ -23,7 +23,7 @@ const ContactUs = (props: any) => {
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
   const formData = {
@@ -38,7 +38,7 @@ const ContactUs = (props: any) => {
     addressData: ourOffices?.ourOffice || [],
     map: getImageUrl(ourOffices?.map),
     commonSvgs: commonSvgs || {},
-    mappedSvgs: pageData?.mappedSvgs || {},
+    mappedSvgs: mappedSvgs || {},
   };
 
   return (
