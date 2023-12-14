@@ -4,18 +4,18 @@ import { caseStudyServiceFormMap } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
 import styles from "./CaseStudyDetails.module.scss";
 import CaseStudySection from "@/components/CaseStudySection/CaseStudySection";
+import { getImageUrl } from "@/utils/helper";
 
 function CaseStudyDetails(props: any) {
   const { serviceName, caseStudyData, allCaseStudyData } = props;
-  console.log(caseStudyData);
-  // console.log(caseStudyData);
+
   const formData = {
     constant: {
       title: caseStudyData?.form?.formTitle,
       description: caseStudyData?.form?.formDesc,
-      ...caseStudyData?.form?.formContents,
+      ...caseStudyData?.form?.contents,
     },
-    fields: caseStudyData?.form?.formFields || [],
+    fields: caseStudyData?.form?.formFieldData || [],
     sideFormImage: caseStudyData?.form?.formSideImage,
     commonSvgs: caseStudyData?.commonSvgs,
   };
@@ -36,6 +36,7 @@ function CaseStudyDetails(props: any) {
       <StudyDescriptionSection
         contentContainerStyle={styles.studyDescriptionContainer}
         studyDescription={caseStudyData.caseStudyDecsriptiveSection}
+        divider={getImageUrl(caseStudyData?.divider)}
       />
       <TheOutcome
         heading={caseStudyData?.outcomeHeading}

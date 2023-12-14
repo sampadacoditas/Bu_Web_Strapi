@@ -16,7 +16,7 @@ import Image from "next/image";
 
 const FooterSectionMobileView = (props: IFooterProps) => {
   const { label, expand, setExpand, navList, navItemType } = props;
-  console.log('Footer props :', props);
+  console.log("Footer props :", props);
   const openNewTab = navItemType === FOOTER_CONSTANTS.pages;
   const handleFooterTitleClick = () => {
     expand === label ? setExpand && setExpand("") : setExpand && setExpand(label);
@@ -126,7 +126,13 @@ const Footer = (props: any) => {
         )}
       </div>
       <div className={style.greatPlaceLayout}>
-        <Image className={`${style.imageStyle} ${style.customImageContainer}`} src={GreatPlaceToWork?.src} alt={FOOTER_CONSTANTS.greatPlaceToWork} width={0} height={0} />
+        <Image
+          className={`${style.imageStyle} ${style.customImageContainer}`}
+          src={GreatPlaceToWork?.src}
+          alt={FOOTER_CONSTANTS.greatPlaceToWork}
+          width={0}
+          height={0}
+        />
         <div className={style.careerContentLayout}>
           <p className={style.careerText}>{FOOTER_CONSTANTS.buildYourCareer}</p>
           <p className={style.careerPara}>{FOOTER_CONSTANTS.certifiedGreatPlace}</p>
