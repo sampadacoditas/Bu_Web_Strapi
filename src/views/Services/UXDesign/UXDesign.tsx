@@ -15,7 +15,7 @@ import style from "./UXDesign.module.scss";
 
 const UXDesign = (props: any) => {
   const { attributes: pageData } = props;
-  
+
   const [ourServices, howWeWork, ourExpertise, whyCoditas, ourClients, formDataObject] = pageData?.pageComponents;
 
   const heroSectionData = {
@@ -23,7 +23,7 @@ const UXDesign = (props: any) => {
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
   const ourServicesData = {

@@ -12,7 +12,6 @@ import { DATA_SCIENCE, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_DATA_SCIENCE_SERVICES_INITIAL_VALUES } from "@/constants/contactUsFormData";
 import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
 import { CONTACT_US_SCHEMA_DATA_SCIENCE_SERVICE } from "@/utils/schemas";
-
 import style from "./DataScience.module.scss";
 
 const DataScience = (props: any) => {
@@ -25,7 +24,7 @@ const DataScience = (props: any) => {
     description: pageData?.heroBannerSection?.bannerSubText,
     image: getImageUrl(pageData?.heroBannerSection?.bannerImg),
     buttonText: pageData?.heroBannerSection?.buttonText,
-    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg?.data?.attributes?.url,
+    buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
   const certificationData = {
     title: certified?.headerDetails?.title,
