@@ -24,7 +24,7 @@ export const getHeaderFooterData = async () => {
 };
 export const getCaseStudyData = async (serviceName?: string, query?: string) => {
   try {
-    query = query || `?populate=*&filters[serviceName][$eq]=${serviceName}`;
+    query = query || `?populate=deep&filters[serviceName][$eq]=${serviceName}`;
     const res = await instance.get(`${ROUTES?.caseStudy}${query}`);
     return res?.data?.data || [];
   } catch (e) {

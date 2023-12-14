@@ -6,7 +6,7 @@ export const ROUTES = {
   servicesContactUsTest: "/sendCoditasServiceEnquiryMailTest",
   sendCoditasEnquiryMail: "/sendCoditasEnquiryMail",
   sendCoditasEnquiryMailTest: "/sendCoditasEnquiryMailTest",
-  headerFooter: "/api/header-footers/?populate[headerData][populate]=*&populate[footerData][populate]=*",
+  headerFooter: "/api/header-footers?populate=deep&",
   pageData: "/api/home-pages?populate=deep&",
   caseStudy: "/api/case-studies/",
 };

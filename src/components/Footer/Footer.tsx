@@ -125,7 +125,11 @@ const Footer = (props: any) => {
         )}
       </div>
       <div className={style.greatPlaceLayout}>
-        <CustomImage className={style.imageStyle} src={GreatPlaceToWork.src} alt={FOOTER_CONSTANTS.greatPlaceToWork} />
+        <CustomImage
+          className={style.imageStyle}
+          src={headerFooterData?.badgeImage}
+          alt={FOOTER_CONSTANTS.greatPlaceToWork}
+        />
         <div className={style.careerContentLayout}>
           <p className={style.careerText}>{FOOTER_CONSTANTS.buildYourCareer}</p>
           <p className={style.careerPara}>{FOOTER_CONSTANTS.certifiedGreatPlace}</p>

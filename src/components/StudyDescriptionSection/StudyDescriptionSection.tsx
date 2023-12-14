@@ -1,14 +1,12 @@
 import { IStudyDescriptionSectionProps } from "./IStudyDescriptionSection";
 import { STUDY_DESCRIPTION_CONSTANTS } from "./StudyDescription.constant";
 import { CUSTOM_ID, LIGHT_BG_NAV } from "@/constants/constants";
-import Divider from "@/assets/images/divider.png";
 import style from "./StudyDescriptionSection.module.scss";
 import { sanitize } from "isomorphic-dompurify";
 import { CustomImage } from "..";
 
 const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
-  const { contentContainerStyle, studyDescription } = props;
-  console.log(studyDescription);
+  const { contentContainerStyle, studyDescription, divider = "" } = props;
 
   return (
     <div {...{ [CUSTOM_ID]: LIGHT_BG_NAV }} className={style.studyDescriptionSection}>
@@ -17,7 +15,7 @@ const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
           <div className={style.overviewLayout}>
             <div className={style.overviewSection}>
               <p className={style.title}>{studyDescription?.overview || STUDY_DESCRIPTION_CONSTANTS.overview}</p>
-              <CustomImage src={Divider.src} alt="Divider" />
+              <CustomImage src={divider} alt="Divider" />
             </div>
             <p
               className={style.subTitle}
@@ -27,7 +25,7 @@ const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
           <div className={style.overviewLayout}>
             <div className={style.overviewSection}>
               <p className={style.title}>{STUDY_DESCRIPTION_CONSTANTS.businessChallenge}</p>
-              <CustomImage src={Divider.src} alt="Divider" />
+              <CustomImage src={divider} alt="Divider" />
             </div>
             <div className={style.descriptionLayout}>
               <p
@@ -37,10 +35,10 @@ const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
                 dangerouslySetInnerHTML={{ __html: sanitize(studyDescription?.businessDescription) }}
               />
 
-              {studyDescription?.businessDescriptionArray?.map((list: string, index: number) => {
+              {studyDescription?.businessDescriptionArr?.map((list, index: number) => {
                 return (
                   <ul key={index} className={style.descriptionList}>
-                    <li className={style.list} dangerouslySetInnerHTML={{ __html: sanitize(list) }} />
+                    <li className={style.list} dangerouslySetInnerHTML={{ __html: sanitize(list?.desc) }} />
                   </ul>
                 );
               })}
@@ -49,17 +47,17 @@ const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
           <div className={style.overviewLayout}>
             <div className={style.overviewSection}>
               <p className={style.title}>{STUDY_DESCRIPTION_CONSTANTS.ourSolution}</p>
-              <CustomImage src={Divider.src} alt="Divider" />
+              <CustomImage src={divider} alt="Divider" />
             </div>
             <div className={style.solutionDescriptionLayout}>
               <p
                 className={style.highlightedText}
                 dangerouslySetInnerHTML={{ __html: sanitize(studyDescription?.ourSolutionDescription) }}
               />
-              {studyDescription?.ourSolutionArray?.map((list: string, index: number) => {
+              {studyDescription?.ourSolutionAr?.map((list, index: number) => {
                 return (
                   <ul className={style.solutionList} key={index}>
-                    <li className={style.list} dangerouslySetInnerHTML={{ __html: sanitize(list) }} />
+                    <li className={style.list} dangerouslySetInnerHTML={{ __html: sanitize(list?.desc) }} />
                   </ul>
                 );
               })}
@@ -67,10 +65,10 @@ const StudyDescriptionSection = (props: IStudyDescriptionSectionProps) => {
             <div className={style.technologyIconLayout}>
               <p className={style.title}>{STUDY_DESCRIPTION_CONSTANTS.technologies}:</p>
               <div className={style.iconsLayout}>
-                {studyDescription?.technologyList?.map((techIcon: string, index: number) => {
+                {studyDescription?.technologyListArr?.map((techIcon, index: number) => {
                   return (
                     <span className={style.techIcon} key={index}>
-                      {techIcon}
+                      {techIcon?.desc}
                     </span>
                   );
                 })}
