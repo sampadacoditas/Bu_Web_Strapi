@@ -4,10 +4,11 @@ import { caseStudyServiceFormMap } from "@/constants/constants";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
 import styles from "./CaseStudyDetails.module.scss";
 import CaseStudySection from "@/components/CaseStudySection/CaseStudySection";
-import { getImageUrl } from "@/utils/helper";
+import { getImageUrl, mappedIconsArr } from "@/utils/helper";
 
 function CaseStudyDetails(props: any) {
   const { serviceName, caseStudyData, allCaseStudyData } = props;
+  const commonSvgs = mappedIconsArr(caseStudyData?.commonSvg)
 
   const formData = {
     constant: {
@@ -17,7 +18,7 @@ function CaseStudyDetails(props: any) {
     },
     fields: caseStudyData?.form?.formFieldData || [],
     sideFormImage: caseStudyData?.form?.formSideImage,
-    commonSvgs: caseStudyData?.commonSvgs,
+    commonSvgs: commonSvgs,
   };
 
   return (
@@ -31,7 +32,7 @@ function CaseStudyDetails(props: any) {
         }
         breadCrumbs={caseStudyData.breadcrumbsArr}
         sideImg={caseStudyData.bannerSideImage}
-        commonSvgs={caseStudyData?.commonSvgs}
+        commonSvgs={commonSvgs}
       />
       <StudyDescriptionSection
         contentContainerStyle={styles.studyDescriptionContainer}
@@ -44,7 +45,7 @@ function CaseStudyDetails(props: any) {
         outcomeArray={caseStudyData?.outcomeArr}
         outcomeImg={caseStudyData?.outcomeImage}
         outcomeImgMobile={caseStudyData?.outcomeImageMobile}
-        outcomeIcon={caseStudyData?.commonSvgs?.outcomeStar}
+        outcomeIcon={commonSvgs?.outcomeStar}
       />
       <CaseStudySection title={caseStudyData?.moreCaseStudyTitle} description={""} itemList={allCaseStudyData} />
       <ServicesContactUs

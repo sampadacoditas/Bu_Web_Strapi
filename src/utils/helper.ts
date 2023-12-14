@@ -65,6 +65,6 @@ export const mapArrayImages = (arr: any) => arr?.svgs?.reduce((acc: any, curr: a
 }, [])
 
 export const mappedIconsArr = (arr: any) => arr?.reduce((acc: any, curr: any) => {
-  acc[curr?.label] = curr?.value;
+  acc[curr?.label] = curr?.value ?? curr?.label;
   return acc;
 }, [])
