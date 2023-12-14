@@ -91,7 +91,10 @@ const CONTACT_US_SCHEMA = yup
         message: "Message must be at least 1 character long",
       })
       .max(1000, "Message must not exceed 1000 characters")
-      .notRequired()
+      .required("This field is mandatory!")
+      .test("test-ctype", "Please enter at least 120 characters.", (value: any) => {
+        return !(value?.length != 0 && value?.length <= 119);
+      })
       .test("test-ctype", "Please enter at least 120 characters.", (value: any) => {
         return !(value?.length != 0 && value?.length <= 119);
       }),

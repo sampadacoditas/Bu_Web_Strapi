@@ -14,6 +14,7 @@ export interface cardType {
   customCardContentClass?: string;
   openModal?: (data: any) => any;
   buttonText?: string;
+  bulletIcon?:string;
 }
 
 export interface modalDataType {
@@ -27,7 +28,7 @@ export interface modalType {
   data: modalDataType;
   closeModal: () => any;
   isModalOpen: boolean;
-  commonSvgs?: {[key: string]: string};
+  commonSvgs?: { [key: string]: string };
 }
 
 export interface HeaderType {
@@ -52,5 +53,6 @@ export interface OurServicesType {
     viewLessBtn?: string;
     cardBtnText?: string;
   };
-  commonSvgs?: {[key: string]: string};
+  commonSvgs?: { [key: string]: string };
+  bulletIcon?: string;
 }

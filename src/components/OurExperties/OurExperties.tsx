@@ -35,7 +35,6 @@ const OurExperties = (props: IOurExperties) => {
 
           <div className={style.mViewBFSI}>
             <CustomImage src={getImageUrl(servicesImages?.[3]?.img)} alt="Bfsi" className={style.expertiseImage} />
-            <CustomImage src={getImageUrl(servicesImages?.[3]?.img)} alt="Bfsi" className={style.expertiseImage} />
           </div>
 
           <div className={`${style.wViewLayout} ${style.mViewHC}`}>
@@ -53,7 +52,6 @@ const OurExperties = (props: IOurExperties) => {
             />
           </div>
           <div className={style.mViewECom}>
-            <CustomImage src={getImageUrl(servicesImages?.[6]?.img)} alt="Ecommerce" className={style.expertiseImage} />
             <CustomImage src={getImageUrl(servicesImages?.[6]?.img)} alt="Ecommerce" className={style.expertiseImage} />
           </div>
         </div>

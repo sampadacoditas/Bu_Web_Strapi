@@ -4,14 +4,19 @@ import useWindowWidth from "@/hooks/useWindowWidth";
 import { Button, CustomImage, Modal } from "@/components";
 import { OurServicesType, cardDataType, cardType, modalDataType, modalType } from "./IOurServices";
 import { CUSTOM_ID, DARK_BG_NAV, LIGHT_BG_NAV } from "@/constants/constants";
-import doodleDotsRight from "@/assets/icons/doodleDotsRight.svg";
-import doodleDotsLeft from "@/assets/icons/doodleDotsLeft.svg";
-import bulletIcon from "@/assets/icons/devopsStarIcon.svg";
 import { ReactComponent as CrossIcon } from "@/assets/icons/crossIcon.svg";
 import styles from "./OurServices.module.scss";
 import { getImageUrl } from "@/utils/helper";
 
-const Card = ({ data, hasCardButton, customClass, customCardContentClass, openModal, buttonText }: cardType) => {
+const Card = ({
+  data,
+  hasCardButton,
+  customClass,
+  customCardContentClass,
+  openModal,
+  buttonText,
+  bulletIcon,
+}: cardType) => {
   const handleOpenModel = () => {
     if (openModal) {
       openModal(data.modalData);
@@ -26,7 +31,7 @@ const Card = ({ data, hasCardButton, customClass, customCardContentClass, openMo
           <ul className={styles.cardDescription}>
             {data.desc.split("#").map((item, index) => (
               <div className={styles.bulletItem} key={index}>
-                <CustomImage src={bulletIcon} className={styles.bulletIcon} alt="Bullet" />
+                <CustomImage src={bulletIcon || ""} className={styles.bulletIcon} alt="Bullet" />
                 <div className={styles.bulletDesc}>{item}</div>
               </div>
             ))}
@@ -114,6 +119,7 @@ const Ourservices = ({
   showDarkHeaderTheme = true,
   buttonLabel,
   commonSvgs,
+  bulletIcon,
 }: OurServicesType) => {
   const mobileCardsList = showAllCards ? cardsArray : cardsArray.slice(0, 4);
   const { isMobileView, isTabletView } = useWindowWidth();
@@ -131,7 +137,6 @@ const Ourservices = ({
     setIsModalOpen(false);
     setModalData(null);
   };
-
   const handleViewMore = () => {
     const headSectionElement = document.getElementById("headSection");
     setIsButtonClicked(true);
@@ -180,6 +185,7 @@ const Ourservices = ({
           {arrayToBeMapped.map((data, index: number) => (
             <Card
               key={index}
+              bulletIcon={bulletIcon}
               data={data}
               buttonText={buttonLabel?.cardBtnText}
               hasCardButton={hasCardButton}

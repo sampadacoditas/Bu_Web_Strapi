@@ -5,5 +5,6 @@ export interface IMoreCaseStudy {
     desc: string;
     arrowSvg: string;
     routeTo: string;
+    bgLines: string;
   };
 }

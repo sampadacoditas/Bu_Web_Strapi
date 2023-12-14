@@ -49,7 +49,7 @@ const AboutUs = (props: any) => {
     buttonLabel: {
       viewMoreBtn: pageData?.viewMoreBtnText,
       viewLessBtn: pageData?.viewLessBtnText,
-      cardBtnText: pageData?.serviceBtnText,
+      cardBtnText: pageData?.cardBtnText,
     },
     commonSvgs: commonSvgs || {},
   };

@@ -6,6 +6,7 @@ import { CustomImage } from "..";
 
 const TheOutcome = ({ heading, subText, outcomeArray, outcomeImg, outcomeImgMobile, outcomeIcon = "" }: IOutcome) => {
   const { isMobileView } = useWindowWidth();
+  console.log();
   return (
     <div {...{ [CUSTOM_ID]: DARK_BG_NAV }} className={styles.contentContainer}>
       <div className={`content`}>
@@ -14,11 +15,11 @@ const TheOutcome = ({ heading, subText, outcomeArray, outcomeImg, outcomeImgMobi
           <div className={styles.whiteLine}></div>
           <div className={styles.subText}>{subText}</div>
           <div className={styles.outcomeArray}>
-            {outcomeArray.map((outcome, index: number) => {
+            {outcomeArray?.map((outcome, index: number) => {
               return (
                 <div className={styles.outcome} key={index}>
                   <CustomImage src={outcomeIcon} className={styles.outcomeIcon} alt="" />
-                  <div className={styles.outComeText}>{outcome}</div>
+                  <div className={styles.outComeText}>{outcome.desc}</div>
                 </div>
               );
             })}
