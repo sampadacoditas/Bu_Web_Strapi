@@ -37,13 +37,10 @@ const Home = (props: any) => {
     buttonSvg: pageData?.heroBannerSection?.buttonSvgImg,
   };
 
-  const [digitalTransform, ourServices, tech, hiringNow, ourOffices, ourWorkObject, svgObject] =
+  const [digitalTransform, ourServices, tech, hiringNow, ourOffices, ourWorkObject, svgObject, mappedSvgs] =
     pageData?.pageComponents;
-  // const [markerInactiveObjecct, markerActiveObject, crossIconObject, doodleDotsRightObject, doodleDotsLeftObject] =
-  //   svgObject.svgs;
-  // const [svgs] = svgObject.svgs;
-
-  const commonSvgs = mapArrayImages(svgObject);
+    
+    const commonSvgs = mapArrayImages(svgObject)
 
   const digitallyTransformedData = {
     headerData: {
@@ -95,9 +92,8 @@ const Home = (props: any) => {
     title: ourOffices?.heading,
     addressData: ourOffices?.ourOffice || [],
     map: getImageUrl(ourOffices?.map),
-    // commonSvgs: pageData?.commonSvgs,
     commonSvgs: commonSvgs,
-    mappedSvgs: pageData?.mappedSvgs,
+    mappedSvgs: mappedSvgs,
   };
 
   useEffect(() => {

@@ -10,15 +10,18 @@ import {
 } from "@/components";
 import { DATA_SCIENCE, servicesFormType } from "@/constants/constants";
 import { CONTACT_US_DATA_SCIENCE_SERVICES_INITIAL_VALUES } from "@/constants/contactUsFormData";
-import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl } from "@/utils/helper";
+import { ServicesContactUS, getFormattedCaseStudyData, getImageUrl, mapArrayImages } from "@/utils/helper";
 import { CONTACT_US_SCHEMA_DATA_SCIENCE_SERVICE } from "@/utils/schemas";
 import style from "./DataScience.module.scss";
 
 const DataScience = (props: any) => {
   const { attributes: pageData, caseStudyResp } = props;
 
-  const [certified, ourServices, challengesWeSolve, ourExpertise, howWeWork, caseStudies, ourClients, formDataObject] =
+  const [certified, ourServices, challengesWeSolve, ourExpertise, howWeWork, caseStudies, ourClients, formDataObject, svgObject={}] =
     pageData?.pageComponents;
+
+  const commonSvgs = mapArrayImages(svgObject)
+
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
     description: pageData?.heroBannerSection?.bannerSubText,
@@ -42,7 +45,7 @@ const DataScience = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: ourServices?.cardBtnText,
     },
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
   const challengesWeSolveData = {
     title: challengesWeSolve?.headerDetails?.title,
@@ -80,7 +83,7 @@ const DataScience = (props: any) => {
     },
     fields: formDataObject?.formFieldData || [],
     sideFormImage: formDataObject?.formSideImage,
-    commonSvgs: formDataObject?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   const getFormmatedData = (data: any) => {

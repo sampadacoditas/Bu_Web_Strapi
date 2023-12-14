@@ -9,14 +9,16 @@ import {
 } from "@/components";
 import { CONTACT_US_INITIAL_VALUES } from "@/constants/contactUsFormData";
 import { servicesFormType } from "@/constants/constants";
-import { ServicesContactUS, getImageUrl } from "@/utils/helper";
+import { ServicesContactUS, getImageUrl, mapArrayImages } from "@/utils/helper";
 import { CONTACT_US_SCHEMA } from "@/utils/schemas";
 import style from "./UXDesign.module.scss";
 
 const UXDesign = (props: any) => {
   const { attributes: pageData } = props;
+  
+  const [ourServices, howWeWork, ourExpertise, whyCoditas, ourClients, formDataObject, svgObject, mappedImgObj] = pageData?.pageComponents;
 
-  const [ourServices, howWeWork, ourExpertise, whyCoditas, ourClients, formDataObject] = pageData?.pageComponents;
+  const commonSvgs = mapArrayImages(svgObject)
 
   const heroSectionData = {
     title: pageData?.heroBannerSection?.bannerTitle,
@@ -37,7 +39,7 @@ const UXDesign = (props: any) => {
       viewLessBtn: pageData?.viewLessBtnText,
       cardBtnText: pageData?.serviceBtnText,
     },
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   const howWeWorkData = {
@@ -78,7 +80,7 @@ const UXDesign = (props: any) => {
     },
     fields: formDataObject?.formFieldData,
     sideFormImage: formDataObject?.formSideImage,
-    commonSvgs: pageData?.commonSvgs || {},
+    commonSvgs: commonSvgs || {},
   };
 
   return (

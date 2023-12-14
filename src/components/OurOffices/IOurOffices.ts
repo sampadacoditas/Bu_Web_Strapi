@@ -7,5 +7,5 @@ export interface IOurOfffices {
   }[];
   map?: string;
   commonSvgs?: {[key:string]: string};
-  mappedSvgs?: {[key:string]: string};
+  mappedSvgs?: {[key:string]: string | any};
 }
