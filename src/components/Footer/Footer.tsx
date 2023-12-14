@@ -11,16 +11,17 @@ import { ReactComponent as AddIcon } from "@/assets/icons/addIcon.svg";
 import { ReactComponent as MinusIcon } from "@/assets/icons/removeIcon.svg";
 
 import { PAGE_ROUTES } from "@/constants/constants";
-import { CustomImage } from "..";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const FooterSectionMobileView = (props: IFooterProps) => {
   const { label, expand, setExpand, navList, navItemType } = props;
+  console.log("Footer props :", props);
   const openNewTab = navItemType === FOOTER_CONSTANTS.pages;
   const handleFooterTitleClick = () => {
     expand === label ? setExpand && setExpand("") : setExpand && setExpand(label);
   };
-  const isLengthMin = navList.length === MIN_LENGTH;
+  const isLengthMin = navList?.length === MIN_LENGTH;
   return (
     <Fragment>
       <div className={style.footerTitle} onClick={handleFooterTitleClick}>
@@ -53,7 +54,7 @@ const FooterSectionView = (props: IFooterProps) => {
   return (
     <Fragment>
       <p className={style.pageText}>{label}</p>
-      {navList.map((item: INavLinks, index: number) => {
+      {navList?.map((item: INavLinks, index: number) => {
         return (
           <p className={style.pageItems} key={index}>
             <a
@@ -125,10 +126,12 @@ const Footer = (props: any) => {
         )}
       </div>
       <div className={style.greatPlaceLayout}>
-        <CustomImage
-          className={style.imageStyle}
-          src={headerFooterData?.badgeImage}
+        <Image
+          className={`${style.imageStyle} ${style.customImageContainer}`}
+          src={GreatPlaceToWork?.src}
           alt={FOOTER_CONSTANTS.greatPlaceToWork}
+          width={0}
+          height={0}
         />
         <div className={style.careerContentLayout}>
           <p className={style.careerText}>{FOOTER_CONSTANTS.buildYourCareer}</p>

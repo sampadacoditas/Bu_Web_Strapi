@@ -4,3 +4,9 @@
   height: 100vh;
   @include flexProps(flex, center, center, row, null, null);
 }
+
+.customImageContainer {
+  position: unset;
+  width: fit-content;
+  height: fit-content;
+}
